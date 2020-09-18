@@ -6,11 +6,10 @@ This site provides supplementary materials for UConn CSE 3666.
 
 <h2> Pages </h2>
 
-<ul>
-
 * [Practice binary numbers](./binarynumbers/)
 * [Knowledge on C Language through an example](pages/c_example.html)
 
+<ul>
 {% for t in site.pages %}
 <li> <a href="{{ t.url | prepend: site.baseurl }}">
         {{ t.title }}
