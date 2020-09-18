@@ -1,5 +1,5 @@
 ---
-title: Frequently Asked Questions in CSE 3666
+title: FAQs
 layout: default
 description: Some commonly asked questions from students in CSE 3666, Introduction to Computer Architecture.
 ---

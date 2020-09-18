@@ -28,6 +28,13 @@ theme: minima
 github: [metadata]
   #plugins:
   #- jekyll-feed
+show_drafts: true
+
+collections:
+    pages:
+        label: pages
+        output: true
+        permalink: /pages/:path/
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
