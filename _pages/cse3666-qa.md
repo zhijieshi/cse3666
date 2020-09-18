@@ -47,3 +47,13 @@ or
 
 You do not need to write an assembly program that can be assembled.
 
+## How do I find out what an instruction does?
+
+Read the reference manual! The information in slides is minimum to get you
+started. Textbook has more details. Many MIPS pages may provide even more
+details. An example is
+[here](http://www.mrc.uidaho.edu/mrc/people/jff/digital/MIPSir.html), which
+lists a subset of MIPS instructions, but with encoding.
+
+You could go to [the MIPS32 manuals on the official site](https://www.mips.com/products/architectures/mips32-2/).
+
