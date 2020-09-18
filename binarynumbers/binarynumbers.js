@@ -27,8 +27,8 @@ var testView = new Vue ({
 
         nbits: '8',
 	is_signed: true,
-	q_radix: 10,
-	a_radix: 2,
+	q_radix: 2,	// Default: from 2's complement numbers to decimal numbers 
+	a_radix: 10,
 
 	nbits_options: [
 	  { text: '4 bits', value: 4 },
