@@ -2,15 +2,11 @@
 layout: home
 ---
 
-# CSE 3666
-
 This site provides supplementary materials for UConn CSE 3666.
 
-<ul>
-<li> [Practice binary numbers](./binarynumbers/) </li>
-<li> [Knowledge on C Language through an example](c_example.html) </li>
-<li> [Q&A](cse3666-qa.md)</li>
-</ul>
+* [Practice binary numbers](./binarynumbers/)
+* [Knowledge on C Language through an example](pages/c_example.html)
+* [Q&A](pages/cse3666-qa.md)</li>
 
 {% for collection in site.collections %}
 
