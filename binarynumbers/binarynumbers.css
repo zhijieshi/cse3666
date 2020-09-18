@@ -1,0 +1,131 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+#mainDiv {
+    width: 480px;
+    height: auto;
+    margin: 20px auto;
+    padding: 0;
+}
+
+.title {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    padding: 5px;
+    font-size: 30px;
+    text-align: center;
+    background-color: #cce6ff;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.testControl {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+}
+
+.testField {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+}
+
+.configOption {
+    width: 100%;
+    height: auto;
+    margin: 10px;
+    padding: 0;
+    vertical-align: middle;
+}
+
+.question {
+    width: 100%;
+    height: auto;
+    margin: 10px;
+}
+
+.question > .questionText {
+    white-space: pre-wrap;
+    text-align: left;
+}
+
+.question > .bigger {
+    margin: 30px;
+    text-align: center;
+    font-size: 150%;
+}
+
+.score {
+    height: 100px;
+    width: 100%;
+    margin: auto;
+    /* background-color: grey; */
+}
+
+.score > .correctScore, .score > .wrongScore {
+        height: 100px;
+        width: 50%;
+        float: left;
+        text-align: center;
+    }
+
+.score > .wrongScore {
+    color: red;
+    font-size: 30px;
+    line-height: 100px;
+}
+
+.score > .correctScore {
+    color: green;
+    font-size: 30px;
+    line-height: 100px;
+}
+
+.answer {
+    margin: 20px;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.answer > .input {
+    /* width: 200px; */
+    margin: auto;
+    height: auto;
+}
+
+.buttons {
+    margin: auto;
+    background: #809fff;
+    padding: 5px;
+    display: flex;
+    justify-content: space-around;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    resize: none;
+    border:1px solid #30273a;
+    box-shadow: 0 0 10px #8d78a5;
+    border-radius: 15px 15px 15px 15px;
+}
+
+.button {
+    background-color: #809fff; /* Green */
+    margin: 5px;
+    border: 1px;
+    border-radius: 10px 10px 10px 10px;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+}

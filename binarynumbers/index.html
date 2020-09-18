@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Binary Numbers</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="binarynumbers.css">
+</head>
+<body>
+
+<div id="mainDiv">
+    <div class="title"> Understanding Binary Numbers </div> 
+
+    <div v-show="!config_mode" class="testField">
+	<div class="question">
+		<div class="questionText">{{ config_str }}</div>
+		<div class="bigger">{{ valueQ }}</div>
+	</div>
+        <div class="answer">
+            Answer: 
+	    <input class="input" type="text" v-on:keyUp.enter="checkAnswer" v-model="inString">
+        </div>
+	<div class="buttons">
+		<input type="button" value="Check" class="button" v-on:click="checkAnswer">
+		<input type="button" value="Skip" class="button" v-on:click="skipQuestion">
+		<input type="button" value="Show Answer" class="button" v-on:click="showAnswer">
+		<input type="button" value="Reset" class="button" v-on:click="newTest">
+	</div>
+	<div class="score">
+		<div class="correctScore">{{ correct }}</div>
+		<div class="wrongScore">{{ wrong }}</div>
+	</div>
+	<div class="buttons">
+		<input type="button" value="Config" class="button" v-on:click="showConfig">
+	</div>
+    </div>
+
+    <div v-show="config_mode" class="testControl">
+	<div class="configOption"> 
+	Number of bits: 
+	<select v-model="nbits">
+	    <option v-for="option in nbits_options" v-bind:value="option.value">
+	       {{ option.text }}
+	    </option>
+	</select>
+	</div>
+
+	<div class="configOption"> 
+	<input type="checkbox" v-model="is_signed">
+		<label for="checkbox"> Bits are signed(two's complement numbers) </label>
+	</input>
+	</div>
+
+	<div class="configOption"> 
+	Representation of numbers in questions:
+	<select v-model="q_radix">
+	    <option v-for="option in radix_options" v-bind:value="option.value">
+	       {{ option.text }}
+	    </option>
+	</select>
+	</div>
+
+	<div class="configOption"> 
+	Representation of numbers in answers:
+	<select v-model="a_radix">
+	    <option v-for="option in radix_options" v-bind:value="option.value">
+	       {{ option.text }}
+	    </option>
+	</select>
+	</div>
+	<div class="buttons">
+	<input type="button" value="Set" class="button" v-on:click="newTest">
+	</div>
+    </div>
+</div>
+
+<script src="binarynumbers.js"></script>
+
+</body>
+</html>
