@@ -4,10 +4,15 @@ layout: home
 
 This site provides supplementary materials for UConn CSE 3666.
 
-<h2> Pages </h2>
+## Links
 
 * [Practice binary numbers](./binarynumbers/)
+
 * [Knowledge on C Language through an example](pages/c_example.html)
+
+* [MIPS function examples](https://github.com/zhijieshi/cse3666/tree/master/code-examples/mips-function)
+
+## Pages
 
 <ul>
 {% for t in site.pages %}
