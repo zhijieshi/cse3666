@@ -6,6 +6,15 @@ description: Some commonly asked questions from students in CSE 3666, Introducti
 
 # Frequently Asked Questions
 
+## Why do I have to learn assembly language?
+
+Well, processors only understand instructions. If you want to understand how
+they work, you would need to learn and program with instructions. So we learn
+assembly language in this course.
+
+Here is Youtube video ["Why should I learn assembly language in
+2020?"](https://www.youtube.com/watch?v=iYRl50gtprA).
+
 ## Why do computers use 2's complement numbers?
 
 There are many explanations on the Internet. One of the reasons is we can use
