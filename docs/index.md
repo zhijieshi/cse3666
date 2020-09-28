@@ -14,6 +14,7 @@ This site provides supplementary materials for UConn CSE 3666.
 * [A Python3 program (ex\_memory.py) for practicing memory access](https://github.com/zhijieshi/cse3666/tree/master/practice)
 
 * [MIPS function examples](https://github.com/zhijieshi/cse3666/tree/master/code-examples/mips-function)
+* [Frame pointer example](pages/fp-example.html)
 
 ## Pages
 
