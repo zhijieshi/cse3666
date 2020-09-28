@@ -8,7 +8,7 @@ This site provides supplementary materials for UConn CSE 3666.
 ## Links
 
 <ul>
-{% for link in site.data.links%}
+{% for link in site.data.links %}
   <li>
     <a href="{{ link.url }}">
       {{ link.title }}
