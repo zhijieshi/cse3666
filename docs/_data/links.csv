@@ -1,0 +1,6 @@
+title,url
+"A game for practicing with binary/hexadecimal/2's complement numbers","./binarynumbers/"
+"Understanding C program through an example","pages/c_example.html"
+"A Python3 program (ex_memory.py) for practicing memory access","https://github.com/zhijieshi/cse3666/tree/master/practice"
+"MIPS function examples","https://github.com/zhijieshi/cse3666/tree/master/code-examples/mips-function"
+"Frame pointer example","pages/fp-example.html"

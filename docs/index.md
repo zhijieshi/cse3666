@@ -7,14 +7,15 @@ This site provides supplementary materials for UConn CSE 3666.
 
 ## Links
 
-* [A game for practicing with binary/hexadecimal/2's complement numbers](./binarynumbers/)
-
-* [Understanding C program through an example](pages/c_example.html)
-
-* [A Python3 program (ex\_memory.py) for practicing memory access](https://github.com/zhijieshi/cse3666/tree/master/practice)
-
-* [MIPS function examples](https://github.com/zhijieshi/cse3666/tree/master/code-examples/mips-function)
-* [Frame pointer example](pages/fp-example.html)
+<ul>
+{% for link in site.data.links%}
+  <li>
+    <a href="{{ link.url }}">
+      {{ link.title }}
+    </a>
+  </li>
+{% endfor %}
+</ul>
 
 ## Pages
 
