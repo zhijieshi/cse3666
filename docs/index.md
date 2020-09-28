@@ -28,6 +28,8 @@ This site provides supplementary materials for UConn CSE 3666.
 {% endfor %}
 </ul>
 
+The page was last updated on {{ site.time }}.
+
 {% comment %}
 {% for collection in site.collections %}
   <h2>{{ collection.label }}</h2>
