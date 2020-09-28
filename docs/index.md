@@ -11,7 +11,7 @@ This site provides supplementary materials for UConn CSE 3666.
 {% for link in site.data.links %}
   <li>
     <a href="{{ link.url }}">
-      {{ link.title }}
+      {{ link.title | escape }}
     </a>
   </li>
 {% endfor %}
