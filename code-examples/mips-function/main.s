@@ -4,9 +4,12 @@
 	# data segment
 	.data		
 
-        # The next variable (symbol) should starts at an address that is a multiple of 4.
-        # define a single word and an array of words.
+        # .align 2 means 'aligned for 2 ** 2 = 4 bytes items'.
+	#    So the next variable is placed at an address that is a multiple of 4.
+        # .align 3 means 'aligned for 2 ** 3 = 8 bytes items'.
 	.align 2
+
+        # example of initializing a single word and an array of words.
 
 	#initialize a word
 var_w0:	.word 1
@@ -22,34 +25,37 @@ buf:	.space 128
 
 	# there are more directives like .byte and .half. Read the help files.
 
-	# null-terminated strings, 
-hello:	.asciiz "Hello, World! \n"
+	# null-terminated strings
+	# .ascii does not have the ending null (NUL)
+hello:	.asciiz "Hello, World!\n"
 
 fmt:	.asciiz	"max(%d, %d)=%d\n"
 
-	# .text starts code segments
+	# .text starts a code segment
 	.text
 	.globl	main	# declare main to be global. Note it is ".globl"
 
-	# define a label
+	# define a label, for instructions
 main:	
 	# calling a function 
 	jal	print_hello	
 
 	# Calling function in another file
-	# In MARS, we must enable "assemble all files in directory" in Settings to call functions in other files
+	# To call functions in other files, we must enable "assemble all files in directory" 
+	# in Settings in MARS
 
+	# suppose there are two values in $s0 and $s1
 	li	$s0, -10
 	li	$s1, 123
 
-	# calling max
+	# calling max to find out the larger one
 	# max($s0, $s1)
 
 	add	$a0, $s0, $0	# set the first argument
 	add	$a1, $s1, $0	# set the second argument
 	jal	max		# calling the function 
 
-	# calling printf(fmt, $s0, $s1, max($s0, $s1))
+	# calling printf(fmt, $s0, $s1, max($s0, $s1)) to print the result
 	la	$a0, fmt	# format string, argument 1
 	add	$a1, $s0, $0	# $s0, argument 2
 	add	$a2, $s1, $0	# $s1, argument 3
