@@ -1,5 +1,12 @@
 # RISC-V Resources
 
+## RISC-V 
+
+* [RISC-V Official spec](https://riscv.org/technical/specifications/) 
+We only need Volumn 1.
+* [RISC-V Github repo](https://github.com/riscv/riscv-isa-manual)
+* [Calling convenion](https://github.com/riscv/riscv-elf-psabi-doc/blob/master/riscv-elf.md)
+
 ## RARS
 
 Of course, RARS goes first. RARS is written in Java and built upon MARS, 
