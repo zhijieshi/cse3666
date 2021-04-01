@@ -1,4 +1,4 @@
-from myhdl import block, always_seq, always_comb, Signal, modbv
+from myhdl import *
 
 # based on the counter example from MyHDL repo
 
@@ -15,7 +15,7 @@ def counter(count, deltain, load, loadin, clock, reset):
     """
 
     adderout = Signal(modbv(0)[len(count):])
-    muxout = Signal(modbv(0)[len(count):])
+    muxout = Signal(intbv(0)[len(count):])
 
     @always_comb
     def adder():

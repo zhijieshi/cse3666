@@ -1,6 +1,5 @@
 import random
-from myhdl import block, always, instance, Signal, \
-    ResetSignal, modbv, delay, StopSimulation
+from myhdl import *
 from counter import counter
 
 random.seed(1)
@@ -11,9 +10,9 @@ ACTIVE_LOW, INACTIVE_HIGH = 0, 1
 @block
 def testbench():
     m = 16
-    count = Signal(modbv(0)[m:])
-    deltain = Signal(modbv(0)[m:])
-    loadin = Signal(modbv(0)[m:])
+    count = Signal(intbv(0)[m:])
+    deltain = Signal(intbv(0)[m:])
+    loadin = Signal(intbv(0)[m:])
     load = Signal(bool(0))
     clock  = Signal(bool(0))
     reset = ResetSignal(0, active=0, isasync=True)
@@ -61,4 +60,5 @@ def testbench():
     return clockGen, stimulus, counter1, monitor
 
 tb = testbench()
+tb.config_sim(trace=False)
 tb.run_sim()
