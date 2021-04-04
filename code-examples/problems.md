@@ -1,5 +1,30 @@
 ## Coding problems
 
+### Numbers
+
+* Find GCD.
+
+* Find LCM.
+
+* Modular operations.  
+
+* Large numbers. We can start with unsigned big numbers. 
+
+```
+// add big numbers res = x + y, each having n DWORDs
+// return the carry
+int  BIG_add(DWORD *res, DWORD *x, DWORD *y, int n); 
+
+// add big numbers res = x + extended v. x has n DWORDs. v is a single DWORD.
+// return the carry
+int  BIG_add_single(DWORD *res, DWORD *x, DWORD v, int n); 
+
+// compare x and y, each having n DWORDs
+int  BIG_cmp_eq(const DWORD *x, const DWORD *y, int n); 
+int  BIG_cmp_lt(const DWORD *x, const DWORD *y, int n); 
+
+```
+
 ### ASCII strings
 
 #### String functions in C
@@ -13,6 +38,9 @@ size_t strlcpy(char *dest, const char *src, size_t size);
 
 char *strcat(char *dest, const char *src);
 char *strncat(char *dest, const char *src, size_t n);
+
+int strcmp(const char *s1, const char *s2);
+int strncmp(const char *s1, const char *s2, size_t n);
 
 char *strtok(char *str, const char *delim);
 
@@ -53,4 +81,19 @@ int     str_starts_with(const char *haystack, const char *needle); // PHP str_st
 * Find max, min, average, median of elemetns in an array.
 
 * Sort. Bubble sort, merge sort.
+
+* Dot prodcut.
+
+* Matrix operations like addition and transpose.
+
+### Function calls 
+
+* Write functions to call any other functions on an array. For example, 
+
+```
+void    array_strtoupper(const char **pstr, int n);  // convert an array of strings to upper cases
+
+```
+
+* Convert loops to recursion. For example, recursive `strlen()` and `strcmp()`.
 
