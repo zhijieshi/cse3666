@@ -15,7 +15,6 @@ a MIPS simulator, which we used in CSE 3666 before switching to RISC-V.
 [RARS Github repo is here.](https://github.com/TheThirdOne/rars)
 
 
-
 ## Online simulator at Cornell
 
 Cornell has an online simulator for their CS3410. 
