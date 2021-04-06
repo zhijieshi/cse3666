@@ -2,28 +2,33 @@
 
 ### Numbers
 
-* Find GCD.
+* Find GCD of two numbers.
 
-* Find LCM.
+* Find LCM of two numbers.
 
-* Modular operations.  
+* Modular operations: add, sub, mul, and exponentiation. 
 
-* Large numbers. We can start with unsigned big numbers. 
+* Unsigned large numbers. Each number is stored in an array of `n` doublewords.
 
 ```
-// add big numbers res = x + y, each having n DWORDs
+// add a big number and a doubleword
+// res = x + extended v, where v is a doublewords
+// return the carry
+int  BIG_add_vs(DWORD *res, DWORD *x, DWORD v, int n); 
+
+// add big numbers res = x + y 
 // return the carry
 int  BIG_add(DWORD *res, DWORD *x, DWORD *y, int n); 
-
-// add big numbers res = x + extended v. x has n DWORDs. v is a single DWORD.
-// return the carry
-int  BIG_add_single(DWORD *res, DWORD *x, DWORD v, int n); 
 
 // compare x and y, each having n DWORDs
 int  BIG_cmp_eq(const DWORD *x, const DWORD *y, int n); 
 int  BIG_cmp_lt(const DWORD *x, const DWORD *y, int n); 
 
 ```
+
+* Find the Hamming weight
+
+* Reverse the order of bytes
 
 ### ASCII strings
 
@@ -65,6 +70,8 @@ char    *strtoupper(const char *s);  // PHP strtoupper
 char    *strtolower(const char *s);  // PHP strtolower
 char    *strpad(char *t, int len,  const char *s, char pad, int left);  // PHP str_pad
 
+char    *strrev(const char *s);   // reverse the characters in a string
+
 int     substr(const char *s, int offset, int len); // PHP substr. Get a substring
  
 int     str_starts_with(const char *haystack, const char *needle); // PHP str_starts_with
@@ -78,11 +85,11 @@ int     str_starts_with(const char *haystack, const char *needle); // PHP str_st
 
 * Set all array elements to a specific value (like `memset`).
 
+* Dot prodcut.
+
 * Find max, min, average, median of elemetns in an array.
 
 * Sort. Bubble sort, merge sort.
-
-* Dot prodcut.
 
 * Matrix operations like addition and transpose.
 
