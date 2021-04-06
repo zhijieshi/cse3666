@@ -23,7 +23,13 @@ main:
         
         add	x7, x5, x6
         
-        add	x8, x7, x7
+        or	x8, x5, x6
+
+        add	x9, x7, x7
+
+        and	x10, x8, x9
+        
+        xori	x11, x10, -1
         
         # system call to exit with code 0
 exit:   li      a7, 10                  # li is a pseudoinstruction
