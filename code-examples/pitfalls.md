@@ -21,3 +21,13 @@ more registers. It shows your coding skills (to your future interviewer)
   check if a condition is true, compare a register with `x0` with a `bne`
   instruction.
 
+  ```
+    # Instead of doing 
+    addi    t1, x0, 1
+    beq     s1, t1, L1
+
+    # Do this
+    bne     s1, x0, L1
+  ```
+    
+
