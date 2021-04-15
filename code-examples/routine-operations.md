@@ -1,8 +1,10 @@
+## Commonly used operations 
+
 ### Set a register to 0.
 
 <details><summary>Answer</summary>
 
-There are many ways.
+There are many ways. It is a special case of loading a constant into a register.
 
 ```
     addi    s1, x0, 0
