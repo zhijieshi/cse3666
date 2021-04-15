@@ -38,18 +38,26 @@ The following are commonly used RISC-V instructions in CSE 3666.
     and     x1, x2, x3
     or      x1, x2, x3
     xor     x1, x2, x3
-    xori    x1, x2, -1      # NOT
-    addi    x1, x2, 100     # 12-bit 2's complement number
+    sll     x1, x2, x3      # MIPS: sllv, shift amount is in x3
+    srl     x1, x2, x3      # MIPS: srlv, shift amount is in x3
+    sra     x1, x2, x3      # MIPS: srav, shift amount is in x3
+    xori    x1, x2, -1      # NOT is a pseudoinstruction 
+   
+    # each of the above, except sub, has the immediate version 
+    # immediate is 12-bit 2's complement number
+
+    addi    x1, x2, 100     
+    andi    x1, x2, 0xF
+    ori     x1, x2, 0xFF 
+    xori    x1, x2, -1      
     slli    x1, x2, 10      # MIPS: sll $1, $2, 10 
     srli    x1, x2, 10      # MIPS: srl $1, $2, 10 
     srai    x1, x2, 10      # MIPS: sra $1, $2, 10 
-    sll     x1, x2, x3      # shift amount is in x3
-    srl     x1, x2, x3      # shift amount is in x3
-    sra     x1, x2, x3      # shift amount is in x3
 
     ld      x1, 100(x2)     # load doublewords
     sd      x1, 100(x2)     # store doublewords
-    # instructions for other data types include
+
+    # load/store instructions for other data types include
     # lw, lwu, sw       words
     # lh, lhu, sh       half words
     # lb, lbu, sb       bytes
@@ -67,7 +75,6 @@ The following are commonly used RISC-V instructions in CSE 3666.
     # the following two are pseudoinstructions
     j       L               # jal  x0, L
     jr      x2              # jalr x0, 0(x2) 
-
 ```
 
 ### Encoding
