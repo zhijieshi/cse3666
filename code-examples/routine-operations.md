@@ -1,4 +1,4 @@
-1. Set a register to 0.
+### Set a register to 0.
 
 <details><summary>Answer</summary>
 
@@ -11,7 +11,7 @@ There are many ways.
 ```
 </details>
 
-3. Write a loop.
+### Write a loop.
 
 ```
 for  (i = 0; i < 1000; i ++) {
@@ -45,7 +45,7 @@ loop_test:
 </details>
 
 
-3. Write a nested loop.
+### Write a nested loop.
 
 ```
 for  (i = 0; i < UI; i ++) {
@@ -55,6 +55,7 @@ for  (i = 0; i < UI; i ++) {
 }
 
 ```
+
 <details><summary>Answer</summary>
 
 Assume we assign `s1` to `i`, `s2` to `j`, `s3` to `UI`, and `s4` to `UJ`.
@@ -85,7 +86,7 @@ test_i:
 
 </details>
 
-3. Load a data item from memory to register. 
+### Load a data item from memory to register. 
 
 <details><summary>Answer</summary>
 
@@ -109,7 +110,9 @@ We can use `la` pseudoinstructin to put an address in a register.
 
 </details>
 
-4. Suppose `s2` is the starting address of a doubleword array `A`. Load  
+### Access array elements - 1.
+
+Suppose `s2` is the starting address of a doubleword array `A`. Load  
 `A[10]` into register `t0`.
 
 <details><summary>Answer</summary>
@@ -122,8 +125,10 @@ why we use `ld` and why the offset is 80.
 ```
 </details>
 
-4. Suppose `s2` is the starting address of a doubleword array `A` and variable
-   `i` is assigned to `s3`. Load  `A[i]` into register `t0`.
+### Access array elements - 2.
+
+Suppose `s2` is the starting address of a doubleword array `A` and variable `i`
+is assigned to `s3`. Load  `A[i]` into register `t0`.
 
 <details><summary>Answer</summary>
 
@@ -137,7 +142,7 @@ We calculate `A[i]`'s address first. Then load it into `t0`.
 </details>
 
 
-3. Load arbitrary large constants to a register. 
+### Load arbitrary large constants.
 
 <details><summary>Answer</summary>
 At most two instructions can load any 32-bit constants in a register.
