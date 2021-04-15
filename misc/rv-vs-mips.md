@@ -25,10 +25,10 @@ instructions have unsigned immediate.
 RISC-V has more branch instructions. In addition to `BNE` and `BEQ`, the following
 branches are supported.
 
-    * `BLT`: branch if less than
-    * `BGE`: branch if greater than
-    * `BLTU`: branch if less than, unsigned
-    * `BGEU`: branch if greater than, unsigned
+    * BLT: branch if less than
+    * BGE: branch if greater than
+    * BLTU: branch if less than, unsigned
+    * BGEU: branch if greater than, unsigned
 
 The following are commonly used RISC-V instructions in CSE 3666.
 
@@ -73,6 +73,17 @@ The following are commonly used RISC-V instructions in CSE 3666.
 ### Encoding
 
 RISC-V instruction encoding is a little more complicated than MIPS.
+
+The opcode has 7 bits. There are a few function code fields (funct) of different sizes.
+
+Brief summary: 
+
+    *  R-Type: funct7 (7-bit), rs2, rs1, funct3 (3-bit), rd, opcode
+    *  I-Type: immd (12-bit), rs1, funct3, rd, opcode
+    *  S-Type: immd (7-bit), rs2, rs1, funct3, immd (5-bit), opcode
+    *  SB-Type (for branches): immd (7-bit), rs2, rs1, funct3, immd (5-bit), opcode
+    *  U-Type: immd (20-bit), rd, opcode
+    *  UJ-Type: immd (20-bit), rd, opcode
 
 ### Calling convention
 
