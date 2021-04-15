@@ -1,6 +1,6 @@
 ## Commonly used operations 
 
-### Set a register to 0.
+### Set a register to 0
 
 <details><summary>Answer</summary>
 
@@ -13,7 +13,7 @@ There are many ways. It is a special case of loading a constant into a register.
 ```
 </details>
 
-### Write a loop.
+### Write a for loop
 
 ```
 for  (i = 0; i < 1000; i ++) {
@@ -47,7 +47,7 @@ loop_test:
 </details>
 
 
-### Write a nested loop.
+### Write a nested loop
 
 ```
 for  (i = 0; i < UI; i ++) {
@@ -88,7 +88,7 @@ test_i:
 
 </details>
 
-### Load a data item from memory to register. 
+### Load a data item from memory to register
 
 <details><summary>Answer</summary>
 
@@ -112,10 +112,9 @@ We can use `la` pseudoinstructin to put an address in a register.
 
 </details>
 
-### Access array elements - 1.
+### Access array elements - 1
 
-Suppose `s2` is the starting address of a doubleword array `A`. Load  
-`A[10]` into register `t0`.
+Suppose `s2` is the starting address of a doubleword array `A`. Load `A[10]` into register `t0`.
 
 <details><summary>Answer</summary>
 
@@ -127,7 +126,7 @@ why we use `ld` and why the offset is 80.
 ```
 </details>
 
-### Access array elements - 2.
+### Access array elements - 2
 
 Suppose `s2` is the starting address of a doubleword array `A` and variable `i`
 is assigned to `s3`. Load  `A[i]` into register `t0`.
@@ -144,7 +143,7 @@ We calculate `A[i]`'s address first. Then load it into `t0`.
 </details>
 
 
-### Load arbitrary large constants.
+### Load arbitrary large constants
 
 <details><summary>Answer</summary>
 At most two instructions can load any 32-bit constants in a register.
