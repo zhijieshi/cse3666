@@ -32,3 +32,15 @@ Venus is written in Kotlin.
 UC Berkeley CS61C has an online terminal. 
 [CS61C Venus Web Terminal](https://venus.cs61c.org/)
 
+## rv8
+
+[rv8](https://michaeljclark.github.io/) is a RSIC-V simulator for x86-64.  The
+rv8 binary translator performs JIT (Just In Time) translation of RISC-V code to
+X86-64 code.
+
+## QEMU
+
+[QEMU](https://wiki.qemu.org/Documentation/Platforms/RISCV) supports RISC-V.
+You can run Linux on a simulated RISC-V core. 
+[Here are some instructions.](https://risc-v-getting-started-guide.readthedocs.io/en/latest/linux-qemu.html)
+
