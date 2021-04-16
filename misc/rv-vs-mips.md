@@ -1,28 +1,26 @@
 ## RISC-V vs MIPS
 
-RISC-V has many extensions. The base instructions (in RV32I and RV64I) and
-the MIPS instructions are very similar. 
+RISC-V has many extensions. In CSE 3666, we mostly study RV64I, the 64-bit base
+integer instruction set of RISC-V. The instructions are similar to those in
+MIPS.
 
 ### Registers
 
-RISC-V has 32 general-purpose registers, denoted as `x0`, `x1`, and so on. 
-Like in MIPS, register 0 `x0` is always 0. 
+RISC-V has 32 general-purpose registers, denoted as `x0`, `x1`, and so on.
+Like in MIPS, register 0 `x0` is always 0. In RV64I, each register has 64 bits.
 
-Register names are also very similar, but there is no `$` in register names.
-For example, write `s0`, instead of `$s0`, in RISC-V.
-See the table on [this page](https://en.wikichip.org/wiki/risc-v/registers)
-for the list of register names and their numbers.
+Register names are also very similar to MIPS register names, but there is no
+`$`.  For example, write `s0`, instead of `$s0`, in RISC-V.
+See the table on [this page](https://en.wikichip.org/wiki/risc-v/registers) for
+the list of register names and their numbers.
 
 ### Instructions
 
-In CSE 3666, we mostly study instructions in RV64I, the 64-bit base integer
-instructions of RISC-V. The instructions are similar to those in MIPS.
-
-The immediate field in instructions like ADDI has only 12 bits. In MIPS, immediate has 16 bits.
+The immediate field in instructions like ADDI has only 12 bits. In MIPS, the immediate has 16 bits.
 
 The immediate is always signed. In MIPS, logical instructions have unsigned immediate.
 
-LUI (load upper immediate) has 20-bit immediate. 
+LUI (load upper immediate) has a 20-bit immediate. 
 
 Load/store instructions for 64-bit data items (doublewords) are LD (load
 doublewords) and SD (store doublewords). Words, half words, and bytes are
