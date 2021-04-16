@@ -8,31 +8,45 @@ the MIPS instructions are very similar.
 RISC-V has 32 general-purpose registers, denoted as `x0`, `x1`, and so on. 
 Like in MIPS, register 0 `x0` is always 0. 
 
-Register names are also very similar. See the table on 
-[this page](https://en.wikichip.org/wiki/risc-v/registers)
-
+Register names are also very similar, but there is no `$` in register names.
+For example, write `s0`, instead of `$s0`, in RISC-V.
+See the table on [this page](https://en.wikichip.org/wiki/risc-v/registers)
+for the list of register names and their numbers.
 
 ### Instructions
 
-Since we assume RV64I (64-bit) in CSE 3666, the most used load/store instructions
-are LD (load doublewords) and SD (store doublewords).
+In CSE 3666, we mostly study instructions in RV64I, the 64-bit base integer
+instructions of RISC-V. The instructions are similar to those in MIPS.
 
-The memory addressing mode is displacement like `0(s0)`.
+The immediate field in instructions like ADDI has only 12 bits. In MIPS, immediate has 16 bits.
 
-The immediate field has only 12 bits. The immeidate is always signed. In MIPS, logical 
-instructions have unsigned immediate.
+The immediate is always signed. In MIPS, logical instructions have unsigned immediate.
 
-RISC-V has more branch instructions. In addition to `BNE` and `BEQ`, the following
-branches are supported.
+LUI (load upper immediate) has 20-bit immediate. 
 
+Load/store instructions for 64-bit data items (doublewords) are LD (load
+doublewords) and SD (store doublewords). Words, half words, and bytes are
+supported.
+
+The memory addressing mode is displacement, like `-8(s0)`.
+
+RISC-V has more branch instructions, including BEQ and BNE.
+
+    * BEQ: branch if equal.
+    * BNE: branch if not equal
     * BLT: branch if less than
     * BGE: branch if greater than
     * BLTU: branch if less than, unsigned
     * BGEU: branch if greater than, unsigned
 
+There is no JUMP instruction in RISC-V. JUMP is done by Jump and Link, 
+with the destination register set to `x0`.
+
 The following are commonly used RISC-V instructions in CSE 3666.
 
 ```
+    # arithmetic and logical
+
     add     x1, x2, x3
     sub     x1, x2, x3
     and     x1, x2, x3
@@ -54,6 +68,13 @@ The following are commonly used RISC-V instructions in CSE 3666.
     srli    x1, x2, 10      # MIPS: srl $1, $2, 10 
     srai    x1, x2, 10      # MIPS: sra $1, $2, 10 
 
+    # dealing with large constants
+
+    lui     x1, immd20      # deposit 20 bits to the higher end of a word, sign extended to 64 bits
+    auipc   x1, immd20      # the result of lui added to PC
+
+    # load/store
+
     ld      x1, 100(x2)     # load doublewords
     sd      x1, 100(x2)     # store doublewords
 
@@ -62,12 +83,16 @@ The following are commonly used RISC-V instructions in CSE 3666.
     # lh, lhu, sh       half words
     # lb, lbu, sb       bytes
 
+    # branches
+
     beq     x1, x2, L       # branch if equal
     bne     x1, x2, L       # branch if not equal
     blt     x1, x2, L       # branch if less than 
     bge     x1, x2, L       # branch if greater than or equal
     bltu    x1, x2, L       # branch if less than, unsigned
     bgeu    x1, x2, L       # branch if greater than or equal, unsigned
+
+    # function call/return and jump
 
     jal     x1, funcion     # jump and link
     jalr    x1, 0(x2)       # jump and link to the address in x2
@@ -105,4 +130,8 @@ The a and t registers are not preserved through functino calls:
 `x2` is `sp`.
 `x3` is `gp`.
 `x8` is `fp` (and also `s0`).
+
+### Floating-Point support
+
+To be added.
 
