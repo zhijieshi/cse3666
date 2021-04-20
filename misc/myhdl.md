@@ -1,7 +1,9 @@
 # MyHDL Resources
 
 We pick MyHDL, out of many options, because students taking CSE 3666 should
-have learned Python and MyHDL is similar to Verilog.
+have learned Python and MyHDL is similar to Verilog. 
+[The "Why MyHDL" page](http://www.myhdl.org/start/why.html) lists advantages
+of MyHDL.
 
 The following are links to some very useful resources. See the MyHDL Github
 repo for installatino instructions. 
