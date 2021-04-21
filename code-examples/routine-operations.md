@@ -143,7 +143,7 @@ We calculate `A[i]`'s address first. Then load it into `t0`.
 ```
 </details>
 
-### Load arbitrary large constants
+### Load arbitrary 32-bit constants
 
 <details><summary>Answer</summary>
 At most two instructions can load any 32-bit constants in a register.
@@ -152,20 +152,10 @@ At most two instructions can load any 32-bit constants in a register.
     lui     t0, HI20      # load higher 20 bits to t0
     addi    t0, LO12      # add the lower 12 bits
 
-    # Note HI20 and LO12 are sign extended
+    # Note LO12 are sign extended
     # Add 1 to HI20 if LO12 is negative
 ```
 
-We may also need to clear the higher half of `t0`.  Or we can load `-x` with 2
-instructions and then negate it.
-
-For 64-bit constants, we can use shift and OR to combine two words. 
-```
-    # 4 instructions to t0 and t1 
-    # the combine t0 and t1 into t2
-    slli    t2, t0, 32
-    add     t2, t2, t1     # adjust for signs if needed
-```
 </details>
 
 ### Test bits. Check the value of selected bits in a register. 
