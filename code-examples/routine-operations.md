@@ -142,7 +142,6 @@ We calculate `A[i]`'s address first. Then load it into `t0`.
 ```
 </details>
 
-
 ### Load arbitrary large constants
 
 <details><summary>Answer</summary>
@@ -156,12 +155,8 @@ At most two instructions can load any 32-bit constants in a register.
     # Add 1 to HI20 if LO12 is negative
 ```
 
-We may also need to clear the higher half of `t0`.
-```
-    slli    t0, t0, 32
-    srli    t0, t0, 32
-    # or we can load -x with 2 instructions and then negate
-```
+We may also need to clear the higher half of `t0`.  Or we can load `-x` with 2
+instructions and then negate it.
 
 For 64-bit constants, we can use shift and OR to combine two words. 
 ```
@@ -172,3 +167,40 @@ For 64-bit constants, we can use shift and OR to combine two words.
 ```
 </details>
 
+### Test bits. Check the value of selected bits in a register. 
+
+```
+if (both bits 3 and 6 in s0 are 0) goto L 
+```
+
+<details><summary>Answer</summary>
+
+Since the mask is small, we can use ANDI.
+Once bits are isolated, we can test for other values, too.
+
+```
+    andi    t0, s0, 0x28      #0b0100_1000 
+    beq     t0, x0, L
+```
+</details>
+
+### Clear higher 32 bits in s1 (i.e., set them to 0). 
+
+<details><summary>Answer</summary>
+We could use a single AND instruction, if the mask is already in a register. 
+
+```
+    slli    s1, s1, 32
+    srli    s1, s1, 32      # note the logical shift
+```
+</details>
+
+### Sign extension. For example, sign extend the byte value in s1.
+
+<details><summary>Answer</summary>
+
+```
+    slli    s1, s1, 56
+    srai    s1, s1, 56      # note the arithmetic shift
+```
+</details>
