@@ -1,9 +1,9 @@
-
 Here is a simple C function that adds two arguments.
-```
-long long add(long long a, long long b)
+
+```c
+int add(int a, int b)
 {
-	long long x;
+	int x;
 
 	x = a + b;
 
@@ -14,20 +14,20 @@ long long add(long long a, long long b)
 Compiled with clang, without optimization.
 ```
 add:                                    # @add
-        addi    sp, sp, -48
-        sd      ra, 40(sp)
-        sd      s0, 32(sp)
-        addi    s0, sp, 48
-        sd      a0, -24(s0)
-        sd      a1, -32(s0)
-        ld      a0, -24(s0)
-        ld      a1, -32(s0)
+        addi    sp, sp, -32
+        sw      ra, 28(sp)
+        sw      s0, 24(sp)
+        addi    s0, sp, 32
+        sw      a0, -12(s0)
+        sw      a1, -16(s0)
+        lw      a0, -12(s0)
+        lw      a1, -16(s0)
         add     a0, a0, a1
-        sd      a0, -40(s0)
-        ld      a0, -40(s0)
-        ld      s0, 32(sp)
-        ld      ra, 40(sp)
-        addi    sp, sp, 48
+        sw      a0, -20(s0)
+        lw      a0, -20(s0)
+        lw      s0, 24(sp)
+        lw      ra, 28(sp)
+        addi    sp, sp, 32
         ret
 ```
 
