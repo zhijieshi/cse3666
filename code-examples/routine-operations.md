@@ -97,10 +97,11 @@ can use the proper load instruction.
 
 ```
     # assume s1 has the address
-    ld      t0, 0(s1)       # doubleword
     lw      t1, 0(s1)       # word
-    lwu     t2, 0(s1)       # unsigned word
-    # similar for half words and byes
+    lhu     t2, 0(s1)       # unsigned half word
+    lh      t2, 0(s1)       # signed half word
+    lbu     t2, 0(s1)       # unsigned byte
+    lb      t2, 0(s1)       # signed byte
 ```
 
 We can use `la` pseudoinstructin to put an address in a register. 
@@ -114,21 +115,21 @@ We can use `la` pseudoinstructin to put an address in a register.
 
 ### Access array elements - 1
 
-Suppose `s2` is the starting address of a doubleword array `A`. Load `A[10]` into register `t0`.
+Suppose `s2` is the starting address of a word array `A`. Load `A[10]` into register `t0`.
 
 <details><summary>Answer</summary>
 
 The offset is known and fixed. We just need one instruction. Think about 
-why we use `ld` and why the offset is 80.
+why we use `lw` and why the offset is 40.
 
 ```
-    ld      t0, 80(s2)
+    lw      t0, 40(s2)
 ```
 </details>
 
 ### Access array elements - 2
 
-Suppose `s2` is the starting address of a doubleword array `A` and variable `i`
+Suppose `s2` is the starting address of a word array `A` and variable `i`
 is assigned to `s3`. Load  `A[i]` into register `t0`.
 
 <details><summary>Answer</summary>
@@ -136,9 +137,9 @@ is assigned to `s3`. Load  `A[i]` into register `t0`.
 We calculate `A[i]`'s address first. Then load it into `t0`.
 
 ```
-    slli    t1, s3, 3       # offset in bytes
+    slli    t1, s3, 2       # offset in bytes
     add     t1, t1, s2      # add to base
-    ld      t0, 0(t1)
+    lw      t0, 0(t1)
 ```
 </details>
 
