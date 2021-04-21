@@ -1,5 +1,5 @@
 #	RISC-V Example
-#	LUI AUIPC
+#	LUI 
 
 	.data
 
@@ -28,11 +28,9 @@ main:
 	li	t3, 0x89ABCDEF
 	
 	# use pseudoinstruction to load an address
-	# converted to AUIPC and ADDI
-	# check the immediate in ADDI instructions
+	# la is converted to AUIPC and ADDI
 	la	s1, d
 	la	s2, e
-	la	s3, e	
 
 		# system call to exit with code 0
 exit:	li	a7, 10			# li is a pseudoinstruction
