@@ -10,9 +10,6 @@
 // This is a single line comment. 
 // Everything after double /'s is ignored by the compiler.
 
-// include this header file to use more standard integer types like int64_t
-#include    <cstdint>
-
 // Macro
 // Define a constant MAX_LEN. MAX_LEN will be replaced by 128
 #define     MAX_LEN     128
@@ -21,19 +18,13 @@
  * varibale names are case sensitive. a is different from A.
  * The size of each type of data type depends on compiler/platform.
  * In CSE3666, we assume the following sizes:
- *  64 bits, doublewords:
- *      long long, unsigned long long, 
- *      int64_t, uint64_t
  *  32 bits, words:
  *      int, unsigned, unsigned
- *      int32_t, uint32_t
  *      long, unsigned long 
  *  16 bits, halfwords:
  *      short, unsigned short 
- *      int16_t, uint16_t
  *  8 bits, bytes:
  *      char, unsigned char
- *      int8_t, uint8_t
  * */
 long long var_dw;       // a 32-bit signed integer
 int     var_i;          // a 32-bit signed integer
@@ -41,12 +32,10 @@ short   var_i16;        // a 16-bit signed ineger
 char    var_i8;         // an 8-bit signed integer (byte)
                         // can represent an ASCII character
 
-uint64_t        var_ui64;   // unsigned 64-bit integer 
 unsigned int    var_ui;     // unsigned 32-bit integer 
 unsigned short  var_ui16;   // unsigned 16-bit integr 
 unsigned char   var_ui8;    // unsigned  8-bit integer 
 
-uint64_t        var_aull[MAX_LEN];  // an array of 128 unsigned doublewords
 unsigned int    var_aui[MAX_LEN];   // an array of 128 unsigned words
 unsigned char   var_aui8[MAX_LEN];  // an array of 128 bytes 
 
@@ -140,45 +129,45 @@ int     pointers()
     /* define an array of integer and an integer */
     /* If arr is located at 0x1000, the adresses of the elements in arr are:
      * 
-     * 0x1048: arr[9]
-     * 0x1040: arr[8]
-     * 0x1038: arr[7]
-     * 0x1030: arr[6]
-     * 0x1028: arr[5]
-     * 0x1020: arr[4]
-     * 0x1018: arr[3]
-     * 0x1010: arr[2]
-     * 0x1008: arr[1]
+     * 0x1024: arr[9]
+     * 0x1020: arr[8]
+     * 0x101c: arr[7]
+     * 0x1018: arr[6]
+     * 0x1014: arr[5]
+     * 0x1010: arr[4]
+     * 0x100c: arr[3]
+     * 0x1008: arr[2]
+     * 0x1004: arr[1]
      * 0x1000: arr[0]
      * */
-    int64_t     arr[10];
-    int64_t         i;
+    int arr[10];
+    int i;
 
     /* The following are examples for understanding pointers */
 
     // p is a pointer to an int, 
     // or p is the address of an int
-    // Since we assume 64-bit processors, an address takes 64 bits (or 8 bytes)
-    int64_t * p;
+    // Since we assume 32-bit processors, an address takes 32 bits (or 4 bytes)
+    int * p;
 
     // save i's address in p 
-    // Notice that i is a doubleword and &i is the address of the integer.
     p = &i;
 
     // save arr[0]'s address in p
     // arr[0] is the first element in the array while &arr[0] is the address of the element
     p = &arr[0];
 
-    // *p, p[0], arr[0] refer to the same doublewords
+    // *p, p[0], arr[0] refer to the same word
 
     // Let p point to the next element in the array 
     // After the following statement, p is the address of arr[1].
     // In C, the index is scaled
     // In RISC-V assembly, we need to scale it ourselves
-    //      addi    t0, t0, 8
+    //      addi    t0, t0, 4
     p = p + 1;      // or p += 1;  or p ++
 
     // Let p point to the element after the next arr[3]
+    //      addi    t0, t0, 8
     p += 2;
 
     return 0;
