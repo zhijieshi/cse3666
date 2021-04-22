@@ -1,13 +1,12 @@
 ## RISC-V vs MIPS
 
-RISC-V has many extensions. In CSE 3666, we mostly study RV64I, the 64-bit base
-integer instruction set of RISC-V. The instructions are similar to those in
-MIPS.
+RISC-V has many extensions. In CSE 3666, we mostly study RV32I, the 32-bit base
+instruction set of RISC-V. The instructions are similar to those in MIPS.
 
 ### Registers
 
 RISC-V has 32 general-purpose registers, denoted as `x0`, `x1`, and so on.
-Like in MIPS, register 0 `x0` is always 0. In RV64I, each register has 64 bits.
+Like in MIPS, register 0 `x0` is always 0. 
 
 Register names are also very similar to MIPS register names, but there is no
 `$`.  For example, write `s0`, instead of `$s0`, in RISC-V.
@@ -20,13 +19,14 @@ The immediate field in instructions like ADDI has only 12 bits. In MIPS, the imm
 
 The immediate is always signed. In MIPS, logical instructions have unsigned immediate.
 
-LUI (load upper immediate) has a 20-bit immediate. 
+LUI (load upper immediate) has a 20-bit immediate. Like in MIPS, LUI and ADDI pair can 
+load any 32-bit constant in a register.
 
-Load/store instructions for 64-bit data items (doublewords) are LD (load
-doublewords) and SD (store doublewords). Words, half words, and bytes are
+Load/store instructions are the same. Words, half words, and bytes are
 supported.
 
-The memory addressing mode is displacement, like `-8(s0)`.
+The memory addressing mode is displacement, like `-8(s0)`. Always include 
+the offset, even if it is 0, for example, `0(s0)`.
 
 RISC-V has more branch instructions, including BEQ and BNE.
 
@@ -38,7 +38,7 @@ RISC-V has more branch instructions, including BEQ and BNE.
     * BGEU: branch if greater than, unsigned
 
 There is no JUMP instruction in RISC-V. JUMP is done by Jump and Link, 
-with the destination register set to `x0`.
+with the destination register set to `x0` (recall that `x0` is always 0).
 
 The following are commonly used RISC-V instructions in CSE 3666.
 
@@ -69,16 +69,14 @@ The following are commonly used RISC-V instructions in CSE 3666.
     # dealing with large constants
 
     lui     x1, immd20      # deposit 20 bits to the higher end of a word, sign extended to 64 bits
-    auipc   x1, immd20      # the result of lui added to PC
 
     # load/store
 
-    ld      x1, 100(x2)     # load doublewords
-    sd      x1, 100(x2)     # store doublewords
+    lw      x1, 100(x2)     # load doublewords
+    sw      x1, 100(x2)     # store doublewords
 
     # load/store instructions for other data types include
-    # lw, lwu, sw       words
-    # lh, lhu, sh       half words
+    # lh, lhu, sh       halfwords
     # lb, lbu, sb       bytes
 
     # branches
