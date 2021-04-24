@@ -9,7 +9,7 @@ the computers in computer labs.
 
 ## Online software
 
-Note that you may not be able to save or donwload your desgin! 
+Note that you may not be able to save or donwload your design! 
 
 * [Circuitverse](https://circuitverse.org/simulator). Developed by students at
   IIIT-Bangalore (International Institute of Information Technology).
