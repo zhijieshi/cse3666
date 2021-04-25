@@ -5,7 +5,9 @@ the computers in computer labs.
 
 ## Offline software
 
-* [Logisim Evolution](https://github.com/reds-heig/logisim-evolution). 
+* [Logisim Evolution](https://github.com/reds-heig/logisim-evolution). Free. It is
+  used in digital logic design and computer architecture courses in some universities.
+  The software supports large designs, including some processors. 
 
 ## Online software
 
