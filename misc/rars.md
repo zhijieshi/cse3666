@@ -11,7 +11,6 @@ We will need Java to run RARS. Java is already installed in lab computers. If
 you would like to install it on your own computer, please find the installation
 instructions on the Internet for the operating system you use. 
 
-
 ### Windows
 
 You can download and install Java manually. Here is 
@@ -42,8 +41,67 @@ You will see a page that explains what is new in the version. Scroll down to
 the bottom of the page and find the download link for a jar file, for example,
 `rars1_5.jar`.
 
-## Run RARS
+## Start RARS
 
 If everything goes smoothly, you can run the downloaded jar file. On Windows, 
-you can just double click the downloaded jar file.  
+you can just double click the downloaded jar file. You can see a screenshot
+of RARS on the RARS repo README page. 
+
+## Run an RISC-V Program
+
+Follow the following steps to run an example. 
+
+1. Download the example program `01-hello.s`. It is under
+   [the rv-examples directory](https://github.com/zhijieshi/cse3666/tree/master/rv-examples). 
+   Remember the location of the downloaded file on your computer.
+
+2. Start RARS. On Windows, double click the jar file. 
+
+3. Use the File/Open menu to open the example program `01-hello.s` in RARS. There is a
+   nice built-in editor for editing source code directly in RARS.
+
+4. In order to run the code, you need to assemble the instructions, i.e.,
+   convert the instructions to machine code. This can be done by using menu
+   Run/Assemble. You can also use the keyboard shortcut F3. If there are errors in
+   the code, RARS will report the errors and will not generate the binary code.
+   You can go back to the editor to fix problems. If the program is successfully
+   assembled, you will see a new tab called “Execute”.
+
+5. After successfully assembling the instructions, you can run the code by selecting Run/Go, or pressing F5.
+
+6. If you like to run the program again, reset the simulator first (Run/Reset or F12). Then select Run/Go.
+
+Congratulations! You already have run a RISC-V program twice. 
+
+You can also run the program on the command line. Replace `rars.jar` with
+the path to the RARS jar file on your computer. 
+
+```
+java -jar rars.jar .\01-hello.s
+```
+
+## Get familiar with RARS
+
+RARS provides many functions/features to help you debug your program. Knowing
+the features (set breakpoints, step/backstep, check/change register values,
+examine memory contents, etc.). will help you a lot when you work on later
+labs. Let us experiment with a few here.
+
+The example code only evaluates a simple expression and then exits. Instead of
+letting the program run to the end, you can run instructions one by one. After
+the simulator is reset, select Run/Step. The instruction that is going to be
+executed next is highlighted. There is a window that shows the values of all
+registers. You can observe how data in registers are updated. The simulator may
+show the values in hexadecimal. You can change them to decimal (uncheck
+Settings/Values displayed in hexadecimal). The register that has been modified
+is highlighted.
+
+You can also set a breakpoint at an instruction by checking the checkbox on the
+same line of the instruction. You may need to select Run/Toggle all breakpoints
+first. The simulator will stop before executing the instructions at the
+breakpoints. You can examine the values in registers/memory, change the values
+if you like, and decide what to do next. For example, you can stop the program,
+step to the next instruction, or run to the end or the next breakpoint.  
+
+Now, step through the example program and observe how registers are updated.
 
