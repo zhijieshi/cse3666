@@ -31,7 +31,7 @@ For example, [this page on DigitalOcean.com](https://www.digitalocean.com/commun
 Download RARS from [RARS Github repo.](https://github.com/TheThirdOne/rars).
 We do not need the entire repo. Click the "tags", as shown in the following figure. 
 
-![Click 'tags'](./rars-images/tag1.png)
+![Click 'tags'](./rars-images/tag1.png?raw=true "Title")
 
 Find the latest stable version, for example, v1.5 released in July 2021. Click the 
 version you would like to download. 
