@@ -31,12 +31,12 @@ For example, [this page on DigitalOcean.com](https://www.digitalocean.com/commun
 Download RARS from [RARS Github repo.](https://github.com/TheThirdOne/rars).
 We do not need the entire repo. Click the "tags", as shown in the following figure. 
 
-![Click 'tags'](./rars-images/tag1.png?raw=true "Title")
+![Click 'tags'](./rars-images/tags1.png?raw=true)
 
 Find the latest stable version, for example, v1.5 released in July 2021. Click the 
 version you would like to download. 
 
-![Click version](./rars-images/tag2.png)
+![Click version](./rars-images/tags2.png?raw=true)
 
 You will see a page that explains what is new in the version. Scroll down to
 the bottom of the page and find the download link for a jar file, for example,
