@@ -14,7 +14,7 @@ instructions on the Internet for the operating system you use.
 ### Windows
 
 You can download and install Java manually. Here is 
-[Jave download link at Java.com](https://java.com/en/download/windows_manual.jsp).
+[the Java download link at Java.com](https://java.com/en/download/windows_manual.jsp).
 As of August 2021, the version is Version 8 update 301.
 
 You can also use package management software to install. For example, 
@@ -41,11 +41,20 @@ You will see a page that explains what is new in the version. Scroll down to
 the bottom of the page and find the download link for a jar file, for example,
 `rars1_5.jar`.
 
+On lab computers, you can save the jar file on P drive so the file is available
+even if you log in on a different computer. 
+
 ## Start RARS
 
 If everything goes smoothly, you can run the downloaded jar file. On Windows, 
 you can just double click the downloaded jar file. You can see a screenshot
 of RARS on the RARS repo README page. 
+
+RARS can also be started from the command line if PATH is set correctly.
+
+```
+java -jar .\rars.jar
+```
 
 ## Run an RISC-V Program
 
@@ -84,24 +93,29 @@ java -jar rars.jar .\01-hello.s
 
 RARS provides many functions/features to help you debug your program. Knowing
 the features (set breakpoints, step/backstep, check/change register values,
-examine memory contents, etc.). will help you a lot when you work on later
-labs. Let us experiment with a few here.
+examine memory contents, etc.) will help you a lot when you debug your code.
+Let us experiment with a few here.
 
-The example code only evaluates a simple expression and then exits. Instead of
-letting the program run to the end, you can run instructions one by one. After
-the simulator is reset, select Run/Step. The instruction that is going to be
+### Step and backstep
+Instead of letting the program run to the end, you can run instructions one by one. 
+After the simulator is reset, select Run/Step (F7). The instruction that is going to be
 executed next is highlighted. There is a window that shows the values of all
 registers. You can observe how data in registers are updated. The simulator may
 show the values in hexadecimal. You can change them to decimal (uncheck
 Settings/Values displayed in hexadecimal). The register that has been modified
 is highlighted.
 
-You can also set a breakpoint at an instruction by checking the checkbox on the
-same line of the instruction. You may need to select Run/Toggle all breakpoints
-first. The simulator will stop before executing the instructions at the
-breakpoints. You can examine the values in registers/memory, change the values
-if you like, and decide what to do next. For example, you can stop the program,
-step to the next instruction, or run to the end or the next breakpoint.  
+You can also undo instructions by selecting Run/Backstep (F8).
 
-Now, step through the example program and observe how registers are updated.
+### Breakpoint
+
+We can set a breakpoint at an instruction by checking the checkbox on the same
+line of the instruction (in the Bkpt column).  The simulator will stop before
+executing the instructions at the breakpoints. You can examine the values in
+registers/memory, change the values if you like, and decide what to do next.
+For example, you can stop the program, step to the next instruction, or run to
+the end or the next breakpoint.  
+
+Run/Clear all breakpoints (Ctrl-k) clear all breakpoints. Run/Toggle (Ctrl-T)
+disable/enable all breakpoints. Assembling a program also clears all the breakpoints.
 
