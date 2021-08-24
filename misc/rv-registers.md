@@ -6,7 +6,7 @@ Register 0 `x0` is always 0.
 Each register also has a name, to make it easier to use registers in code. 
 For example, `x0` is `zero`. 
 
-The following table lists the registers and their names.  
+The following table lists the registers and their names. 
 
 <table>
 <thead>
@@ -92,4 +92,12 @@ The following table lists the registers and their names.
 
 </tbody>
 </table>
+
+## Calling convention
+
+In general, a callee (a function being called) should preserve values in `sp`
+and saved registers (`s0` to `s11`). 
+
+`gp` and `tp` are set by the system. We should not change them in application
+code.
 
