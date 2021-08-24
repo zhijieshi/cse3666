@@ -13,6 +13,23 @@ Register names are also very similar to MIPS register names, but there is no
 See the table on [this page](https://en.wikichip.org/wiki/risc-v/registers) for
 the list of register names and their numbers.
 
+<table>
+<thead>
+<tr>
+<td>Register</td>
+<td>Name</td>
+<td>Description</td>
+<td>Saver</td>
+</tr>
+</thead>
+<tbody>
+<td>x0</td>
+<td>zero</td>
+<td>Always 0</td>
+<td></td>
+</tbody>
+</table>
+
 ### Instructions
 
 The immediate field in instructions like ADDI has only 12 bits. In MIPS, the immediate has 16 bits.
