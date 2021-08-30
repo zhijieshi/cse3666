@@ -26,7 +26,7 @@
  *  8 bits, bytes:
  *      char, unsigned char
  * */
-long long var_dw;       // a 32-bit signed integer
+long long var_dw;       // a 64-bit signed integer
 int     var_i;          // a 32-bit signed integer
 short   var_i16;        // a 16-bit signed ineger
 char    var_i8;         // an 8-bit signed integer (byte)
@@ -38,21 +38,6 @@ unsigned char   var_ui8;    // unsigned  8-bit integer
 
 unsigned int    var_aui[MAX_LEN];   // an array of 128 unsigned words
 unsigned char   var_aui8[MAX_LEN];  // an array of 128 bytes 
-
-// define a structure where you can put relevant data together.
-// consider it as an object in Python.
-struct {
-    int     hour;    // Define fields in the structure.
-    int     minute; 
-    int     second;
-}   var_time;
-// once we know the address of a structure, 
-// we can assess its fiels by offset + base address
-// For example, if the address of var_time is in s0
-// the address of fields are as follows.
-// hour:      (s0)
-// minute:   4(s0)
-// second:   8(s0)
 
 // function definition
 // This function takes two arguments of int, and returns an int
@@ -83,8 +68,10 @@ int     my_max(int a, int b)
 /* a function that does not need a paramenter and returns an integer */
 int loops()
 {
-    // arr is an array on stack. It has 128 32-bit integers.
-    // arr, i, max, sum are on stack. How many bytes do they need? 
+    // arr is an array on stack because it is defined in a function 
+    // The array has 128 (MAX_LEN) 32-bit integers.
+    // i, max, sum are also on stack. 
+    // How many bytes does each of them need? 
     int     arr[MAX_LEN];
     int     i;
     int     max, sum;  // define multiple variables of the same type
@@ -97,6 +84,7 @@ int loops()
     // Then, the condition is checked again.
     for (i = 0; i < 10; i += 1) {
         // arr[i] means element i in the array
+	// index starts from 0, like in Python
         arr[i] = i;
     }
 
@@ -121,7 +109,6 @@ int loops()
 
     return 0;
 }
-
 
 /* define a function that does not need a paramenter and returns an integer */
 int     pointers()
@@ -172,3 +159,19 @@ int     pointers()
 
     return 0;
 }
+
+// define a structure where you can put relevant data together.
+// consider it as an object in Python.
+struct {
+    int     hour;    // Define fields in the structure.
+    int     minute; 
+    int     second;
+}   var_time;
+// once we know the address of a structure, 
+// we can assess its fiels by offset + base address
+// For example, if the address of var_time is in s0
+// the address of fields are as follows.
+// hour:      (s0)
+// minute:   4(s0)
+// second:   8(s0)
+
