@@ -19,7 +19,12 @@ for 2's complement numbers.
 Two's complement numbers also have nice math properties and that is why we
 can use the same adder for signed and unsigned numbers.
 
-## How does the processor do additions on hexadecimal or decimal number?
+For example, if we consider bits 11111111 as an 8-bit unsigned binary number, its
+value (in decimal) is 255. If we consider the bits as an 8-bit two's 
+complement number, its value is -1. 255 and -1 are congruent modulo 256.
+-1 mod 256 = 255.
+
+## How does the processor do additions on hexadecimal or decimal numbers?
 
 The processors do not work on hexadecimal or decimal numbers. They only deal
 with bits. They add bits. No matter what format we use in the source code to
