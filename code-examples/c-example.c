@@ -10,10 +10,6 @@
 // This is a single line comment. 
 // Everything after double /'s is ignored by the compiler.
 
-// Macro
-// Define a constant MAX_LEN. MAX_LEN will be replaced by 128
-#define     MAX_LEN     128
-
 /* define variables of different types. 
  * varibale names are case sensitive. a is different from A.
  * The size of each type of data type depends on compiler/platform.
@@ -36,8 +32,8 @@ unsigned int    var_ui;     // unsigned 32-bit integer
 unsigned short  var_ui16;   // unsigned 16-bit integr 
 unsigned char   var_ui8;    // unsigned  8-bit integer 
 
-unsigned int    var_aui[MAX_LEN];   // an array of 128 unsigned words
-unsigned char   var_aui8[MAX_LEN];  // an array of 128 bytes 
+unsigned int    var_aui[128];   // an array of 128 unsigned words
+unsigned char   var_aui8[128];  // an array of 128 bytes 
 
 // function definition
 // This function takes two arguments of int, and returns an int
@@ -69,10 +65,10 @@ int     my_max(int a, int b)
 int loops()
 {
     // arr is an array on stack because it is defined in a function 
-    // The array has 128 (MAX_LEN) 32-bit integers.
+    // The array has 128 32-bit integers.
     // i, max, sum are also on stack. 
     // How many bytes does each of them need? 
-    int     arr[MAX_LEN];
+    int     arr[128];
     int     i;
     int     max, sum;  // define multiple variables of the same type
 
