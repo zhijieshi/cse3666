@@ -56,6 +56,9 @@ RARS can also be started from the command line if PATH is set correctly.
 java -jar .\rars.jar
 ```
 
+Replace `.\rars.jar` with the full path to the jar file you downloaded before.
+Note that the path separator is `/` on some systems, e.g., Linux. 
+
 ## Run an RISC-V Program
 
 Follow the following steps to run an example. 
@@ -67,7 +70,7 @@ Follow the following steps to run an example.
 2. Start RARS. On Windows, double click the jar file. 
 
 3. Use the File/Open menu to open the example program `01-hello.s` in RARS. There is a
-   nice built-in editor for editing source code directly in RARS.
+   nice built-in editor for editing source code directly in RARS. 
 
 4. In order to run the code, you need to assemble the instructions, i.e.,
    convert the instructions to machine code. This can be done by using menu
@@ -119,3 +122,15 @@ the end or the next breakpoint.
 Run/Clear all breakpoints (Ctrl-k) clear all breakpoints. Run/Toggle (Ctrl-T)
 disable/enable all breakpoints. Assembling a program also clears all the breakpoints.
 
+### Download files from GitHub
+
+To download an individual file from GitHub, click the raw button at the top right 
+corner of the text box showing the file content.  
+
+When viewing the raw file, press `Ctrl-s` to save the file. Pay attention to the
+filename. The browser may add `.txt` at the end. You can also try right click and 
+select `Save as` in the context menu. Menu and keyboard shortcuts may be different
+in your browser.
+
+When viewing the raw file, you can also find out the link to the raw file and use
+the link in other applicatons, e.g., `curl` to download the file.
