@@ -70,7 +70,8 @@ Follow the following steps to run an example.
 2. Start RARS. On Windows, double click the jar file. 
 
 3. Use the File/Open menu to open the example program `01-hello.s` in RARS. There is a
-   nice built-in editor for editing source code directly in RARS. 
+   nice built-in editor for editing source code directly in RARS. The instructions for
+   downloading files from GitHub is in [a later section](#download-files-from-github)
 
 4. In order to run the code, you need to assemble the instructions, i.e.,
    convert the instructions to machine code. This can be done by using menu
@@ -122,7 +123,7 @@ the end or the next breakpoint.
 Run/Clear all breakpoints (Ctrl-k) clear all breakpoints. Run/Toggle (Ctrl-T)
 disable/enable all breakpoints. Assembling a program also clears all the breakpoints.
 
-### Download files from GitHub
+## Download files from GitHub
 
 To download an individual file from GitHub, click the raw button at the top right 
 corner of the text box showing the file content.  
