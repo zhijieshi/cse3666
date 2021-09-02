@@ -1,7 +1,6 @@
 ## Pitfalls  
 
-* Use large immediates. The immeidate and offset in The assembler may report
-  error and abort.
+* Use large immediates. The assembler may or may not report an error.
 
 ```
 	# Some assemblers may do sign extension and load -1 into t0 
@@ -15,12 +14,12 @@
 
 * Forget to skip the else block. The else block is always executed.
 
-* Forget to update the loop control variable. Infinite loop.
+* Forget to update the loop control variable, resulting in an infinite loop.
 
-* Forget to go back to the top of a loop. 
+* Forget to go back to the top of a loop. The loop is executed only once.
 
-* Conditions in if or while structure are inverted For example, `<` becomes
-  `>=`
+* Use wrong condition in IF or WHILE structure. The condition may need to 
+  be inverted. 
 
 * When accessing word arrays, forget to multiply the index by 4.
 
