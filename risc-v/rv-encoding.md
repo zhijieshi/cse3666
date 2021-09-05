@@ -24,3 +24,7 @@ instruction word.
   |UJ      |ofst[20,10:1,11,19:12]                   |rd          |opcode |
   +--------+-----------------------------------------+------------+-------+
 ```
+
+### opcode
+
+Opcodes are listed on [this page](https://github.com/riscv/riscv-opcodes/blob/master/opcodes-rv32i).
