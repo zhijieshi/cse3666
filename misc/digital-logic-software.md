@@ -21,3 +21,34 @@ Note that you may not be able to save or donwload your design!
 * [Logic.LY](https://logic.ly). Not Free. Wires are curved.
 
 * [Circuit Diagram](https://www.circuit-diagram.org/). Editor only. Simulation in development.
+
+# Verilog
+
+Verilog is a popluar HDL. It is also the language used in textbook examples.
+You will find Verilog and MyHDL have many similar concepts and even keywords.
+It would be a fun project to learn Verilog and get a working RISC-V core on an
+FPGA.
+
+* [Veritut](http://www.asic-world.com/verilog/veritut.html)
+
+* [FPGA designs with Verilog](https://verilogguide.readthedocs.io/en/latest/index.html)
+
+* [A FPGA board](https://www.adafruit.com/product/451). It should be good enough for a 32-bit RISC-V core. 
+
+[Icarus Verilog (iverilog)](http://iverilog.icarus.com/) has good support for Verilog 2005 (1364-2005). The
+compiled code has small foot print and it is fast. 
+
+[EDA playgrond](https://www.edaplayground.com/) provides an online environment
+where one can play with many HDLs. It requires a free account to actually
+simulate the design.  There are many other online Verilog simulators. 
+
+# Other
+
+We use myHDL in CSE 3666.  nMigen is another Python package. It is based on [The Fragmented Hardware
+  Description Language (FHDL)](https://m-labs.hk/migen/manual/fhdl.html), which
+is quite different from traditional event driven languages like MyHDL.
+
+    * [nMigen Github repo](https://github.com/nmigen/nmigen)
+    * [nMigen document](https://nmigen.info/nmigen/latest/cover.html)
+    * [nMigen examples - kbob](https://github.com/kbob/nmigen-examples)
+
