@@ -29,7 +29,7 @@ pip install myhdl
 py -m pip install myhdl
 ```
 
-To reduce the risk of conflicting with other pacages, we can install 
+To reduce the risk of conflicting packages, we can install 
 myHDL in a virtual envrionment. See [this section](#python-virtual-environment)
 for how to create a virtual environment. Once the virtual environment
 is activated, use `pip` to install MyHDL. 
