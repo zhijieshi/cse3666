@@ -46,22 +46,37 @@ Some examples can be downloaded from
 [here](https://github.com/zhijieshi/cse3666/tree/master/digital-logic/myhdl). 
 To run the examples, just run the scripts as a regular Python script.  
 Remember to activate the virtual environment if necessary.
-For example, the following is a session that runs `mux.py`. 
+
+For example, the following is the output of `gate2.py`, which is an AND gate. 
+Signal `z` is the output. The gate can be changed to another type of 2-input gate. 
+
+```
+(venv3) PS P:\myprojects\myhdl> python gate2.py
+a b | z
+0 0 | 0
+0 1 | 0
+1 0 | 0
+1 1 | 1
+0 0 | 0
+0 1 | 0
+1 0 | 0
+1 1 | 1
+```
+
+The following is a session that runs `mux.py`. The `sel` signal
+picks one signal out of `a` or `b`.
 
 ```
 (venv3) PS P:\myprojects\myhdl> python mux.py
-z a b sel
-0 0 0 0
-0 1 0 0
-1 0 1 0
-1 1 1 0
-0 0 0 1
-1 1 0 1
-0 0 1 1
-1 1 1 1
-0 0 0 0
-0 1 0 0
-<class 'myhdl.StopSimulation'>: No more events
+a b sel | z
+0 0  0  | 0
+0 1  0  | 0
+1 0  0  | 1
+1 1  0  | 1
+0 0  1  | 0
+0 1  1  | 1
+1 0  1  | 0
+1 1  1  | 1
 ```
 
 Notice that the command to start Python may have changed in the virtual
