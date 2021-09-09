@@ -37,8 +37,8 @@ if __name__ == "__main__":
         @instance
         def stimulus():
             print("a b sel | z")
-            for i in range(10):
-                a.next, b.next, sel.next = (i & 1), ((i >> 1) & 1), ((i >> 2) & 1)
+            for i in range(8):
+                b.next, a.next, sel.next = (i & 1), ((i >> 1) & 1), ((i >> 2) & 1)
                 yield delay(10)
                 print("{} {}  {}  | {}".format(a, b, sel, z))
             raise StopSimulation()
