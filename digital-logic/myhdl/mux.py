@@ -1,4 +1,4 @@
-from myhdl import block, always_comb, Signal
+from myhdl import block, always_comb, Signal, StopSimulation
 
 @block
 def mux(z, a, b, sel):
@@ -36,14 +36,16 @@ if __name__ == "__main__":
 
         @instance
         def stimulus():
-            print("z a b sel")
+            print("a b sel | z")
             for i in range(10):
                 a.next, b.next, sel.next = (i & 1), ((i >> 1) & 1), ((i >> 2) & 1)
                 yield delay(10)
-                print("%s %s %s %s" % (z, a, b, sel))
+                print("{} {}  {}  | {}".format(a, b, sel, z))
+            raise StopSimulation()
 
         return mux_1, stimulus
 
     tb = test_mux()
-    tb.config_sim(trace=True)
+    # change trace to True will generate waveforms
+    tb.config_sim(trace=False)
     tb.run_sim()
