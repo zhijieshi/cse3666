@@ -52,6 +52,8 @@ of RARS on the RARS repo README page.
 
 RARS can also be started from the command line if PATH is set correctly.
 
+*Do not unpack the jar file.*
+
 ```
 java -jar .\rars.jar
 ```
