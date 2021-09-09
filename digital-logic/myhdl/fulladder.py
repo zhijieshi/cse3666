@@ -1,4 +1,4 @@
-from myhdl import block, always_comb, Signal
+from myhdl import block, always_comb, Signal, StopSimulation
 
 # we are using multiple AND gates
 @block
@@ -90,12 +90,13 @@ if __name__ == "__main__":
 
         @instance
         def stimulus():
-            print("a   b   ci | co s")
+            print("a   b  cin  | cout s")
             for i in range(10):
                 a.next, b.next, cin.next = (i & 1), ((i >> 1) & 1), ((i >> 2) & 1)
                 yield delay(10)
                 # for comb, we can just get the value here
-                print("{}   {}   {}  | {}  {}".format(a, b, cin, cout, s))
+                print("{}   {}   {}   |  {}   {}".format(a, b, cin, cout, s))
+            raise StopSimulation()
 
         return comb1, stimulus
 
