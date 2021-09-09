@@ -7,18 +7,18 @@ def mux(z, a, b, sel):
 
     z -- mux output
     a, b -- data inputs
-    sel -- control input: select a if asserted, otherwise b
+    sel -- control input: select b if asserted, otherwise a
 
     """
 
     @always_comb
     def comb():
         # we could build it with gates
-        # logic is z = sel & a | (~ sel) & b
+        # logic is z = (~ sel) & a | (sel) & b
         if sel == 1:
-            z.next = a
-        else:
             z.next = b
+        else:
+            z.next = a
 
     return comb
 
