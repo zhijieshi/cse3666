@@ -82,8 +82,24 @@ if __name__ == "__main__":
     @block
     def test_comb():
 
-        # create signals
-        a, b, cin, s, cout = [Signal(intbv(0)) for i in range(5)]
+        # create output signals, individually
+        # Note we also specify the number of bits in it
+        # we can also use Signal(bool(0))
+        s = Signal(bool(0)) 
+        cout = Signal(intbv(0)[1:]) 
+
+        # all input signals
+        all_input = Signal(intbv(0))
+
+        # example of shadow signals
+        # consider they are alias of existing signals
+        # a, b, and cin are not new signals
+        # a follows bit 0 in all_input
+        # b follows bit 1 in all_input
+        # cin follows bit 2 in all_input
+        a = all_input(0)
+        b = all_input(1)
+        cin = all_input(2)
 
         # instantiating a block
         comb1 = fulladder(a, b, cin, s, cout)
@@ -92,10 +108,10 @@ if __name__ == "__main__":
         def stimulus():
             print("a   b  cin  | cout s")
             for i in range(10):
-                a.next, b.next, cin.next = (i & 1), ((i >> 1) & 1), ((i >> 2) & 1)
+                all_input.next = i  # a, b, and cin will be updated, too
                 yield delay(10)
-                # for comb, we can just get the value here
-                print("{}   {}   {}   |  {}   {}".format(a, b, cin, cout, s))
+                # note that we need explicitly convert bool to int, to see 0 or 1 
+                print("{}   {}   {}   |  {}   {}".format(int(a), int(b), int(cin), cout, int(s)))
             raise StopSimulation()
 
         return comb1, stimulus
