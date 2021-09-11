@@ -1,16 +1,16 @@
 ## Converting a decimal number to a binary number 
 
-Given a decimal number, we need to find out the bits (binary digits) that
+Given a decimal number, we are asked to find out the bits (binary digits) that
 represent the same value. Suppose the bits are:
 
 ```
 ... b9 b8 b7 b6 b5 b4 b3 b2 b1 b0
 ```
 
-`b0` is the right-most bit, or least significant bit (because it is the least
-valuable). Each bit can be 0 or 1. Each carries a different weight (i.e., the
-value added to the total value when the bit is 1). For example, the weight of
-`b0` is 1, that of `b1` is 2, and that of `b2` is 4.
+Each bit `b0`, `b1`, et.c, can be 0 or 1. Each carries a different weight
+(i.e., the value added to the total value when the bit is 1). For example, the
+weight of `b0` is 1, that of `b1` is 2, and that of `b2` is 4.  `b0` is the
+least significant bit because it is the least valuable. 
 
 A conversion strategy is to figure out the value of the bits one by one,
 starting from `b0`. Let us use decimal number 2021 as an example to explain the
@@ -21,6 +21,7 @@ process.
 Can we figure out the value of `b0` in 2021's binary representation? And why? 
 
 <details><summary>Answer</summary>
+
 `b0` is 1. 
 
 We divide 2021 by 2. The quotient is 1010 and the remainder is 1.
@@ -48,6 +49,7 @@ Since we know that `2021 = 1010 * 2 + 1`. We just need to find out
 1010's binary representation and append 1 to its right end.   
 
 <details><summary>Explanation</summary>
+
 When we append a 1 to the right end of a binary number `x`, we
 are doing `x * 2 + 1`.
 
