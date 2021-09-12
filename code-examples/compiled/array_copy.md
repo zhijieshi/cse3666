@@ -1,4 +1,3 @@
-
 A C funciton that copies array of 100 words.
 
 ```c
@@ -10,7 +9,8 @@ void copy_array(int A[], int B[])
 }
 ```
 
-A compiler generates the following instructions when optimization is on. 
+32-bit CLANG 12.0.1 generates the following instructions when optimization is on. 
+Six instructions in the loop.
 
 ```
 copy_array(int*, int*):                     # @copy_array(int*, int*)
@@ -23,6 +23,19 @@ copy_array(int*, int*):                     # @copy_array(int*, int*)
         addi    a2, a2, 4
         sw      a4, 0(a5)
         bne     a2, a3, .LBB0_1
+        ret
+```
+
+64-bit gcc 10.2.0 generates the following when optimization is on. Five instructions in the loop.
+```
+copy_array(int*, int*):
+        addi    a4,a0,400
+.L2:
+        addi    a0,a0,4
+        addi    a1,a1,4
+        lw      a5,-4(a0)
+        sw      a5,-4(a1)
+        bne     a4,a0,.L2
         ret
 ```
 
