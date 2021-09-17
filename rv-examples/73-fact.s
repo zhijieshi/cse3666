@@ -4,7 +4,7 @@
         .globl  main
 
 main:   
-        li      a0, 19
+        li      a0, 5
         jal     ra, fact
         
         # system call to exit with code 0
@@ -14,7 +14,7 @@ main:
 # int fact(int n)
 fact:
         addi    sp, sp, -8     # adjust stack for 2 words
-        sw      ra, 8(sp)      # save return address
+        sw      ra, 4(sp)      # save return address
         sw      a0, 0(sp)      # save argument
 
 	# if n >= 1 goto ELSE
