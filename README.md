@@ -1,3 +1,9 @@
-# CSE 3666 public 
+# UConn CSE 3666 Supplementary Materials
 
-The link is [here](https://zhijieshi.github.io/cse3666/)
+This repo contains supplementary materials.
+
+The directory names are self descriptive. 
+
+## Links
+
+* [The public page](https://zhijieshi.github.io/cse3666/)
