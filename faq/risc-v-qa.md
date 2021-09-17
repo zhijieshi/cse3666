@@ -43,3 +43,15 @@ No.
 Bits 31 to 12 do not have the same value. 
 ```
 
+## How do I tell if an instruction is a pseudoinstruction? 
+
+At beginning, we rely on the reference card. The card lists instructions and
+pseudoinstructions. 
+
+There are not many instructions/pseudoinstructions. We can remember what are real
+instructions.
+
+After we learn instruction encodidng, we can challenge ourselves to encode an
+instruction. Pseudoinstructions have to converted into real instructions and
+then into machine code.    
+
