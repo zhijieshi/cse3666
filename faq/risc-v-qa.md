@@ -26,7 +26,7 @@ If we have an immediate in decimal, it is easy to tell.
 If we have a number in hexadecimal or binary, it is not hard either.  We check if all
 bits higher than bit 11 are the same as bit 11. If yes, it is in the range. Otherwise
 it is not. In hexdecimal representation, the lower 3 hexadecimal digits are for
-lower 12 bits. Bit 11 is the highest bit in the hexadecimal digit from the right.
+lower 12 bits. Bit 11 is the highest bit in the third hexadecimal digit from the right.
 
 Examples:
 ```
