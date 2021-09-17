@@ -52,6 +52,11 @@ There are not many instructions/pseudoinstructions. We can remember what are rea
 instructions after a while.
 
 After we learn instruction encodidng, we can challenge ourselves to encode an
-instruction. Pseudoinstructions have to converted into real instructions and
+instruction. Pseudoinstructions must be converted into real instructions first and
 then into machine code.    
+
+We can also check in RARS. After code is assembled, RARS lists machine code, basic
+instructions (the real ones), and the ones in the source file. We can also 
+turn off the pseudoinstruction support in RARS (Settings/Permit extended (pseudo)
+instructions and formats).
 
