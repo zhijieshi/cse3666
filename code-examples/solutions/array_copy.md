@@ -42,7 +42,8 @@ loop:
 
 ### Array version with scaled loop counter
 
-Six instructions are in the loop. 
+We remove SLLI by incrementing the loop coutner by 4 in
+each iteration. Six instructions are in the loop. 
 
 ```
         li      a4, 400         # end. 100 * 4
