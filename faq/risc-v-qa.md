@@ -5,7 +5,7 @@
 Most of instructions are straightfoward. We can start with the slides,
 textbook, and the reference card in the textbook. Then, you can also check the
 reference manual and otther online resources. Please take a look at the links
-on the [this page](https://github.com/zhijieshi/cse3666/blob/master/misc/risc-v.md).
+on the [this page](https://github.com/zhijieshi/cse3666/blob/master/risc-v/risc-v.md).
 
 ## How do I know if the bits are signed or unsigned?
 
