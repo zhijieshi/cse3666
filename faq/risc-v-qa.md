@@ -4,16 +4,16 @@
 
 Most of instructions are straightfoward. We can start with the slides,
 textbook, and the reference card in the textbook. Then, you can also check the
-reference manual and otther online resources. Please take a look at the links
-on the [this page](https://github.com/zhijieshi/cse3666/blob/master/risc-v/risc-v.md).
+reference manual and other online resources. Please take a look at the links
+on [this page](https://github.com/zhijieshi/cse3666/blob/master/risc-v/risc-v.md).
 
 ## How do I know if the bits are signed or unsigned?
 
 When coding with assembly lanugage, we, the programmers, need to keep track of
-data types. If signed and unsigned operations produce the same results, as ADD, 
+data types. If signed and unsigned operations produce the same results, like ADD, 
 one instruction is provided. If they produce different results, two versions
-are provided. For example, SRAI vs SRLI, BLT vs BLTU, LB vs LBU, and so on.  
-We need to use the correct one for the data type.
+are provided, for example, SRAI vs SRLI, BLT vs BLTU, and LB vs LBU.  
+We need to pick the correct one for the data type.
 
 ## Immediate operand in instructions like ADDI 
 
@@ -25,7 +25,8 @@ If we have an immediate in decimal, it is easy to tell.
 
 If we have a number in hexadecimal or binary, it is not hard either.  We check if all
 bits higher than bit 11 are the same as bit 11. If yes, it is in the range. Otherwise
-it is not. 
+it is not. In hexdecimal representation, the lower 3 hexadecimal digits are for
+lower 12 bits. Bit 11 is the highest bit in the hexadecimal digit from the right.
 
 Examples:
 ```
