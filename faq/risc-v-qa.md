@@ -49,7 +49,7 @@ At beginning, we rely on the reference card. The card lists instructions and
 pseudoinstructions. 
 
 There are not many instructions/pseudoinstructions. We can remember what are real
-instructions.
+instructions after a while.
 
 After we learn instruction encodidng, we can challenge ourselves to encode an
 instruction. Pseudoinstructions have to converted into real instructions and
