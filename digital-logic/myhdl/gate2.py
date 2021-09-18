@@ -11,7 +11,7 @@ from myhdl import block, always_comb, Signal, StopSimulation
 # block is a hardware module
 # input/output signals are arguments
 @block
-def AND2(c, a, b):
+def And2(c, a, b):
 
     """ 2-input gate
 
@@ -30,7 +30,7 @@ def AND2(c, a, b):
     return comb
 
 @block
-def OR2(c, a, b):
+def Or2(c, a, b):
     """ 
     c = a | b
     """
@@ -41,7 +41,7 @@ def OR2(c, a, b):
     return comb
 
 @block
-def NOT1(z, a):
+def Not1(z, a):
     """ 
     z = ~ a
     """
@@ -62,9 +62,9 @@ if __name__ == "__main__":
         a, b, and_out, or_out, not_out = [Signal(bool(0)) for i in range(5)]
 
         # instantiating a block
-        and_inst = AND2(and_out, a, b)
-        or_inst = OR2(or_out, a, b)
-        not_inst = NOT1(not_out, a)
+        and_inst = And2(and_out, a, b)
+        or_inst = Or2(or_out, a, b)
+        not_inst = Not1(not_out, a)
 
         @instance
         def stimulus():

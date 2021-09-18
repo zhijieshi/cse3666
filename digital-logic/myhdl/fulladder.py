@@ -1,9 +1,7 @@
 from myhdl import block, always_comb, Signal, StopSimulation
 
-# We use bit-wise operations in basic gates in this file
-
 @block
-def AND2(c, a, b):
+def And2(c, a, b):
 
     """ 2-input gate
     c    -- output c = a & b
@@ -12,12 +10,12 @@ def AND2(c, a, b):
 
     @always_comb
     def comb():
-        c.next = a & b
+        c.next = a and b
 
     return comb
 
 @block
-def XOR2(c, a, b):
+def Xor2(c, a, b):
 
     """ 2-input gate
     c    -- output c = a ^ b
@@ -32,7 +30,7 @@ def XOR2(c, a, b):
 
 
 @block
-def OR3(z, a, b, c):
+def Or3(z, a, b, c):
 
     """ 3-input OR gate
     z       -- output z = a | b | c
@@ -41,7 +39,7 @@ def OR3(z, a, b, c):
 
     @always_comb
     def comb():
-        z.next = a | b | c
+        z.next = a or b or c
 
     return comb
 
@@ -64,15 +62,15 @@ def Fulladder1(a, b, cin, s, cout):
     # instantiating gates and connect them
 
     # two XOR gates to compute sum
-    x1 = XOR2(x1_out, a, b)
-    x2 = XOR2(s, x1_out, cin)
+    x1 = Xor2(x1_out, a, b)
+    x2 = Xor2(s, x1_out, cin)
 
     # compute carry
     # cout = a & b + a & cin + b & cin
-    a1 = AND2(a1_out, a, b) 
-    a2 = AND2(a2_out, a, cin) 
-    a3 = AND2(a3_out, b, cin) 
-    o1 = OR3(cout, a1_out, a2_out, a3_out)
+    a1 = And2(a1_out, a, b) 
+    a2 = And2(a2_out, a, cin) 
+    a3 = And2(a3_out, b, cin) 
+    o1 = Or3(cout, a1_out, a2_out, a3_out)
 
     # that's it 
 
