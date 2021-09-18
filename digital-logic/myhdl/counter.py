@@ -84,12 +84,12 @@ if __name__ == "__main__":
 
         @instance
         def monitor():
-            print("delta  counter load")
+            print("load delta  counter")
             yield reset.posedge
             while 1:
                 yield clock.posedge
                 yield delay(1)
-                print("{:04x}   {}    {}".format(int(deltain), count, load))
+                print("{}    {:04x}   {}".format(load, int(deltain), count))
 
         return clockGen, stimulus, counter1, monitor
 
