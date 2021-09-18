@@ -1,8 +1,9 @@
 from myhdl import block, always_comb, Signal, StopSimulation
 
-# we are using multiple AND gates
+# We use bit-wise operations in basic gates in this file
+
 @block
-def and2(c, a, b):
+def AND2(c, a, b):
 
     """ 2-input gate
     c    -- output c = a & b
@@ -16,7 +17,7 @@ def and2(c, a, b):
     return comb
 
 @block
-def xor2(c, a, b):
+def XOR2(c, a, b):
 
     """ 2-input gate
     c    -- output c = a ^ b
@@ -31,7 +32,7 @@ def xor2(c, a, b):
 
 
 @block
-def or3(z, a, b, c):
+def OR3(z, a, b, c):
 
     """ 3-input OR gate
     z       -- output z = a | b | c
@@ -45,7 +46,7 @@ def or3(z, a, b, c):
     return comb
 
 @block
-def fulladder(a, b, cin, s, cout):
+def Fulladder1(a, b, cin, s, cout):
 
     """ a full adder
 
@@ -63,15 +64,15 @@ def fulladder(a, b, cin, s, cout):
     # instantiating gates and connect them
 
     # two XOR gates to compute sum
-    x1 = xor2(x1_out, a, b)
-    x2 = xor2(s, x1_out, cin)
+    x1 = XOR2(x1_out, a, b)
+    x2 = XOR2(s, x1_out, cin)
 
     # compute carry
     # cout = a & b + a & cin + b & cin
-    a1 = and2(a1_out, a, b) 
-    a2 = and2(a2_out, a, cin) 
-    a3 = and2(a3_out, b, cin) 
-    o1 = or3(cout, a1_out, a2_out, a3_out)
+    a1 = AND2(a1_out, a, b) 
+    a2 = AND2(a2_out, a, cin) 
+    a3 = AND2(a3_out, b, cin) 
+    o1 = OR3(cout, a1_out, a2_out, a3_out)
 
     # that's it 
 
@@ -89,25 +90,25 @@ if __name__ == "__main__":
         cout = Signal(intbv(0)[1:]) 
 
         # all input signals
-        all_input = Signal(intbv(0))
+        all_input = Signal(intbv(0)[3:])
 
         # example of shadow signals
         # consider they are alias of existing signals
         # a, b, and cin are not new signals
-        # a follows bit 0 in all_input
+        # a follows bit 2 in all_input
         # b follows bit 1 in all_input
-        # cin follows bit 2 in all_input
-        a = all_input(0)
+        # cin follows bit 0 in all_input
+        a = all_input(2)
         b = all_input(1)
-        cin = all_input(2)
+        cin = all_input(0)
 
         # instantiating a block
-        comb1 = fulladder(a, b, cin, s, cout)
+        comb1 = Fulladder1(a, b, cin, s, cout)
 
         @instance
         def stimulus():
             print("a   b  cin  | cout s")
-            for i in range(10):
+            for i in range(8):
                 all_input.next = i  # a, b, and cin will be updated, too
                 yield delay(10)
                 # note that we need explicitly convert bool to int, to see 0 or 1 

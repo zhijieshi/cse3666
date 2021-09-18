@@ -1,7 +1,7 @@
 from myhdl import block, always_comb, Signal, StopSimulation
 
 @block
-def mux(c, a, b, s):
+def MUX2(c, a, b, s):
 
     """ Multiplexer.
 
@@ -29,7 +29,7 @@ if __name__ == "__main__":
         z, a, b, s = [Signal(bool(0)) for i in range(4)]
 
         # instantiating a block
-        mux_1 = mux(z, a, b, s)
+        mux_1 = MUX2(z, a, b, s)
 
         @instance
         def stimulus():

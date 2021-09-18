@@ -2,7 +2,7 @@
 from myhdl import block, always_comb, Signal, StopSimulation
 
 @block
-def and2(c, a, b):
+def AND2(c, a, b):
     """ 
     c = a & b
     """
@@ -13,7 +13,7 @@ def and2(c, a, b):
     return comb
 
 @block
-def or2(c, a, b):
+def OR2(c, a, b):
     """ 
     c = a | b
     """
@@ -24,7 +24,7 @@ def or2(c, a, b):
     return comb
 
 @block
-def not_gate(z, a):
+def NOT1(z, a):
     """ 
     z = ~ a
     """
@@ -36,7 +36,7 @@ def not_gate(z, a):
 
 
 @block
-def mux(c, a, b, s):
+def MUX2(c, a, b, s):
 
     """ Multiplexer.
 
@@ -53,10 +53,10 @@ def mux(c, a, b, s):
 
     # need signals when we instantiating gates 
 
-    n1 = not_gate(n1_out, s)
-    a1 = and2(a1_out, n1_out, a) 
-    a2 = and2(a2_out, s, b) 
-    o1 = or2(c, a1_out, a2_out)
+    n1 = NOT1(n1_out, s)
+    a1 = AND2(a1_out, n1_out, a) 
+    a2 = AND2(a2_out, s, b) 
+    o1 = OR2(c, a1_out, a2_out)
 
     # return all instances 
     return n1, a1, a2, o1
@@ -70,7 +70,7 @@ if __name__ == "__main__":
         c, a, b, s = [Signal(bool(0)) for i in range(4)]
 
         # instantiating a block
-        mux_1 = mux(c, a, b, s)
+        mux_1 = MUX2(c, a, b, s)
 
         @instance
         def stimulus():
