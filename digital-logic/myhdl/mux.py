@@ -1,27 +1,24 @@
 from myhdl import block, always_comb, Signal, StopSimulation
 
 @block
-def mux(z, a, b, sel):
+def mux(c, a, b, s):
 
     """ Multiplexer.
 
-    z -- mux output
+    c -- mux output
     a, b -- data inputs
-    sel -- control input: select b if asserted, otherwise a
+    s -- control input: select b if s is asserted, otherwise a
 
     """
 
     @always_comb
     def comb():
-        # we could build it with gates
-        # logic is z = (~ sel) & a | (sel) & b
-        if sel == 1:
-            z.next = b
+        if s:
+            c.next = b
         else:
-            z.next = a
+            c.next = a
 
     return comb
-
 
 if __name__ == "__main__":
     from myhdl import intbv, delay, instance
@@ -29,18 +26,19 @@ if __name__ == "__main__":
     def test_mux():
 
         # create signals
-        z, a, b, sel = [Signal(intbv(0)) for i in range(4)]
+        z, a, b, s = [Signal(bool(0)) for i in range(4)]
 
         # instantiating a block
-        mux_1 = mux(z, a, b, sel)
+        mux_1 = mux(z, a, b, s)
 
         @instance
         def stimulus():
-            print("a b sel | z")
+            print("a b s | z")
             for i in range(8):
-                b.next, a.next, sel.next = (i & 1), ((i >> 1) & 1), ((i >> 2) & 1)
+                b.next, a.next, s.next = (i & 1), ((i >> 1) & 1), ((i >> 2) & 1)
                 yield delay(10)
-                print("{} {}  {}  | {}".format(a, b, sel, z))
+                # convert to bool to int to see 0 or 1, instead of True or False
+                print("{} {} {} | {}".format(int(a), int(b), int(s), int(z)))
             raise StopSimulation()
 
         return mux_1, stimulus
