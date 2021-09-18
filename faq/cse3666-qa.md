@@ -38,10 +38,3 @@ int y = 160;
 
 Both ```x``` and ```y``` have the same value, represented by the same bits.
 
-## How do I find out what an instruction does?
-
-Most of instructions are straightfoward. You can start with the slides,
-textbook, and the reference card in the textbook. Then, you can also check the
-reference manual and otther online resources. Please take a look at the links
-on the [this page](https://github.com/zhijieshi/cse3666/blob/master/misc/risc-v.md).
-
