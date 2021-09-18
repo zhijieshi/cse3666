@@ -22,7 +22,7 @@ fact:
         bge     a0, t0, ELSE   # go to else branch if n >= 1
         
         # return 1
-        addi    a0, zero, 1    # Otherwise, v0 = 1
+        addi    a0, zero, 1    # Otherwise, a0 = 1
         beq     x0, x0, EXIT   # goto exit
 
 	# n >= 1
@@ -33,6 +33,6 @@ ELSE:
         mul     a0, a0, t0     # n * (n-1)!
 EXIT:   
         lw      ra, 4(sp)      # restore return address
-        addi    sp, sp, 8      # pop 2 DWs from stack
+        addi    sp, sp, 8      # pop 2 words from stack
         jalr    x0, 0(ra)      # and return
 
