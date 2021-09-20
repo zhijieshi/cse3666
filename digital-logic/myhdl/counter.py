@@ -93,7 +93,7 @@ if __name__ == "__main__":
 
         return clockGen, stimulus, counter1, monitor
 
-    parser = argparse.ArgumentParser(description='Python Example')
+    parser = argparse.ArgumentParser(description='MyHDL Counter Example')
     parser.add_argument('deltain', type=int, nargs='*', default=[1], help='delta input')
     parser.add_argument('--loadin', '-l', type=int, default=0, help='load input')
     parser.add_argument('--cycles', type=int, default=16, help='Number of cycles')
