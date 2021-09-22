@@ -10,33 +10,48 @@ works with MyHDL.
 
 We have many ways to start Python and a Python script. The command could be
 `py`, `python`, or `python3`. It depends on the system and on the environment.
-On this page, we will use `py` to run a Python script, e.g., `py hello.py`.
-Replace it with the correct command on the system you use.
-
 
 ## Setting up
 
 The packages can be installed in many different ways.  [The MyHDL Github
 Repo](https://github.com/myhdl/myhdl) lists several of them. 
 
+### On your own computer
+
 If you are an admin (e.g., on your own computer) and can install 
-packages system-wide, just run one command to install MyHDL.  
+packages system-wide, just run one command to install MyHDL. 
 
 ```
 pip install myhdl
 
-# another way
-py -m pip install myhdl
+# another way. try python3, or py if python does not work
+python -m pip install myhdl
 ```
 
-To reduce the risk of conflicting packages, we can install 
-myHDL in a virtual envrionment. See [this section](#python-virtual-environment)
-for how to create a virtual environment. Once the virtual environment
-is activated, use `pip` to install MyHDL. 
+To reduce the risk of conflicting packages, we can install MyHDL in a virtual
+envrionment. See [this section](#python-virtual-environment) for how to create
+a virtual environment. Once the virtual environment is activated, use `pip` to
+install MyHDL. 
 
-Note that the system image on learning center computers, SoE virtual PCs, and
-UConn virutal PCs are not exactly the same. Stick with one system, or create
-one for each on your P drive.  
+### Computers in Learning Center
+
+On computers in the Learning Center, it is better to do in Anaconda.  
+
+* Start an Anaconda Prompt or an Anaconda Powershell Prompt. Search 'Anaconda'
+  in the search box on the task bar and then click the prompt.
+
+* Run the pip command shown earlier. 
+
+Use python to start Python in Anaconda Prompt. py starts a different installation
+of Python.
+
+The system image may be reset. So we may need to insall MyHDL again.
+
+### On SoE virtual PC
+
+On the Virtual PC, cmd.exe is disabled. As of September 2021, we are able to
+start Powershell. If you really want to do it on a Virtual PC, create a virtual
+environment on P drive. 
 
 ## Simulate 
 
@@ -51,17 +66,13 @@ no error messages when we run the scripts.
 For example, the following is the output of `gate2.py`.
 
 ```
-(venv3) PS P:\myprojects\myhdl> python gate2.py
+(venv3) PS P:\myhdl\examples> python gate2.py
 a b | and or  not
 0 0 | 0   0   1
 0 1 | 0   1   1
 1 0 | 0   1   0
 1 1 | 1   1   0
 ```
-
-Notice that the command to start Python may have changed in the virtual
-environment. For example, on a SoE virtual PC, the command is `py` in the
-native system environment and it is `python` in the virtual environment. 
 
 ## Python virtual environment 
 
@@ -79,7 +90,7 @@ system. Pay attention to how you specify a directory in your environment.
 mkdir p:\venv3
 ```
 
-* Use Python to run venv and create the virtual environment. You may have to
+* Run venv to create the virtual environment. You may have to
   use `python3` or `python` to start Python on your computer.
 
 ```
@@ -105,8 +116,11 @@ command line prompt.
 ``` 
 
 Go ahead to install MyHDL package in this environment. Remember to activate the
-virtual environment before you run any Python scripts that depend on the
-environment. 
+virtual environment before you run any Python scripts that use MyHDL. 
+
+The command to start Python may change in the virtual environment.  For
+example, on a SoE virtual PC, the command is `py` in the native system
+environment and it is `python` in the virtual environment. 
 
 ## MyHDL Resources
 
