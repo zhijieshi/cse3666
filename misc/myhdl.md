@@ -14,24 +14,33 @@ We have many ways to start Python and a Python script. The command could be
 ## Setting up
 
 The packages can be installed in many different ways.  [The MyHDL Github
-Repo](https://github.com/myhdl/myhdl) lists several of them. 
+Repo](https://github.com/myhdl/myhdl) lists several of them.  [This page on
+Python.org](https://packaging.python.org/tutorials/installing-packages/)
+explains the installation of packages in detail.
 
-### On your own computer
+### Pip command
 
-If you are an admin (e.g., on your own computer) and can install 
-packages system-wide, just run one command to install MyHDL. 
+On computers where you have the admin priviledge (e.g., on your own computer)
+just run pip (one command) to install MyHDL. 
 
 ```
 pip install myhdl
 
-# another way. try python3, or py if python does not work
-python -m pip install myhdl
+# another way. try py or python if python3 does not work
+python3 -m pip install myhdl
 ```
 
-To reduce the risk of conflicting packages, we can install MyHDL in a virtual
+On computers where you do not have the admin priviledge, 
+we can try to install packages to the user site.
+
+```
+python3 -m pip install --user myhdl
+```
+
+There are other options. For example, we can install MyHDL in a virtual
 envrionment. See [this section](#python-virtual-environment) for how to create
-a virtual environment. Once the virtual environment is activated, use `pip` to
-install MyHDL. 
+a virtual environment. Once the virtual environment is activated, run pip to
+install MyHDL.  
 
 ### Computers in Learning Center
 
@@ -40,18 +49,23 @@ On computers in the Learning Center, it is better to do in Anaconda.
 * Start an Anaconda Prompt or an Anaconda Powershell Prompt. Search 'Anaconda'
   in the search box on the task bar and then click the prompt.
 
-* Run the pip command shown earlier. 
+* Run [the pip command](#pip-command) shown earlier. 
 
 Use python to start Python in Anaconda Prompt. py starts a different installation
 of Python.
 
-The system image may be reset. So we may need to insall MyHDL again.
+Learning Center computers are reimaged from time to time. We may have to
+install MyHDL again if it happens.
 
-### On SoE virtual PC
+### On Engineering virtual PC
 
-On the Virtual PC, cmd.exe is disabled. As of September 2021, we are able to
-start Powershell. If you really want to do it on a Virtual PC, create a virtual
-environment on P drive. 
+We can access Engineering virtual PC in a web browser. On Engineering virutal
+PC, `cmd.exe` is disabled. As of September 2021, we can start Powershell and run
+pip in PowerShell. Packages are installed in user directory.
+
+On Engineering virtual PC, it is better to use Python virtual environment.
+
+Note that the virtual PCs are reimaged from time to time. 
 
 ## Simulate 
 
