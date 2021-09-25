@@ -13,15 +13,15 @@ We have many ways to start Python and a Python script. The command could be
 
 ## Setting up
 
-The packages can be installed in many different ways.  [The MyHDL Github
-Repo](https://github.com/myhdl/myhdl) lists several of them.  [This page on
-Python.org](https://packaging.python.org/tutorials/installing-packages/)
-explains the installation of packages in detail.
+Python packages can be installed in many different ways.
+[This page on Python.org](https://packaging.python.org/tutorials/installing-packages/)
+explains the installation of Python packages in detail.
+[The MyHDL Github Repo](https://github.com/myhdl/myhdl) has instructions specific to MyHDL.  
 
 ### Pip command
 
 On computers where you have the admin priviledge (e.g., on your own computer)
-just run pip (one command) to install MyHDL. 
+just run pip to install MyHDL. 
 
 ```
 pip install myhdl
@@ -31,27 +31,27 @@ python3 -m pip install myhdl
 ```
 
 On computers where you do not have the admin priviledge, 
-we can try to install packages to the user site.
+try to install packages to the user site.
 
 ```
 python3 -m pip install --user myhdl
 ```
 
-There are other options. For example, we can install MyHDL in a virtual
+It is recommended to install packages for each kind of projects in a virtual
 envrionment. See [this section](#python-virtual-environment) for how to create
 a virtual environment. Once the virtual environment is activated, run pip to
-install MyHDL.  
+install MyHDL.
 
 ### Computers in Learning Center
 
-On computers in the Learning Center, it is better to do in Anaconda.  
+On computers in the Learning Center, it is better to work in Anaconda.  
 
 * Start an Anaconda Prompt or an Anaconda Powershell Prompt. Search 'Anaconda'
   in the search box on the task bar and then click the prompt.
 
-* Run [the pip command](#pip-command) shown earlier. 
+* Run [the pip command shown earlier](#pip-command). 
 
-Use python to start Python in Anaconda Prompt. py starts a different installation
+In Anaconda Prompt, use `python` to start Python. `py` starts a different installation
 of Python.
 
 Learning Center computers are reimaged from time to time. We may have to
@@ -59,13 +59,12 @@ install MyHDL again if it happens.
 
 ### On Engineering virtual PC
 
-We can access Engineering virtual PC in a web browser. On Engineering virutal
-PC, `cmd.exe` is disabled. As of September 2021, we can start Powershell and run
-pip in PowerShell. Packages are installed in user directory.
+The advantage of using Engineering virtual PC is that we can access it anywhere in a web browser. 
 
-On Engineering virtual PC, it is better to use Python virtual environment.
+On Engineering virutal PCs, `cmd.exe` is disabled. However, as of September 2021, we can still start Powershell.
+Run pip in PowerShell to install MyHDL. Packages are installed in user directory.
 
-Note that the virtual PCs are reimaged from time to time. 
+The virtual PCs are also reimaged from time to time. It is better to use Python virtual environment.
 
 ## Simulate 
 
@@ -96,16 +95,15 @@ The instructions for creating virtual environment in Python are provided on
 Here are the commands on Windows 10. Run the commands in cmd or powershell.
 Replace the commands and folder/directory paths with proper ones on your
 system. Pay attention to how you specify a directory in your environment.
+The commands below work in Powershell on the Engineering virtual PC. 
 
 * Create a directory for the vitual environment, for example, `p:\venv3`.
-  Replace `p:\venv3` with the path to the directory you would like to use.
-
+  
 ```
 mkdir p:\venv3
 ```
 
-* Run venv to create the virtual environment. You may have to
-  use `python3` or `python` to start Python on your computer.
+* Use Python venv to create a virtual environment. 
 
 ```
 py -m venv p:\venv3
@@ -133,7 +131,7 @@ Go ahead to install MyHDL package in this environment. Remember to activate the
 virtual environment before you run any Python scripts that use MyHDL. 
 
 The command to start Python may change in the virtual environment.  For
-example, on a SoE virtual PC, the command is `py` in the native system
+example, on the Engineering virtual PC, the command is `py` in the native system
 environment and it is `python` in the virtual environment. 
 
 ## MyHDL Resources
