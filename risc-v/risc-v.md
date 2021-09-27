@@ -7,6 +7,7 @@ We only need Volumn 1.
 * [RISC-V Github repo](https://github.com/riscv/riscv-isa-manual)
 * [List of RISC-V instructions](https://msyksphinz-self.github.io/riscv-isadoc/html/index.html)
 * [Calling convenion](https://github.com/riscv/riscv-elf-psabi-doc/blob/master/riscv-elf.md)
+* [RISC-V assembly manual](https://github.com/riscv-non-isa/riscv-asm-manual/blob/master/riscv-asm.md). Incomplete.
 
 ## RARS
 
