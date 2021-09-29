@@ -1,4 +1,16 @@
-from myhdl import block, always_comb, Signal, StopSimulation
+"""
+This is an example of implementing basic logic gates in MyHDL.
+
+Also study the test module test_comb(), which has examples of
+the following tasks.
+
+    * create signals
+    * instantiate existing modules
+    * set signal values
+
+"""
+
+from myhdl import block, always_comb
 
 # We use logical operaitons to make sure the result is 1 bit
 # We could use bit-wise operations if all signals have the same width
@@ -13,10 +25,9 @@ from myhdl import block, always_comb, Signal, StopSimulation
 @block
 def And2(c, a, b):
 
-    """ 2-input gate
+    """ 2-input AND gate
 
-    c    -- output c = a & b
-    a, b -- data inputs
+    c = a AND b
 
     """
 
@@ -31,8 +42,10 @@ def And2(c, a, b):
 
 @block
 def Or2(c, a, b):
-    """ 
-    c = a | b
+    """ 2-input OR gate
+
+    c = a OR b
+
     """
     @always_comb
     def comb():
@@ -42,8 +55,9 @@ def Or2(c, a, b):
 
 @block
 def Not1(z, a):
-    """ 
-    z = ~ a
+    """ NOT gate
+
+    z = not a
     """
     @always_comb
     def comb():
@@ -52,7 +66,7 @@ def Not1(z, a):
     return comb
 
 if __name__ == "__main__":
-    from myhdl import intbv, delay, instance
+    from myhdl import delay, instance, Signal, StopSimulation
 
     # testbench itself is a block
     @block
@@ -61,7 +75,7 @@ if __name__ == "__main__":
         # create signals
         a, b, and_out, or_out, not_out = [Signal(bool(0)) for i in range(5)]
 
-        # instantiating a block
+        # instantiating blocks
         and_inst = And2(and_out, a, b)
         or_inst = Or2(or_out, a, b)
         not_inst = Not1(not_out, a)
@@ -71,9 +85,12 @@ if __name__ == "__main__":
             print("a b | and or  not")
             for i in range(4):
                 # set a and b's value and wait for c to change
+                # a takes the value of bit 1 in i and b takes bit 0
                 a.next, b.next = ((i >> 1) & 1), (i & 1)
                 yield delay(10)
-                print("{} {} | {}   {}   {}".format(int(a), int(b), int(and_out), int(or_out), int(not_out)))
+                print("{} {} | {}   {}   {}".format(
+                    int(a), int(b), 
+                    int(and_out), int(or_out), int(not_out)))
             # stop simulation
             raise StopSimulation()
 
