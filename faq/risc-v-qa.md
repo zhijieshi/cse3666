@@ -60,3 +60,26 @@ instructions (the real ones), and the ones in the source file. We can also
 turn off the pseudoinstruction support in RARS (Settings/Permit extended (pseudo)
 instructions and formats).
 
+## Where are the arguments to a function?
+
+According to the calling convention, arguments are placed in registers `a0`,
+`a1`, and so on. It does not matter how the arguments are named in high-level
+languages/pseudocode. 
+
+For example, when we implement the following funciton in Python, we do not
+expect the funciton only works on varaibles `a` and `b`. They are just names
+for arguments. Other programmers can pass other variables/constants to the
+funciton, for example, `max2(c, 10)`. When we write the function in RISC-V, `a`
+is in `a0` and `b` is in `a1`. The caller needs to set up `a0` and `a1`
+correctly before the function call instruction if it needs to get the correct
+return value.
+
+```
+def	max2(a, b):
+    if a >= b:
+        r = a
+    else:
+        r = b
+    return r
+```
+
