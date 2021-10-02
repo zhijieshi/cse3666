@@ -13,7 +13,7 @@ def Register(dout, din, clock, reset_l):
     return seq_reg
 
 @block
-def ShiftRegisterL(dout, sin, clock, reset_l):
+def ShiftRegisterL(dout, sin, clock, reset_l, method = 0):
     """ Register shift left 
 
     dout    -- register output
@@ -29,12 +29,28 @@ def ShiftRegisterL(dout, sin, clock, reset_l):
     reg1 = Register(dout, reg_in, clock, reset_l) 
 
     @always_comb
-    def comb_in():
-        reg_in.next = (dout  << 1) | sin
-        # Another method
-        # reg_in.next = concat(dout[w-1:], sin) 
+    def comb0():
+        reg_in.next = (dout << 1) | sin
 
-    return comb_in, reg1
+    @always_comb
+    def comb1():
+        # Another method
+        reg_in.next = concat(dout[w-1:], sin) 
+
+    @always_comb
+    def comb2():
+        # Yet another method
+        reg_in.next[w:1] = dout[w-1:]
+        reg_in.next[0] = sin
+
+    if method == 0:
+        return comb0, reg1
+    elif method == 1:
+        return comb1, reg1
+    elif method == 2:
+        return comb2, reg1
+    else:
+        raise NotImplementedError
 
 # testing code
 if __name__ == "__main__":
@@ -43,14 +59,14 @@ if __name__ == "__main__":
     ACTIVE_LOW, INACTIVE_HIGH = 0, 1
 
     @block
-    def testbench():
+    def testbench(args):
         m = 8
         dout = Signal(intbv(0)[m:])
         sin = Signal(bool(0))
         clock  = Signal(bool(0))
         reset = ResetSignal(0, active=0, isasync=True)
 
-        tut = ShiftRegisterL(dout, sin, clock, reset)
+        tut = ShiftRegisterL(dout, sin, clock, reset, args.m)
 
         HALF_PERIOD = delay(10)
 
@@ -91,6 +107,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='MyHDL Shift Register Example')
     parser.add_argument('bits', nargs='?', default="1001", help='bits to be shifted in')
     parser.add_argument('--cycles', type=int, default=16, help='Number of cycles')
+    parser.add_argument('-m', type=int, default=0, choices=[0, 1, 2], help='Implementation method')
 
     args = parser.parse_args()
 
@@ -98,6 +115,6 @@ if __name__ == "__main__":
         print("Error: bits can only be 0 or 1")
         exit(1)
 
-    tb = testbench()
+    tb = testbench(args)
     tb.config_sim(trace=False)
     tb.run_sim()
