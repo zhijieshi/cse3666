@@ -150,6 +150,10 @@ repo for installatino instructions.
 
 * [RTL design in Python](http://www.es.ele.tue.nl/~jhuisken/mmips/mMips_in_Myhdl.pdf)
 
+When simulating circuit, we can save signal values in a trace file and view the
+waveforms in other software.  MyHDL saves the waveforms in `.vcd` files.  A
+good free option to view .vcd files is
+[GTKWave](http://gtkwave.sourceforge.net/).
 
 # Links
 
