@@ -62,8 +62,13 @@ int     my_max(int a, int b)
     return c;
 }
 
-/* a function an array and an integer as the paramenters and returns an integer */
-int loops(int a[], int n)
+/* a function an array A and an integer as the paramenters and returns an integer 
+ * 
+ * It does not matter how many words are in array A. Only the starting address
+ * of A is passed to the function.
+ *
+ * */
+int loops(int A[], int n)
 {
     // arr is an array on stack because it is defined in a function 
     // The array has 128 32-bit integers.
@@ -83,6 +88,16 @@ int loops(int a[], int n)
         // arr[i] means element i in the array
 	// index starts from 0, like in Python
         arr[i] = i;
+    }
+
+    // Similarly, we can access A 
+    // In assembly, A's address is in a register and arr's address is
+    // also in a register. In this example, A's address is already
+    // in a register (passed to the function in a register).
+    // Since arr is allocated on the stack, its address can be
+    // calculated from sp. 
+    for (i = 0; i < 10; i += 1) {
+	A[i] = arr[i];
     }
 
     // while loop
@@ -142,6 +157,10 @@ int     pointers(int a[], int *b, int c[10])
     // p is a pointer to an int, 
     // or p is the address of an int
     // Since we assume 32-bit processors, an address takes 32 bits (or 4 bytes)
+    // In assembly, p is just a word. We can use it as the base register
+    // in load/store instructions. 
+    // p can be a register, or has storage on the stack.
+    // if it is on the stack, we need to load it into a register before using it.
     int * p;
 
     // save i's address in p 
