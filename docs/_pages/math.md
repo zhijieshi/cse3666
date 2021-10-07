@@ -1,3 +1,10 @@
+---
+layout: post
+title:  "Math background" 
+usemath: true
+tag: math
+---
+
 # Math 
 
 We need some basic math skills in this course.
