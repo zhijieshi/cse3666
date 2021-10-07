@@ -36,8 +36,8 @@ collections:
         output: true
         permalink: /pages/:path/
 
-include:
-  - _pages/c_example.html
+# include:
+#  - _pages/c_example.html
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
