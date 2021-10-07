@@ -39,6 +39,7 @@ unsigned char   var_aui8[128];  // an array of 128 bytes
 // function definition
 // This function takes two arguments of int, and returns an int
 // Note that everything in C has a type
+// By RISC-V calling convention, a is in register a0, and b is in register a1.
 int     my_max(int a, int b)
 {
     /* variables defined in a function
@@ -62,21 +63,26 @@ int     my_max(int a, int b)
     return c;
 }
 
-/* a function an array A and an integer as the paramenters and returns an integer 
- * 
- * It does not matter how many words are in array A. Only the starting address
- * of A is passed to the function.
- *
- * */
-int loops(int A[], int n)
-{
-    // arr is an array on stack because it is defined in a function 
-    // The array has 128 32-bit integers.
-    // i, max, sum are also on stack. 
-    // How many bytes does each of them need? 
-    int     arr[128];
-    int     i;
-    int     max, sum;  // define multiple variables of the same type
+/* the function takes an array A and an integer as paramenters and returns an integer 
+
+   Actually, what is passed to the function is not an array, only the starting
+   address of an array. It does not matter how many words are in array A. Only
+   a word (the address) is passed to the function. 
+ 
+   By RISC-V calling convention, A (the starting address of an array) is in
+   register a0, n is in register a1. 
+
+   To read A[0] into register t0, we use the following instruction 
+
+   	lw	t0, 0(a0)
+
+*/
+int loops(int A[], int n) {
+    // arr is an array on stack because it is defined in a function The array
+    // has 128 32-bit integers.  i, max, sum are also on stack.  How many bytes
+    // does each of them need? 
+    int     arr[128]; int     i; int     max, sum;  // define multiple
+    variables of the same type
 
     // for loop
     // initialize i to 0, 
@@ -132,6 +138,11 @@ int loops(int A[], int n)
   	the adddress of array a, which is the address of a[0]
 	the address of an integer, 
 	the address of array c, which is the address of c[0]
+
+   By RISC-V calling convention, 
+   	a is in a0
+   	b is in a1
+   	c is in a2
 */
 int     pointers(int a[], int *b, int c[10])
 {
