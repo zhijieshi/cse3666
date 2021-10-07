@@ -1,4 +1,4 @@
-from myhdl import *
+from myhdl import block, Signal, always_comb, always_seq, intbv, modbv 
 
 # based on the counter example from MyHDL repo
 
@@ -14,14 +14,20 @@ def counter(count, deltain, load, loadin, clock, reset):
     reset   -- asynchronous reset input
     """
 
-    # use modular bit vector (modbv) for the output adder
+    # use modular bit vector (modbv) for the output of adder
+    # because the output of adder may require more bits
     adderout = Signal(modbv(0)[len(count):])
+
+    # We will just use a MUX and a simple register
+    # the bits to be saved in the register are 
+    # either from load input or from the adder
     muxout = Signal(intbv(0)[len(count):])
 
     @always_comb
     def adder():
         adderout.next = count + deltain
 
+    # the mux that selects the value to be stored in the register
     @always_comb
     def mux():
         if load:
@@ -29,6 +35,7 @@ def counter(count, deltain, load, loadin, clock, reset):
         else:
             muxout.next = adderout
 
+    # the actual register. Just save the output of the MUX
     @always_seq(clock.posedge, reset=reset)
     def register():
         count.next = muxout
@@ -38,6 +45,7 @@ def counter(count, deltain, load, loadin, clock, reset):
 # testing code
 if __name__ == "__main__":
     import argparse
+    from myhdl import always, ResetSignal, delay, instance, StopSimulation
 
     ACTIVE_LOW, INACTIVE_HIGH = 0, 1
 
@@ -53,7 +61,7 @@ if __name__ == "__main__":
 
         counter1 = counter(count, deltain, load, loadin, clock, reset)
 
-        HALF_PERIOD = delay(10)
+        HALF_PERIOD = delay(5)
 
         @always(HALF_PERIOD)
         def clockGen():
@@ -96,10 +104,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='MyHDL Counter Example')
     parser.add_argument('deltain', type=int, nargs='*', default=[1], help='delta input')
     parser.add_argument('--loadin', '-l', type=int, default=0, help='load input')
-    parser.add_argument('--cycles', type=int, default=16, help='Number of cycles')
+    parser.add_argument('--cycles', type=int, default=16, help='number of cycles')
+    parser.add_argument('--trace', action="store_true", help='generate trace')
 
     args = parser.parse_args()
 
     tb = testbench()
-    tb.config_sim(trace=False)
+    tb.config_sim(trace=args.trace)
     tb.run_sim()
