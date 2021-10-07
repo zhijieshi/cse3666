@@ -30,7 +30,6 @@ This site provides supplementary materials for UConn CSE 3666.
 
 The page was last updated on {{ site.time }}.
 
-{% comment %}
 {% for collection in site.collections %}
   <h2>{{ collection.label }}</h2>
   <ul>
@@ -43,4 +42,5 @@ The page was last updated on {{ site.time }}.
     {% endfor %}
   </ul>
 {% endfor %}
+{% comment %}
 {% endcomment %}

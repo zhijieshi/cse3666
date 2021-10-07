@@ -30,11 +30,11 @@ github: [metadata]
   #- jekyll-feed
 show_drafts: true
 
-collections:
-    pages:
-        label: Contents
-        output: true
-        permalink: /pages/:path/
+# collections:
+#    pages:
+#        label: Contents
+#        output: true
+#        permalink: /pages/:path/
 
 # include:
 #  - _pages/c_example.html
