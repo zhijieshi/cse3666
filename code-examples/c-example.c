@@ -23,6 +23,7 @@
  *      char, unsigned char
  * */
 long long var_dw;       // a 64-bit signed integer
+long	var_longi;	// a 32-bit signed integer
 int     var_i;          // a 32-bit signed integer
 short   var_i16;        // a 16-bit signed ineger
 char    var_i8;         // an 8-bit signed integer (byte)
@@ -61,8 +62,8 @@ int     my_max(int a, int b)
     return c;
 }
 
-/* a function that does not need a paramenter and returns an integer */
-int loops()
+/* a function an array and an integer as the paramenters and returns an integer */
+int loops(int a[], int n)
 {
     // arr is an array on stack because it is defined in a function 
     // The array has 128 32-bit integers.
@@ -106,8 +107,18 @@ int loops()
     return 0;
 }
 
-/* define a function that does not need a paramenter and returns an integer */
-int     pointers()
+/* define a function that takes three paramenters and returns an integer.
+   
+   Examples of passing arrays to a function.
+
+   a, b, and c are the same, essentially.
+
+   The function gets:
+  	the adddress of array a, which is the address of a[0]
+	the address of an integer, 
+	the address of array c, which is the address of c[0]
+*/
+int     pointers(int a[], int *b, int c[10])
 {
     /* define an array of integer and an integer */
     /* If arr is located at 0x1000, the adresses of the elements in arr are:
@@ -142,14 +153,15 @@ int     pointers()
 
     // *p, p[0], arr[0] refer to the same word
 
-    // Let p point to the next element in the array 
+    // Let p point to the next element in the array
     // After the following statement, p is the address of arr[1].
     // In C, the index is scaled
     // In RISC-V assembly, we need to scale it ourselves
     //      addi    t0, t0, 4
     p = p + 1;      // or p += 1;  or p ++
 
-    // Let p point to the element after the next arr[3]
+    // Let p point to arr[3], i.e., let p have the address of arry[3]
+    // Since p is the address of arr[1] currently, we add 8 to p
     //      addi    t0, t0, 8
     p += 2;
 
