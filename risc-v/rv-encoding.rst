@@ -1,13 +1,14 @@
-## Summary of RISC-V encoding
+Summary of RISC-V encoding
+============================
 
-### format
+format
+-------
 
 RISC-V instructions have 6 types of formats. SB is similar to S, with different
 bit placements. UJ is similar to U, with different bit placements. Also, bit 0
 in the offset (ofst) in SB and UJ is always 0 and is not included in the
 instruction word. 
 
-```
   +--------+----------------+--------+--------+------+------------+-------+
   |Type    |31-25           |24-20   |19-15   |14-12 |11-7        |6-0    |
   +--------+----------------+--------+--------+------+------------+-------+
@@ -17,14 +18,20 @@ instruction word.
   +--------+----------------+--------+--------+------+------------+-------+
   |S       |imm[11:5]       |rs2     |rs1     |funct3|imm[4:0]    |opcode |
   +--------+----------------+--------+--------+------+------------+-------+
-  |SB      |ofst[12,10:5]   |rs2     |rs1     |funct3|ofst[4:1,11]|opcode |
-  +--------+----------------+------------------------+------------+-------+
+  |SB      |imm[12,10:5]    |rs2     |rs1     |funct3|imm[4:1,11] |opcode |
+  +--------+----------------+--------+--------+------+------------+-------+
   |U       |imm[31:12]                               |rd          |opcode |
   +--------+-----------------------------------------+------------+-------+
-  |UJ      |ofst[20,10:1,11,19:12]                   |rd          |opcode |
+  |UJ      |imm[20,10:1,11,19:12]                    |rd          |opcode |
   +--------+-----------------------------------------+------------+-------+
-```
 
-### opcode
+opcode
+--------
 
-Opcodes are listed on [this page](https://github.com/riscv/riscv-opcodes/blob/master/opcodes-rv32i).
+Opcodes are listed on the following pages.
+
+* `Opcodes in this repo <rv32i-opcode.md>`_
+
+* `Opcodes in RISC-V repo <https://github.com/riscv/riscv-opcodes/blob/master/opcodes-rv32i>`_
+
+
