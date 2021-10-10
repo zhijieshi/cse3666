@@ -42,6 +42,11 @@ compiled code has small foot print and it is fast.
 where one can play with many HDLs. It requires a free account to actually
 simulate the design.  There are many other online Verilog simulators. 
 
+# Drawing
+
+* [Python package for drawing circuit diagrams](https://pypi.org/project/schemdraw/). 
+  [Documentation](https://schemdraw.readthedocs.io/en/latest/usage/start.html).
+
 # Other
 
 We use myHDL in CSE 3666.  nMigen is another Python package. It is based on [The Fragmented Hardware
