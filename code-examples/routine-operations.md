@@ -195,3 +195,25 @@ We could use a single AND instruction, if the mask is already in a register.
     srai    s1, s1, 56      # note the arithmetic shift
 ```
 </details>
+
+### Allocate storage on stack.
+
+<details><summary>Answer</summary>
+
+Depends on the number of words we need storage for. For example, 
+if we want space for 16 words, we can adjust `sp` as follows.
+
+```
+   addi     sp, sp, -64
+```
+
+If the number of words is a variable, we can calculate the 
+size in bytes first. For example, if the number of words is 
+in `a1`, we can do the following.
+
+```
+    slli    t0, a1, 2
+    sub     sp, sp, t0
+```
+</details>
+
