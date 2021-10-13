@@ -15,7 +15,7 @@ We need some basic math skills in this course.
 
 ## Find the unknowns 
 
-If we know the relationship of $n$ varaibles and the value of $n-1$ variables,
+If we know the relationship of $$n$$ varaibles and the value of $$n-1$$ variables,
 we can find the value of the remaining one.
 
 For example, given
