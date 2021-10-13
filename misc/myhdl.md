@@ -152,8 +152,8 @@ repo for installatino instructions.
 
 When simulating circuit, we can save signal values in a trace file and view the
 waveforms in other software.  MyHDL saves the waveforms in `.vcd` files.  A
-good free option to view .vcd files is
-[GTKWave](http://gtkwave.sourceforge.net/).
+good free option to view .vcd files is GTKWave. The download links are in the
+Links section.
 
 # Links
 
@@ -162,3 +162,6 @@ good free option to view .vcd files is
 * B. Bailey. [The evolution of High Level
   Synthesis](https://semiengineering.com/the-evolution-of-high-level-synthesis/),
 Semiconductor Engineering, Aug 27, 2020.
+
+* [GTKWave Repo](https://github.com/gtkwave/gtkwave). 
+  [An older version on SourceForge](http://gtkwave.sourceforge.net/).
