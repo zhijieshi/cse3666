@@ -64,13 +64,35 @@ We can divide the total weight by the total count.
 
 The total weight is:
 
-$$ 20\% \times N \times 100 + 30\% \times N \times 150 + 50\% \times 50 $$
+$$ 20\% \times N \times 100 + 30\% \times N \times 150 + 50\% \times N \times 50 $$
 
 $$ = 20 N + 45 N + 25 N $$
 
 $$ = 90 N $$ 
 
 Divide the total weight by count $$N$$.
+
 $$ \frac{90 N}{N} = 90 $$ 
 
 Therefore, the average weight is 90g.
+
+Notice that $$N$$ is cancelled out eventually. We do not need to include it at
+the beginning. This is actually a common way to compute weighted average. 
+
+$$ 20\% \times 100 + 30\% \times 150 + 50\% \times 50 = 90$$
+
+### Method 2
+
+We pick a fruit as the reference and look at the differences of each fruit to the reference.  
+
+Let us use Fruit A's weight as the reference. 
+
+$$ 100 + 20\% \times (100 - 100) + 30\% \times (150 - 100) + 50\% \times (50 - 100) $$
+
+$$ = 100 + 20\% \times 0 + 30\% \times 50 + 50\% \times (-50) $$
+
+$$ = 100 + 15 - 25 $$
+
+$$ = 90 $$
+
+The methods are essentially the same. We can consider the reference in Method 1 is 0. 
