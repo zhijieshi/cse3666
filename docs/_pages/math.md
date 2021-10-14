@@ -64,11 +64,9 @@ We can divide the total weight by the total count.
 
 The total weight is:
 
-$$ 20\% \times N \times 100 + 30\% \times N \times 150 + 50\% \times N \times 50 $$
-
-$$ = 20 N + 45 N + 25 N $$
-
-$$ = 90 N $$ 
+$$ \begin{align} & 20\% \times N \times 100 + 30\% \times N \times 150 + 50\% \times N \times 50 \\
+= & 20 N + 45 N + 25 N \\
+= & 90 N $$ 
 
 Divide the total weight by count $$N$$.
 
@@ -87,10 +85,9 @@ We pick a fruit as the reference and look at the differences of each fruit to th
 
 Let us use Fruit A's weight as the reference. 
 
-$$ 100 + 20\% \times (100 - 100) + 30\% \times (150 - 100) + 50\% \times (50 - 100) $$
-
-$$ \begin{align} & = 100 + 20\% \times 0 + 30\% \times 50 + 50\% \times (-50) \\
-  & = 100 + 15 - 25 \\
-  & = 90 \end{align} $$
+$$ \begin{align} & 100 + 20\% \times (100 - 100) + 30\% \times (150 - 100) + 50\% \times (50 - 100) \\ 
+  = & 100 + 20\% \times 0 + 30\% \times 50 + 50\% \times (-50) \\
+  = & 100 + 15 - 25 \\
+  = & 90 \end{align} $$
 
 The methods are essentially the same. We can consider the reference in Method 1 is 0. 
