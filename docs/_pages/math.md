@@ -89,10 +89,8 @@ Let us use Fruit A's weight as the reference.
 
 $$ 100 + 20\% \times (100 - 100) + 30\% \times (150 - 100) + 50\% \times (50 - 100) $$
 
-$$ = 100 + 20\% \times 0 + 30\% \times 50 + 50\% \times (-50) $$
-
-$$ = 100 + 15 - 25 $$
-
-$$ = 90 $$
+$$ \begin{align} & = 100 + 20\% \times 0 + 30\% \times 50 + 50\% \times (-50) \\
+  & = 100 + 15 - 25 \\
+  & = 90 \end{align} $$
 
 The methods are essentially the same. We can consider the reference in Method 1 is 0. 
