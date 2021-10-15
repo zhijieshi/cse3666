@@ -10,36 +10,29 @@ tag: math
 We need some basic math skills in this course.
 
 * Solve (simple) equations 
-* Apply ratio
 * Compute average
 
 ## Find the unknowns 
 
-If we know the relationship of $$n$$ varaibles and the value of $$n-1$$ variables,
-we can find the value of the remaining one.
+Suppose we know the relation of $$n$$ varaibles. If we know the value of
+$$n-1$$ variables, we can find the value of the remaining one.
 
-For example, given
+For example, we know the relation among distance, time, and speed.
 
-$$ d = t \times v $$
+$$ d = t \times s $$
 
-where $$d$$ is distance, $$t$$ is time, and $$v$$ is velocity, if 
+where $$d$$ is distance, $$t$$ is time, and $$s$$ is spped. If 
 we know the value of two of the three variables, we can calculate the third.
 
 If a car travels 60 miles/hour for two hours, the distance it has travelled
 is 120 miles.
 
-$$ d = t \times v = 2 \times 60 = 120 $$
+$$ d = t \times s = 2 \times 60 = 120 $$
 
 If one runs 3 miles in 30 minutes (i.e., 0.5 hours), the average speed is 6 miles
 per hour. 
 
-$$ v = \frac{d}{t} = \frac{3}{0.5} = 6 $$
-
-## Ratio
-
-Ratio is the quantitative relation of two variables. If the ratio of two variables is known, 
-we can find the value of one variable from the value of the other. Actually, speed is a 
-ratio of distance and time. 
+$$ s = \frac{d}{t} = \frac{3}{0.5} = 6 $$
 
 ## Average
 
@@ -91,3 +84,22 @@ $$ \begin{align} & 100 + 20\% \times (100 - 100) + 30\% \times (150 - 100) + 50\
   = & 90 \end{align} $$
 
 The methods are essentially the same. We can consider the reference in Method 1 is 0. 
+The expression can also be obtained from Method 1 expression.
+
+$$ \begin{align}
+& 20\% \times 100 + 30\% \times 150 + 50\% \times 50  \\
+= &20\% \times (0 +  100) + 30\% \times (50 + 100) + 50\% \times (-50 + 100) \\
+= &(20\% + 30\% + 50\%) \times 100 + 20\% \times 0 + 30\% \times 50 + 50\% \times (-50) \\
+= & 1 \times 100 + 20\% \times 0 + 30\% \times 50 + 50\% \times (-50) \\
+= & 100 + 20\% \times 0 + 30\% \times 50 + 50\% \times (-50) \end{align}$$
+
+<!-- 
+* Apply ratio
+
+## Ratio
+
+Ratio is the quantitative relation of two variables. If the ratio of two variables is known, 
+we can find the value of one variable from the value of the other. Actually, speed is a 
+ratio of distance and time. 
+
+-->
