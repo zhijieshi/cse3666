@@ -88,10 +88,9 @@ The expression can also be obtained from Method 1 expression.
 
 $$ \begin{align}
 & 20\% \times 100 + 30\% \times 150 + 50\% \times 50  \\
-= &20\% \times (0 +  100) + 30\% \times (50 + 100) + 50\% \times (-50 + 100) \\
-= &(20\% + 30\% + 50\%) \times 100 + 20\% \times 0 + 30\% \times 50 + 50\% \times (-50) \\
-= & 1 \times 100 + 20\% \times 0 + 30\% \times 50 + 50\% \times (-50) \\
-= & 100 + 20\% \times 0 + 30\% \times 50 + 50\% \times (-50) \end{align}$$
+= & 20\% \times (100 - 100 +  100) + 30\% \times (150 - 100 + 100) + 50\% \times (50 - 100 + 100) \\
+= & (20\% + 30\% + 50\%) \times 100 + 20\% \times (100 - 100) + 30\% \times (150 - 100) + 50\% \times (50 - 100)
+= & 100 + 20\% \times (100 - 100) + 30\% \times (150 - 100) + 50\% \times (50 - 100) \end{align}$$
 
 <!-- 
 * Apply ratio
