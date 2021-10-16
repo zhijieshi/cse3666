@@ -1,0 +1,14 @@
+site_name: UConn CSE 3666
+
+theme: readthedocs
+# Extensions
+markdown_extensions:
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - assets/javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js
+  - https://cdn.jsdelivr.net/npm/mermaid@8.5.2/dist/mermaid.min.js
