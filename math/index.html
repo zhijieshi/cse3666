@@ -109,21 +109,30 @@
 <li>Compute average</li>
 </ul>
 <h2 id="find-the-unknowns">Find the unknowns<a class="headerlink" href="#find-the-unknowns" title="Permanent link">&para;</a></h2>
-<p>Suppose we know the relation of <span class="arithmatex">\(n\)</span> varaibles. If we know the value of
-<span class="arithmatex">\(n-1\)</span> variables, we can find the value of the remaining one.</p>
+<p>Suppose we know the relation of <span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> varaibles. If we know the value of
+<span class="arithmatex"><span class="MathJax_Preview">n-1</span><script type="math/tex">n-1</script></span> variables, we can find the value of the remaining one.</p>
 <p>For example, we know the relation among distance, time, and speed.</p>
-<div class="arithmatex">\[ d = t \times s \]</div>
-<p>where <span class="arithmatex">\(d\)</span> is distance, <span class="arithmatex">\(t\)</span> is time, and <span class="arithmatex">\(s\)</span> is spped. If 
+<div class="arithmatex">
+<div class="MathJax_Preview"> d = t \times s </div>
+<script type="math/tex; mode=display"> d = t \times s </script>
+</div>
+<p>where <span class="arithmatex"><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> is distance, <span class="arithmatex"><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> is time, and <span class="arithmatex"><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> is spped. If 
 we know the value of two of the three variables, we can calculate the third.</p>
 <p>If a car travels 60 miles/hour for two hours, the distance it has travelled
 is 120 miles.</p>
-<div class="arithmatex">\[ d = t \times s = 2 \times 60 = 120 \]</div>
+<div class="arithmatex">
+<div class="MathJax_Preview"> d = t \times s = 2 \times 60 = 120 </div>
+<script type="math/tex; mode=display"> d = t \times s = 2 \times 60 = 120 </script>
+</div>
 <p>If one runs 3 miles in 30 minutes (i.e., 0.5 hours), the average speed is 6 miles
 per hour. </p>
-<div class="arithmatex">\[ s = \frac{d}{t} = \frac{3}{0.5} = 6 \]</div>
+<div class="arithmatex">
+<div class="MathJax_Preview"> s = \frac{d}{t} = \frac{3}{0.5} = 6 </div>
+<script type="math/tex; mode=display"> s = \frac{d}{t} = \frac{3}{0.5} = 6 </script>
+</div>
 <h2 id="average">Average<a class="headerlink" href="#average" title="Permanent link">&para;</a></h2>
 <p>Example:</p>
-<p>Consider a basket of <span class="arithmatex">\(N\)</span> fruits. By count, 20% are Fruit A, 30% are Fruit B,
+<p>Consider a basket of <span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> fruits. By count, 20% are Fruit A, 30% are Fruit B,
 and 50% are Fruit C.  Fruits A, B, and C have different weights. Fruit A weighs
 100g each, Fruit B weighs 150g each, and Fruit C weighs 50g each. What is the
 average weight of a fruit in the basket?</p>
@@ -156,29 +165,53 @@ average weight of a fruit in the basket?</p>
 <h3 id="method-1">Method 1<a class="headerlink" href="#method-1" title="Permanent link">&para;</a></h3>
 <p>We can divide the total weight by the total count. </p>
 <p>The total weight is:</p>
-<div class="arithmatex">\[ \begin{align} &amp; 20\% \times N \times 100 + 30\% \times N \times 150 + 50\% \times N \times 50 \\
+<div class="arithmatex">
+<div class="MathJax_Preview"> \begin{align} &amp; 20\% \times N \times 100 + 30\% \times N \times 150 + 50\% \times N \times 50 \\
 = &amp; 20 N + 45 N + 25 N \\
-= &amp; 90 N \end{align} \]</div>
-<p>Divide the total weight by count <span class="arithmatex">\(N\)</span>.</p>
-<div class="arithmatex">\[ \frac{90 N}{N} = 90 \]</div>
+= &amp; 90 N \end{align} </div>
+<script type="math/tex; mode=display"> \begin{align} & 20\% \times N \times 100 + 30\% \times N \times 150 + 50\% \times N \times 50 \\
+= & 20 N + 45 N + 25 N \\
+= & 90 N \end{align} </script>
+</div>
+<p>Divide the total weight by count <span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>.</p>
+<div class="arithmatex">
+<div class="MathJax_Preview"> \frac{90 N}{N} = 90 </div>
+<script type="math/tex; mode=display"> \frac{90 N}{N} = 90 </script>
+</div>
 <p>Therefore, the average weight is 90g.</p>
-<p>Notice that <span class="arithmatex">\(N\)</span> is cancelled out eventually. We do not need to include it at
+<p>Notice that <span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> is cancelled out eventually. We do not need to include it at
 the beginning. This is actually a common way to compute weighted average. </p>
-<div class="arithmatex">\[ 20\% \times 100 + 30\% \times 150 + 50\% \times 50 = 90\]</div>
+<div class="arithmatex">
+<div class="MathJax_Preview"> 20\% \times 100 + 30\% \times 150 + 50\% \times 50 = 90</div>
+<script type="math/tex; mode=display"> 20\% \times 100 + 30\% \times 150 + 50\% \times 50 = 90</script>
+</div>
 <h3 id="method-2">Method 2<a class="headerlink" href="#method-2" title="Permanent link">&para;</a></h3>
 <p>We pick a fruit as the reference and look at the differences of each fruit to the reference.  </p>
 <p>Let us use Fruit A's weight as the reference. </p>
-<div class="arithmatex">\[ \begin{align} &amp; 100 + 20\% \times (100 - 100) + 30\% \times (150 - 100) + 50\% \times (50 - 100) \\ 
+<div class="arithmatex">
+<div class="MathJax_Preview"> \begin{align} &amp; 100 + 20\% \times (100 - 100) + 30\% \times (150 - 100) + 50\% \times (50 - 100) \\ 
   = &amp; 100 + 20\% \times 0 + 30\% \times 50 + 50\% \times (-50) \\
   = &amp; 100 + 15 - 25 \\
-  = &amp; 90 \end{align} \]</div>
+  = &amp; 90 \end{align} </div>
+<script type="math/tex; mode=display"> \begin{align} & 100 + 20\% \times (100 - 100) + 30\% \times (150 - 100) + 50\% \times (50 - 100) \\ 
+  = & 100 + 20\% \times 0 + 30\% \times 50 + 50\% \times (-50) \\
+  = & 100 + 15 - 25 \\
+  = & 90 \end{align} </script>
+</div>
 <p>The methods are essentially the same. We can consider the reference in Method 1 is 0. 
 The expression can also be obtained from Method 1 expression.</p>
-<div class="arithmatex">\[ \begin{align}
+<div class="arithmatex">
+<div class="MathJax_Preview"> \begin{align}
 &amp; 20\% \times 100 + 30\% \times 150 + 50\% \times 50  \\
 = &amp; 20\% \times (100 - 100 +  100) + 30\% \times (150 - 100 + 100) + 50\% \times (50 - 100 + 100) \\
 = &amp; (20\% + 30\% + 50\%) \times 100 + 20\% \times (100 - 100) + 30\% \times (150 - 100) + 50\% \times (50 - 100) \\
-= &amp; 100 + 20\% \times (100 - 100) + 30\% \times (150 - 100) + 50\% \times (50 - 100) \end{align}\]</div>
+= &amp; 100 + 20\% \times (100 - 100) + 30\% \times (150 - 100) + 50\% \times (50 - 100) \end{align}</div>
+<script type="math/tex; mode=display"> \begin{align}
+& 20\% \times 100 + 30\% \times 150 + 50\% \times 50  \\
+= & 20\% \times (100 - 100 +  100) + 30\% \times (150 - 100 + 100) + 50\% \times (50 - 100 + 100) \\
+= & (20\% + 30\% + 50\%) \times 100 + 20\% \times (100 - 100) + 30\% \times (150 - 100) + 50\% \times (50 - 100) \\
+= & 100 + 20\% \times (100 - 100) + 30\% \times (150 - 100) + 50\% \times (50 - 100) \end{align}</script>
+</div>
 <!-- 
 * Apply ratio
 
@@ -235,9 +268,9 @@ ratio of distance and time.
     <script>var base_url = '..';</script>
     <script src="../js/theme_extra.js" defer></script>
     <script src="../js/theme.js" defer></script>
-      <script src="../assets/javascripts/mathjax.js" defer></script>
-      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" defer></script>
-      <script src="https://cdn.jsdelivr.net/npm/mermaid@8.5.2/dist/mermaid.min.js" defer></script>
+      <script src="../javascripts/mathjax.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" defer></script>
       <script src="../search/main.js" defer></script>
     <script defer>
         window.onload = function () {
