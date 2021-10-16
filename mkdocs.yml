@@ -9,9 +9,10 @@ markdown_extensions:
   - toc:
       permalink: true
   - pymdownx.arithmatex:
-      generic: true
 
 extra_javascript:
-  - assets/javascripts/mathjax.js
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js
-  - https://cdn.jsdelivr.net/npm/mermaid@8.5.2/dist/mermaid.min.js
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js
+    #  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js
+    #  - https://cdn.jsdelivr.net/npm/mermaid@8.5.2/dist/mermaid.min.js
