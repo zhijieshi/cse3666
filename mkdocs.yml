@@ -1,6 +1,9 @@
 site_name: UConn CSE 3666
 
+repo_url: https://github.com/zhijieshi/cse3666 
+
 theme: readthedocs
+
 # Extensions
 markdown_extensions:
   - toc:
