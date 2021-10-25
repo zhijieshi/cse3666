@@ -20,7 +20,16 @@ Note that you may not be able to save or donwload your design!
 
 * [Logic.LY](https://logic.ly). Not Free. Wires are curved.
 
+## Diagram drawing
+
+* [Diagrams.net](https://app.diagrams.net/). Used to be "draw.io". Diagram editor in browser. 
+  Diagram can be saved in cloud or locally. It has a library of logic gates. The shape of gates
+  is good.
+
 * [Circuit Diagram](https://www.circuit-diagram.org/). Editor only. Simulation in development.
+
+* [Python package for drawing circuit diagrams](https://pypi.org/project/schemdraw/). 
+  [Documentation](https://schemdraw.readthedocs.io/en/latest/usage/start.html).
 
 # Verilog
 
@@ -41,11 +50,6 @@ compiled code has small foot print and it is fast.
 [EDA playgrond](https://www.edaplayground.com/) provides an online environment
 where one can play with many HDLs. It requires a free account to actually
 simulate the design.  There are many other online Verilog simulators. 
-
-# Drawing
-
-* [Python package for drawing circuit diagrams](https://pypi.org/project/schemdraw/). 
-  [Documentation](https://schemdraw.readthedocs.io/en/latest/usage/start.html).
 
 # Other
 
