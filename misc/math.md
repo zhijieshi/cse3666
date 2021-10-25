@@ -1,20 +1,8 @@
 # Math 
 
-We need some basic math skills in this course.
+## Links
 
-* Solve linear equations
-* Ratio
-* Compute average
+* [Math background](https://zhijieshi.github.io/cse3666/math/)
 
-## Find the unknowns 
+* [Scientifi notation examples](https://www.khanacademy.org/math/cc-eighth-grade-math/cc-8th-numbers-operations/cc-8th-scientific-notation/v/scientific-notation)
 
-If we know the relationship of $n$ varaibles and we know
-the $n-1$ values, we can find the value of the unkown.
-
-For example, if we know th
-
-distance=time×speed
-
-## Ratio
-
-## Average
