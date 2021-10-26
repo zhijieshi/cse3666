@@ -155,6 +155,14 @@ waveforms in other software.  MyHDL saves the waveforms in `.vcd` files.  A
 good free option to view .vcd files is GTKWave. The download links are in the
 Links section.
 
+# Python features in MyHDL
+
+* [Generator](https://www.youtube.com/watch?v=gMompY5MyPg). Socratica. 
+
+* [Decorator](https://www.youtube.com/watch?v=7lmCu8wz8ro&t=2730s). PyData talk from James Powell.
+
+* [Generator](https://www.youtube.com/watch?v=7lmCu8wz8ro&t=3870s). PyData talk from James Powell.
+
 # Links
 
 * [HDL](https://github.com/drom/awesome-hdl). Many high level HDLs. 
