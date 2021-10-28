@@ -1,0 +1,50 @@
+<html>
+<head>
+  <title>Current Local Time</title>
+<style>
+/* body {background-color: powderblue;} */
+/* h1 {color: blue; align: center} */
+
+div.outer {
+  /* height: 20em; */
+  /* display: flex; */
+  /* justify-content: center; */
+  align-items: center;
+  text-align: center;
+}
+
+.median {
+	font-size: 3em;
+}
+
+.time {
+	font-size: 10em;  /* 12 */
+	font-family: monospace; 
+	color: darkblue;
+}
+
+</style>
+</head>
+
+<body>
+  <div id="div_display" class="outer"> 
+	  <h1>The local time is</h1>
+	  <p><span id="id_time" class="time">00:00:00 AM</span></p>
+	  <p><span id="id_date" class="median"> </span></p>
+  </div>
+ 
+</body>
+
+<script type="text/javascript">
+function showtime() {
+    const dt = new Date();
+    document.getElementById("id_time").innerHTML = dt.toLocaleTimeString('en-US');
+    document.getElementById("id_date").innerHTML = dt.toDateString();
+}
+
+var timerId= setInterval(()=>{showtime()}, 500);
+
+</script>
+ 
+</script>
+</html>
