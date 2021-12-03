@@ -57,7 +57,7 @@ We use myHDL in CSE 3666.  nMigen is another Python package. It is based on [The
   Description Language (FHDL)](https://m-labs.hk/migen/manual/fhdl.html), which
 is quite different from traditional event driven languages like MyHDL.
 
-    * [nMigen Github repo](https://github.com/nmigen/nmigen)
-    * [nMigen document](https://nmigen.info/nmigen/latest/cover.html)
-    * [nMigen examples - kbob](https://github.com/kbob/nmigen-examples)
+* [nMigen Github repo](https://github.com/nmigen/nmigen)
+* [nMigen document](https://nmigen.info/nmigen/latest/cover.html)
+* [nMigen examples - kbob](https://github.com/kbob/nmigen-examples)
 
