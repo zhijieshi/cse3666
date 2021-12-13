@@ -1,15 +1,45 @@
 ## Commonly used operations 
 
+There are programming idioms in RISC-V too.
+
 ### Set a register to 0
 
 <details><summary>Answer</summary>
 
 There are many ways. It is a special case of loading a constant into a register.
+Any of the following instructions works.
 
 ```
     addi    s1, x0, 0
     add     s1, x0, x0
     xor     s1, s1, s1  # works without registers like x0
+```
+</details>
+
+### Load an arbitrary 32-bit constant into a register
+
+<details><summary>Answer</summary>
+
+It depends on the value of the constant. If the constant can be represented by 
+a 12-bit two's complement number, we need only one ADDI instruction. 
+
+Otherwise, at most two instructions can load any 32-bit constants in a
+register.
+
+```
+    # small constants
+    addi    s1, x0, -100
+
+    # for large constants
+    lui     s1, 0x12345     
+    addi    s1, s1, 0x678
+
+    # in general
+    lui     t0, HI20      # load higher 20 bits to t0
+    addi    t0, LO12      # add the lower 12 bits
+
+    # Note LO12 are sign extended
+    # Add 1 to HI20 if LO12 is negative
 ```
 </details>
 
@@ -20,8 +50,7 @@ for  (i = 0; i < 1000; i ++) {
     // loop body
 }
 
-// or 
-j = 1000
+// or controlled by a variable
 for  (i = 0; i < j; i ++) {
     // loop body
 }
@@ -30,12 +59,15 @@ for  (i = 0; i < j; i ++) {
 
 <details><summary>Answer</summary>
 
+There are two way's to construct loops. Here is one of them.
+
 Assume we assign `s1` to variable `i`, and `s2` to `j`.
 
 ```
     li      s1, 0
     li      s2, 1000
     # jump to loop_test if condition may fail on the first test
+    beq     x0, x0, loop_test
 loop:
     # loop body
 
@@ -43,7 +75,6 @@ loop:
 loop_test:
     blt     s1, s2, loop
 ```
-
 </details>
 
 
@@ -104,7 +135,7 @@ can use the proper load instruction.
     lb      t2, 0(s1)       # signed byte
 ```
 
-We can use `la` pseudoinstructin to put an address in a register. 
+We can use `la` pseudoinstruction to put an address in a register. 
 
 ```
     # suppose var is a variable defined in data section 
@@ -143,19 +174,25 @@ We calculate `A[i]`'s address first. Then load it into `t0`.
 ```
 </details>
 
-### Load arbitrary 32-bit constants
+### Enumerate characters in an ASCII string
 
 <details><summary>Answer</summary>
-At most two instructions can load any 32-bit constants in a register.
+
+Assume `s1` is the starting address. If `s1` needs to 
+be preserved, copy it to another register.
 
 ```
-    lui     t0, HI20      # load higher 20 bits to t0
-    addi    t0, LO12      # add the lower 12 bits
+    loop:
+        lbu     t0, 0(s1)
+        beq     t0, x0, loop_exit
 
-    # Note LO12 are sign extended
-    # Add 1 to HI20 if LO12 is negative
+        # more instructions here
+
+        
+        addi    s1, s1, 1
+        beq     x0, x0, loop
+    loop_exit:
 ```
-
 </details>
 
 ### Test bits. Check the value of selected bits in a register. 
@@ -175,14 +212,17 @@ Once bits are isolated, we can test for other values, too.
 ```
 </details>
 
-### Clear higher 32 bits in s1 (i.e., set them to 0). 
+### Clear higher part of a register (i.e., set the bits to 0). 
 
 <details><summary>Answer</summary>
+
 We could use a single AND instruction, if the mask is already in a register. 
+Otherwise, it can be done with two instructions. For example, the following
+code clear the higher 16 bits in register `s1`.
 
 ```
-    slli    s1, s1, 32
-    srli    s1, s1, 32      # note the logical shift
+    slli    s1, s1, 16
+    srli    s1, s1, 16      # note the logical shift
 ```
 </details>
 
@@ -191,8 +231,22 @@ We could use a single AND instruction, if the mask is already in a register.
 <details><summary>Answer</summary>
 
 ```
-    slli    s1, s1, 56
-    srai    s1, s1, 56      # note the arithmetic shift
+    slli    s1, s1, 24
+    srai    s1, s1, 24      # note the arithmetic shift
+```
+</details>
+
+### Function calls
+
+<details><summary>Answer</summary>
+
+Put arguments in registers `a0`, `a1`, and so on.
+Then use JAL instruction. For example, the following
+instruction calls `puts` to print a string.
+
+```
+    la      a0, str         # la is a pseudoinstruction.
+    jal     ra, _puts
 ```
 </details>
 
