@@ -236,18 +236,27 @@ code clear the higher 16 bits in register `s1`.
 ```
 </details>
 
-### Function calls
+### Implement a leaf function 
+
+A leaf function does not call any other functions. 
+
+Important questions: 
+
+*   Where does the function get the arguments? 
+*   How does the function return a value to the caller?
+*   What registers can the function overwrite?  
 
 <details><summary>Answer</summary>
 
-Put arguments in registers `a0`, `a1`, and so on.
-Then use JAL instruction. For example, the following
-instruction calls `puts` to print a string.
+According to RISC-V calling convention, first 8 arguments are placed in
+registers `a0`, `a1`, and so on. The return value is placed in `a0` and `a1`.
 
-```
-    la      a0, str         # la is a pseudoinstruction.
-    jal     ra, _puts
-```
+The function does not need to preserve argument registers (`a0`, `a1`, and so
+on) and temporary register (`t0`, `t1`, and so on), which means the function
+can use these registers without saving/restoring their values. Since we do not
+write complicated functions in this course, these registers are enough for us
+to implement leaf functions and we do not need to use stack in leaf functions.
+
 </details>
 
 ### Allocate storage on stack.
@@ -271,3 +280,92 @@ in `a1`, we can do the following.
 ```
 </details>
 
+### Function calls
+
+```C
+puts(str);
+```
+
+<details><summary>Answer</summary>
+
+According to RISC-V calling convention, first 8 arguments are placed in
+registers `a0`, `a1`, and so on. The return value is placed in `a0` and `a1`.
+Then JAL instruction goes to the function and saves the return address in `ra`. 
+
+The following code calls `puts` to print a string, assuming the address of
+`str` is not in any register.
+
+```
+    la      a0, str         # la is a pseudoinstruction.
+    jal     ra, _puts
+```
+</details>
+
+### Implement non-leaf functions
+
+A non-leaf function has one or more function calls.
+
+Questions: 
+
+*   Where is `n` kept upon entry of function `foo()`?
+*   Do we keep `n` in the same register? 
+*   What kind of registers should we assign to variable `i`?
+*   What registers does function `foo()` need to save/restore?
+
+```
+void foo(int n)
+{
+    for (int i = 0; i < n; i ++) 
+        bar();
+}
+```
+
+<details><summary>Answer</summary>
+
+Argument `n` is in register `a0` upon the entry of function `foo()`.
+
+Since `a0` is not perserved during call to function `bar()`, we copy `n` into a
+saved register, say, `s1`, at the beginning of function `foo()`. If we just
+keep `n` in `a0`, we will need to save it on stack before the loop and restore
+it after calling `bar()` in the loop. Restoring, i.e., loading `n` from the
+stack to `a0`, will have to be performed in every iteration.
+
+We use one of saved registers, say, `s2`, to keep variable `i`. If we use a
+temporary register for `i`, it needs to be saved and restored in every
+iteration.
+
+Function `foo()` needs to save `ra`, `s1`, and `s2`. `ra` is changed when
+calling `bar()`. Function `foo()` needs to preserve `s1` and `s2`.
+
+Try to write the code first. 
+
+</details>
+
+<details><summary>Code</summary>
+
+```
+foo:
+    addi    sp, sp, -12
+    sw      ra, 8(sp)
+    sw      s1, 4(sp)
+    sw      s2, 0(sp)
+
+    addi    s1, a0, 0       # copy n
+    addi    s2, x0, 0       # i = 0    
+
+loop:
+    bge     s2, s1, exit    # exit if i >= n 
+    jal     ra, bar
+    addi    s2, s2, 1       # i += 1
+    beq     x0, x0, loop
+
+exit:
+
+    lw      ra, 8(sp)
+    lw      s1, 4(sp)
+    lw      s2, 0(sp)
+    addi    sp, sp, 12
+
+    jr      ra
+```
+</details>
