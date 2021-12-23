@@ -1,5 +1,14 @@
 # Frequently Asked Questions
 
+## Why computer architecture?
+
+As a computer engineer/scientist, we should know how computer works. Programs
+run on computers. Someone needs to do the dirty work, to actually build the
+computers. 
+
+Here is a video about [the Map of Computer
+Science](https://www.youtube.com/watch?v=SzJ46YA_RaA).
+
 ## Why do I have to learn assembly language?
 
 Well, processors only understand instructions. If we want to understand how
@@ -11,18 +20,13 @@ Here is Youtube video ["Why should I learn assembly language in
 
 ## Why do computers use 2's complement numbers?
 
-There are many explanations on the Internet. One of the reasons is we can use
-the same method to do additon of unsigned and signed numbers. We just need to
-build one adder in hardware to perform add/sub for unsigned binary nnumbers and
-for 2's complement numbers.  
+Two's complement numbers have nice math properties. We can use the same hardware
+to perform addition/subtraction on both signed and unsigned numbers.
 
-Two's complement numbers also have nice math properties and that is why we
-can use the same adder for signed and unsigned numbers.
-
-For example, if we consider bits 11111111 as an 8-bit unsigned binary number, its
-value (in decimal) is 255. If we consider the bits as an 8-bit two's 
-complement number, its value is -1. 255 and -1 are congruent modulo 256.
--1 mod 256 = 255.
+Here is an example. If we consider eight bits 11111111 as an unsigned binary
+number, its value is 255 (in decimal). If we consider the bits as a two's
+complement number, its value is -1. 255 and -1 are congruent modulo
+256.  -1 mod 256 = 255.
 
 ## How does the processor do additions on hexadecimal or decimal numbers?
 
