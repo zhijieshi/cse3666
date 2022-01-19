@@ -40,6 +40,8 @@ unsigned char   var_aui8[128];  // an array of 128 bytes
 // This function takes two arguments of int, and returns an int
 // Note that everything in C has a type
 // By RISC-V calling convention, a is in register a0, and b is in register a1.
+// In Python, the definition looks like
+//  def     my_max(a: int, b: int) -> int:
 int     my_max(int a, int b)
 {
     /* variables defined in a function
@@ -78,11 +80,12 @@ int     my_max(int a, int b)
 
 */
 int loops(int A[], int n) {
-    // arr is an array on stack because it is defined in a function The array
-    // has 128 32-bit integers.  i, max, sum are also on stack.  How many bytes
-    // does each of them need? 
-    int     arr[128]; int     i; int     max, sum;  // define multiple
-    variables of the same type
+    
+    // define local variables, which will be stored on stack.
+    // How many bytes does each of them need? 
+    int     arr[128];   // integer array. 128 (32-bit) integers
+    int     i;          // integer 
+    int     max, sum;  // define multiple variables of the same type
 
     // for loop
     // initialize i to 0, 
@@ -95,6 +98,10 @@ int loops(int A[], int n) {
 	// index starts from 0, like in Python
         arr[i] = i;
     }
+    /* In Python, the above code looks like
+        for  i in range (10):
+            arr[i] = i
+    */
 
     // Similarly, we can access A 
     // In assembly, A's address is in a register and arr's address is
@@ -146,70 +153,100 @@ int loops(int A[], int n) {
 */
 int     pointers(int a[], int *b, int c[10])
 {
-    /* define an array of integer and an integer */
-    /* If arr is located at 0x1000, the adresses of the elements in arr are:
-     * 
-     * 0x1024: arr[9]
-     * 0x1020: arr[8]
-     * 0x101c: arr[7]
-     * 0x1018: arr[6]
-     * 0x1014: arr[5]
-     * 0x1010: arr[4]
-     * 0x100c: arr[3]
-     * 0x1008: arr[2]
-     * 0x1004: arr[1]
-     * 0x1000: arr[0]
-     * */
+    /* define an array of integers.
+     
+        If arr is located at 0x1000, the adresses of the elements in arr are:
+         0x1024: arr[9]
+         0x1020: arr[8]
+         0x101c: arr[7]
+         0x1018: arr[6]
+         0x1014: arr[5]
+         0x1010: arr[4]
+         0x100c: arr[3]
+         0x1008: arr[2]
+         0x1004: arr[1]
+         0x1000: arr[0]
+    */
     int arr[10];
-    int i;
 
-    /* The following are examples for understanding pointers */
+    int i;      // if i is located right after arr, i's address is 0x1028
 
-    // p is a pointer to an int, 
-    // or p is the address of an int
-    // Since we assume 32-bit processors, an address takes 32 bits (or 4 bytes)
-    // In assembly, p is just a word. We can use it as the base register
-    // in load/store instructions. 
-    // p can be a register, or has storage on the stack.
-    // if it is on the stack, we need to load it into a register before using it.
+    /* Define a pointer to int.
+    A pointer to int === an address of an int
+    q is a pointer to an int, or q is the address of an int
+    Since we assume 32-bit processors, an address takes 32 bits (or 4 bytes).
+    In assembly, q is just a word (4 bytes) . We can use it as the base register
+    in load/store instructions. 
+
+    We can keep q in a register, or on stack.
+    If it is on the stack, we need to load it into a register before using it.
+
+    */
+    int * q;    // let us assume q is kept in register s2
+
+    /* Define another point p. Let us assume p is in register s3.
+     * p is not in memory so it does not have an address.
+    */
     int * p;
 
-    // save i's address in p 
-    p = &i;
+    // save i's address in q 
+    q = &i;
+    // register s2 should be 0x1028
+    // In C, *q, q[0], and i refer to the same word in memory (address 0x1028)
 
     // save arr[0]'s address in p
     // arr[0] is the first element in the array while &arr[0] is the address of the element
     p = &arr[0];
+    // register s3 should be 0x1000
+    // In C, *p, p[0], and arr[0] refer to the same word in memory (address 0x1000)
 
-    // *p, p[0], arr[0] refer to the same word
-
-    // Let p point to the next element in the array
+    // Let p point to the next word in the array
     // After the following statement, p is the address of arr[1].
     // In C, the index is scaled
-    // In RISC-V assembly, we need to scale it ourselves
-    //      addi    t0, t0, 4
     p = p + 1;      // or p += 1;  or p ++
+    // In assembly, we need to scale it ourselves
+    //      addi    s3, s3, 4
+    //      register s3 should be 0x1004
 
-    // Let p point to arr[3], i.e., let p have the address of arry[3]
-    // Since p is the address of arr[1] currently, we add 8 to p
-    //      addi    t0, t0, 8
+    // Let p point to arr[3], i.e., let p have the address of arr[3]
+    // Note that p is the address of arr[1] currently, we add size of 2 more
+    // words to p.
+    // Again, the index is scaled in C.
     p += 2;
+    // In assembly, we need to scale the offset 2 * 4
+    //      addi    s3, s3, 8
+    //      register s3 should be 0x100C
 
     return 0;
 }
 
-// define a structure where you can put relevant data together.
+// define a structure where we can put relevant data together.
 // consider it as an object in Python.
 struct {
     int     hour;    // Define fields in the structure.
     int     minute; 
     int     second;
 }   var_time;
-// once we know the address of a structure, 
-// we can assess its fiels by offset + base address
-// For example, if the address of var_time is in s0
-// the address of fields are as follows.
-// hour:      (s0)
-// minute:   4(s0)
-// second:   8(s0)
+
+/* 
+Once we know the address of a structure, we can calculate its fiels by 
+
+    starting address of the structure + offset of the filed
+
+For example, if the address of var_time is 1000, the address of the 
+fields is:
+
+    hour:   1000 + 0  = 1000
+    minute: 1000 + 4  = 1004
+    second: 1000 + 8  = 1008
+
+In RISC-V, if the address of var_time is in register s0, 
+address of fields can be specified as the following:
+    hour:      (s0)
+    minute:   4(s0)
+    second:   8(s0)
+
+One caveat is that we have to consider address alignment when 
+calculating the offset of a field.
+*/
 
