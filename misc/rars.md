@@ -69,11 +69,13 @@ Follow the following steps to run an example.
    [the rv-examples directory](https://github.com/zhijieshi/cse3666/tree/master/rv-examples). 
    Remember the location of the downloaded file on your computer.
 
+   The instructions for downloading files from GitHub is in [a later
+   section](#download-files-from-github)
+
 2. Start RARS. On Windows, double click the jar file. 
 
 3. Use the File/Open menu to open the example program `01-hello.s` in RARS. There is a
-   nice built-in editor for editing source code directly in RARS. The instructions for
-   downloading files from GitHub is in [a later section](#download-files-from-github)
+   nice built-in editor for editing source code directly in RARS. 
 
 4. In order to run the code, you need to assemble the instructions, i.e.,
    convert the instructions to machine code. This can be done by using menu
