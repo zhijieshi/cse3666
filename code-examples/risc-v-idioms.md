@@ -12,7 +12,10 @@ Any of the following instructions works.
 ```
     addi    s1, x0, 0
     add     s1, x0, x0
-    xor     s1, s1, s1  # works without registers like x0
+
+    # there are other ways, but they are not as readable  
+    sub     s1, s1, s1  
+    xor     s1, s1, s1  
 ```
 </details>
 
