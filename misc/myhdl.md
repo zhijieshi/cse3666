@@ -115,8 +115,15 @@ py -m venv p:\venv3
   "Run" the script.
 
 ```
-cd P:\venv3\Scripts
-.\Activate.ps1
+P:\venv3\Scripts\Activate.ps1
+```
+
+If you see error messages asking you to set execution policy, use the following command
+to allow unsigned script to run, for the current user. Then try to activate the virtual
+environment again.
+
+```
+Set-ExecutionPolicy Unrestricted -scope currentuser
 ```
 
 If everything works, you are in the virtual environment. Notice that the
