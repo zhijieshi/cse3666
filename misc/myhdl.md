@@ -80,11 +80,26 @@ For example, the following is the output of `gate2.py`.
 
 ```
 (venv3) PS P:\myhdl\examples> python gate2.py
-a b | and or  not
+a b | and or  not_a
 0 0 | 0   0   1
 0 1 | 0   1   1
 1 0 | 0   1   0
 1 1 | 1   1   0
+```
+
+The following is the output of `mux.py`. This file has two implementations of 2-input multiplexor.
+
+```
+(venv3) PS P:\myhdl\examples> python mux.py
+a b s | z zg
+0 0 0 | 0 0
+0 1 0 | 0 0
+1 0 0 | 1 1
+1 1 0 | 1 1
+0 0 1 | 0 0
+0 1 1 | 1 1
+1 0 1 | 0 0
+1 1 1 | 1 1
 ```
 
 ## Python virtual environment 
