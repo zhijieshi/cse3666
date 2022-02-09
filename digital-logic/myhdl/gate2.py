@@ -82,7 +82,7 @@ if __name__ == "__main__":
 
         @instance
         def stimulus():
-            print("a b | and or  not")
+            print("a b | and or  not_a")
             for i in range(4):
                 # set a and b's value and wait for c to change
                 # a takes the value of bit 1 in i and b takes bit 0
