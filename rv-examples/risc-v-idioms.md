@@ -19,10 +19,22 @@ Any of the following instructions works.
 ```
 </details>
 
+### Load a small constant into a register
+
+
+Load -100 into register t0. 
+
+<details><summary>Answer</summary>
+Small means the value is in ragne [-2048, 2047].  
+
+```
+    addi    t0, x0, -100    
+```
+</details>
+
 ### Load an arbitrary 32-bit constant into a register
 
 <details><summary>Answer</summary>
-
 It depends on the value of the constant. If the constant can be represented by 
 a 12-bit two's complement number, we need only one ADDI instruction. 
 
@@ -43,7 +55,23 @@ register.
 
     # Note LO12 are sign extended
     # Add 1 to HI20 if LO12 is negative
+    # for example, load 0x12345888 into t0
+    # note that the immediate in lui is 0x12346, not 0x12345
+
+    lui     t0, 0x12346
+    addi    t0, t0, 0xFFFFF888
 ```
+</details>
+
+### Copy a register to another
+
+Copy register t0 to t1.
+
+<details><summary>Answer</summary>
+We just do t1 = t0 + 0.
+
+        addi    t1, t0, 0 
+
 </details>
 
 ### Write a for loop
