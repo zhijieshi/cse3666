@@ -20,43 +20,44 @@ function radix_to_str (r)
 	return "radix " + r;
 }
 
-var testView = new Vue ({
-    el: '#mainDiv',
-    data: {
-	config_mode: 0,
+const testView = Vue.createApp ({
+    data () {
+        return {
+            config_mode: 0,
 
-        nbits: '8',
-	is_signed: true,
-	q_radix: 2,	// Default: from 2's complement numbers to decimal numbers 
-	a_radix: 10,
+            nbits: '8',
+            is_signed: true,
+            q_radix: 2,	// Default: from 2's complement numbers to decimal numbers 
+            a_radix: 10,
 
-	nbits_options: [
-	  { text: '4 bits', value: 4 },
-	  { text: '8 bits', value: 8 },
-	  { text: '12 bits', value: 12 },
-	  { text: '16 bits', value: 16 }
-	],
-	
-	radix_options: [
-	  { text: 'Binary', index: 0, value: 2},
-	  { text: 'Decimal', index: 1, value: 10},
-	  { text: 'Hexadecimal', index: 2, value: 16}
-	],
+            nbits_options: [
+              { text: '4 bits', value: 4 },
+              { text: '8 bits', value: 8 },
+              { text: '12 bits', value: 12 },
+              { text: '16 bits', value: 16 }
+            ],
+            
+            radix_options: [
+              { text: 'Binary', index: 0, value: 2},
+              { text: 'Decimal', index: 1, value: 10},
+              { text: 'Hexadecimal', index: 2, value: 16}
+            ],
 
-	correct: 0,
-	wrong: 0,
+            correct: 0,
+            wrong: 0,
 
-	config_str: '', 
-	question: '',
-	numTries: 0,
-	value: 0,
-	valueQ: '',
-	valueA: '',
+            config_str: '', 
+            question: '',
+            numTries: 0,
+            value: 0,
+            valueQ: '',
+            valueA: '',
 
-	err_message: '',
+            err_message: '',
 
-	inString: '',
-	answerMessage: 'Enter your answer'
+            inString: '',
+            answerMessage: 'Enter your answer'
+        }
     },
     methods: {
         showConfig: function () {
@@ -127,7 +128,7 @@ var testView = new Vue ({
 	    this.inString = this.valueA;
 	}
     }
-} );
+} ).mount('#mainDiv');
 
 testView.newTest();
 
