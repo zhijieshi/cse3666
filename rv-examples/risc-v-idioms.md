@@ -292,6 +292,8 @@ to implement leaf functions and we do not need to use stack in leaf functions.
 
 ### Allocate storage on stack.
 
+1.   Allocate 64 bytes on the stack.
+
 <details><summary>Answer</summary>
 
 Depends on the number of words we need storage for. For example, 
@@ -301,6 +303,16 @@ if we want space for 16 words, we can adjust `sp` as follows.
    addi     sp, sp, -64
 ```
 
+Note that we assume sp is alway aligned to word addresses in this course.
+So even if we need only 61 bytes, we allocate 64 bytes from the stack.
+
+</details>
+
+2.  Allocate n words on the stack, where n is in register a1. Assume n is postive
+and there is enough space on the stack.
+
+<details><summary>Answer</summary>
+
 If the number of words is a variable, we can calculate the 
 size in bytes first. For example, if the number of words is 
 in `a1`, we can do the following.
@@ -309,6 +321,33 @@ in `a1`, we can do the following.
     slli    t0, a1, 2
     sub     sp, sp, t0
 ```
+</details>
+
+### Save/restore registers on the stack
+
+Save register ra, s1 on the stack, and restore them.
+
+<details><summary>Answer</summary>
+
+We allocate space from the stack first, then store
+registers to the allocated space. When restoring
+them, we load them back from memory and also 
+restore sp.
+
+```
+    # push ra and s1 onto the stack 
+    addi    sp, sp, -8
+    sw      ra, 4(sp)
+    sw      s1, 0(sp)
+
+    # some code goes here to use the value
+
+    # restore ra ans s1. Then restore sp
+    lw      ra, 4(sp)
+    lw      s1, 0(sp)
+    addi    sp, sp, 8
+```
+
 </details>
 
 ### Function calls
