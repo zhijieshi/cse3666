@@ -102,9 +102,9 @@ html, body {
     height: auto;
 }
 
-.buttons {
+.button_div {
     margin: auto;
-    background: #809fff;
+    /* background: #809fff; */
     padding: 5px;
     display: flex;
     justify-content: space-around;
@@ -112,9 +112,10 @@ html, body {
     -moz-border-radius: 0px;
     border-radius: 0px;
     resize: none;
-    border:1px solid #30273a;
+    /* border:1px solid #30273a; 
     box-shadow: 0 0 10px #8d78a5;
     border-radius: 15px 15px 15px 15px;
+    */
 }
 
 .button {
@@ -128,4 +129,42 @@ html, body {
     text-decoration: none;
     display: inline-block;
     font-size: 15px;
+    min-width: 100px;
+    hocus--background-color:blue-400;
+}
+
+.button:hover {
+  background-color: green;
+}
+
+.btn {
+    padding: 0.8rem 1rem 0.7rem;
+    border: 0.2rem solid #4d4d4d;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+.btn__danger {
+    color: #fff;
+    background-color: #ca3c3c;
+    border-color: #bd2130;
+}
+.btn__filter {
+    border-color: lightgrey;
+}
+.btn__danger:focus {
+    outline-color: #c82333;
+}
+.btn__primary {
+    color: #fff;
+    background-color: #000;
+}
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+}
+.btn-group > * {
+    flex: 1 1 auto;
+}
+.btn-group > * + * {
+    margin-left: 0.8rem;
 }
