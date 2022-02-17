@@ -13,33 +13,38 @@ We have many ways to start Python and a Python script. The command could be
 We will assume a system that is similar to UConn AnyWare Desktop. It is a
 Windows 10 system with Python 3.7 installed.
 
-## Setting up
+## Computers
 
-You can set up the lab environment on your own PC.  If you have trouble, please
-use AnyWare Desktop. 
-
-Python packages can be installed in many different ways.
-[This page on Python.org](https://packaging.python.org/tutorials/installing-packages/)
-explains the installation of Python packages in detail.
-[The MyHDL Github Repo](https://github.com/myhdl/myhdl) has instructions specific to MyHDL.  
-
-It is recommended to install packages for each kind of projects in a separate
-Python virtual envrionment. 
+Students can use their own computers to set up Python and MyHDL, and many do.
+However, if they run into problems, it may take a long time to troubleshoot.
+So if one has problems with their own computer, please use UConn AnyWare
+Desktop.
 
 ### UConn AnyWare Desktop 
 
 All UConn students have access to AnyWare Desktop. It is a virtual computer we
-can access anywhere in a web browser.  The log in page is
-[here](https://software.uconn.edu/uconn-software-online/).
+can access anywhere in a web browser.  The login page is
+[here](https://software.uconn.edu/uconn-software-online/).  The system is
+Windows 10 and has Python 3.7.x installed, as of spring 2022.
 
 On the virtual PC, `cmd.exe` is disabled. As of Feb 2022, we can still
 start Powershell. To start Powershell, search 'powershell' in the search box on
 the left end of the task bar and then click the Powershell application.
 
-On computers in the Learning Center, we also use Python virtual environment.
-If you use both computers in the Learning Center and AnyWare Desktop, create
-Python virtual environment in different folders. The Python versions are
-different in these two systems. 
+It is recommended to install packages for each kind of projects in a separate
+Python virtual envrionment. We will set up a virtual environment for this
+course. We can install packages in the virtual environment without admin
+privilege.
+
+On the computers in the Learning Center, we also set up Python virtual
+environment. If you use both computers in the Learning Center and AnyWare
+Desktop, create two Python virtual environments in different folders. The
+Python versions are different in these two systems. 
+
+## Setting up
+
+You can set up the lab environment on your own PC. If you have trouble, please
+use AnyWare Desktop. 
 
 ### Python virtual environment 
 
@@ -50,11 +55,11 @@ The commands below work in Powershell on AnyWare Desktop.
 
 *   Create a directory for the vitual environment, for example, `p:\venv`.
   
-    mkdir p:\venv
+        mkdir p:\venv
 
 *   Use Python venv module to create a virtual environment. 
 
-    py -m venv p:\venv
+        py -m venv p:\venv
 
 *   Activate the virtual environment. The command depends on the OS and the shell
     you use. Check the scripts in the `Scripts` directory and find the correct script.
@@ -79,25 +84,31 @@ Continue to install MyHDL package with `pip` in this environment. Remember to
 activate the virtual environment before you run any Python scripts that use
 MyHDL. 
 
-Once in the virtual environment, we will use `python` to run Python scripts. Do
-not use `py`. It starts Python in the native system environment.
+Once in the virtual environment, we need to use `python` to run Python scripts.
+Do not use `py`. It starts Python in the native system environment.
 
 ### Pip command
+
+Python packages can be installed in many different ways.  [This page on
+Python.org](https://packaging.python.org/tutorials/installing-packages/)
+explains the installation of Python packages in detail.  [The MyHDL Github
+Repo](https://github.com/myhdl/myhdl) has instructions specific to MyHDL.  
 
 In Python virtual environment, run the following command to install MyHDL. 
 
     python -m pip install myhdl
 
-## Simulate 
+## Run the examples
 
-Once MyHDL is installed, we can import it in our Python scripts. 
+Once MyHDL is installed, we can use the package by importing it in our Python
+scripts. 
 
 Some MyHDL examples are provided
 [here](https://github.com/zhijieshi/cse3666/tree/master/digital-logic/myhdl). 
 
 To run the examples, first downlaod them and then run the scripts as a regular
-Python script. Remember to activate the virtual environment first. There
-should be no error messages when we run the scripts.
+Python script.  There should be no error messages when we run the scripts.
+**Remember to activate the virtual environment first**.
 
 For example, the following is the output of `gate2.py`.
 
@@ -114,7 +125,7 @@ The following is the output of `mux.py`. This file has two implementations of
 2-input multiplexor.
 
 ```
-(venv3) PS P:\myhdl\examples> python mux.py
+(venv) PS P:\myhdl\examples> python mux.py
 a b s | z zg
 0 0 0 | 0 0
 0 1 0 | 0 0
