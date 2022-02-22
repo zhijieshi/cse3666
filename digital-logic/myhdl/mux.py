@@ -14,13 +14,13 @@ def Mux2(c, a, b, s):
     """
 
     @always_comb
-    def comb():
+    def mux_logic():
         if s:
             c.next = b
         else:
             c.next = a
 
-    return comb
+    return mux_logic
 
 ## Implementation 2. using other modules/gates
 
@@ -99,7 +99,7 @@ if __name__ == "__main__":
         def stimulus():
             print("a b s | z zg")
             for i in range(8):
-                b.next, a.next, s.next = (i & 1), ((i >> 1) & 1), ((i >> 2) & 1)
+                b.next, a.next, s.next = intbv(i)[3:0]
                 yield delay(10)
                 # convert to bool to int to see 0 or 1, instead of True or False
                 print("{} {} {} | {} {}".format(int(a), int(b), int(s), int(z), int(z2)))
