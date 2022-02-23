@@ -31,6 +31,7 @@ def Mux2_v2(c, a, b, s):
 
     @always_comb
     def mux_logic():
+        # c.next = ((~s) & a | s & b) & 1
         c.next = (not s and a) or (s and b)
 
     return mux_logic
@@ -80,7 +81,7 @@ def Mux2_gates(c, a, b, s):
     s -- control input: select b if asserted, otherwise a
 
     """
-    # logic is z = (~ sel) & a | (sel) & b
+    # c = (~s) & a | s & b
 
     # create instances of the gates and connect them
     # create signals first
