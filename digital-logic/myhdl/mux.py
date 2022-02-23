@@ -1,16 +1,13 @@
 from myhdl import block, always_comb, Signal, StopSimulation
 
 ## Implementation 1 
-
 @block
 def Mux2(c, a, b, s):
-
     """ Multiplexer.
 
     c -- mux output
     a, b -- data inputs
     s -- control input: select b if s is asserted, otherwise a
-
     """
 
     @always_comb
@@ -22,7 +19,23 @@ def Mux2(c, a, b, s):
 
     return mux_logic
 
-## Implementation 2. using other modules/gates
+## Implementation 2 
+@block
+def Mux2_v2(c, a, b, s):
+    """ Multiplexer.
+
+    c -- mux output
+    a, b -- data inputs
+    s -- control input: select b if s is asserted, otherwise a
+    """
+
+    @always_comb
+    def mux_logic():
+        c.next = (not s and a) or (s and b)
+
+    return mux_logic
+
+## Implementation 3. using other modules/gates
 
 @block
 def And2(c, a, b):
@@ -89,23 +102,25 @@ if __name__ == "__main__":
     def test_mux():
 
         # create signals. 
-        z2, z, a, b, s = [Signal(bool(0)) for i in range(5)]
+        z3, z2, z1, a, b, s = [Signal(bool(0)) for i in range(6)]
 
-        # instantiating 2 MUXes
-        mux_1 = Mux2(z, a, b, s)
-        mux_2 = Mux2_gates(z2, a, b, s)
+        # instantiating different MUXes
+        mux_1 = Mux2(z1, a, b, s)
+        mux_2 = Mux2_v2(z2, a, b, s)
+        mux_3 = Mux2_gates(z3, a, b, s)
 
         @instance
         def stimulus():
-            print("a b s | z zg")
+            print("a b s | z1 z2 z3")
             for i in range(8):
                 b.next, a.next, s.next = intbv(i)[3:0]
                 yield delay(10)
                 # convert to bool to int to see 0 or 1, instead of True or False
-                print("{} {} {} | {} {}".format(int(a), int(b), int(s), int(z), int(z2)))
+                print("{} {} {} | {}  {}  {}".format(int(a), int(b), int(s), 
+                    int(z1), int(z2), int(z3) ))
             raise StopSimulation()
 
-        return mux_1, mux_2, stimulus
+        return mux_1, mux_2, mux_3, stimulus
 
     tb = test_mux()
     # change trace to True will generate waveforms
