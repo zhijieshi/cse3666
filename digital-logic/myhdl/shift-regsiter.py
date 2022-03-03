@@ -108,6 +108,7 @@ if __name__ == "__main__":
     parser.add_argument('bits', nargs='?', default="1001", help='bits to be shifted in')
     parser.add_argument('--cycles', type=int, default=16, help='Number of cycles')
     parser.add_argument('-m', type=int, default=0, choices=[0, 1, 2], help='Implementation method')
+    parser.add_argument('--trace', action='store_true', help='generate trace file')
 
     args = parser.parse_args()
 
@@ -116,5 +117,5 @@ if __name__ == "__main__":
         exit(1)
 
     tb = testbench(args)
-    tb.config_sim(trace=False)
+    tb.config_sim(trace=args.trace)
     tb.run_sim()
