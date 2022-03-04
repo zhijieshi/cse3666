@@ -1,19 +1,19 @@
 from myhdl import *
 
 @block 
-def Register(dout, din, clock, reset_l):
+def Register(dout, din, clock, reset):
     """ 
     A register that always saves din to dout on positive edges
     """
 
-    @always_seq(clock.posedge, reset=reset_l)
+    @always_seq(clock.posedge, reset=reset)
     def seq_reg():
         dout.next = din
 
     return seq_reg
 
 @block
-def ShiftRegisterL(dout, sin, clock, reset_l, method = 0):
+def ShiftRegisterL(dout, sin, clock, reset, method = 0):
     """ Register shift left 
 
     dout    -- register output
@@ -26,7 +26,7 @@ def ShiftRegisterL(dout, sin, clock, reset_l, method = 0):
     # use modular bit vector (modbv) 
     reg_in = Signal(modbv(0)[w:])
 
-    reg1 = Register(dout, reg_in, clock, reset_l) 
+    reg1 = Register(dout, reg_in, clock, reset) 
 
     @always_comb
     def comb0():
