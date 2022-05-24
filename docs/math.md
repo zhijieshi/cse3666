@@ -80,8 +80,8 @@ We pick a fruit as the reference and look at the differences of each fruit to th
 
 Let us use Fruit A's weight as the reference. 
 
-$$ \begin{align} & 100 + 20\% \times (100 - 100) + 30\% \times (150 - 100) + 50\% \times (50 - 100) \\ 
-  = & 100 + 20\% \times 0 + 30\% \times 50 + 50\% \times (-50) \\
+$$ \begin{align} & 100 + 20\\% \times (100 - 100) + 30\\% \times (150 - 100) + 50\\% \times (50 - 100) \\ 
+  = & 100 + 20\\% \times 0 + 30\\% \times 50 + 50\\% \times (-50) \\
   = & 100 + 15 - 25 \\
   = & 90 \end{align} $$
 
@@ -90,10 +90,10 @@ The expression can also be obtained from Method 1 expression.
 
 $$
 \begin{align}
-& 20\% \times 100 + 30\% \times 150 + 50\% \times 50  \\
-= & 20\% \times (100 - 100 +  100) + 30\% \times (150 - 100 + 100) + 50\% \times (50 - 100 + 100) \\
-= & (20\% + 30\% + 50\%) \times 100 + 20\% \times (100 - 100) + 30\% \times (150 - 100) + 50\% \times (50 - 100) \\
-= & 100 + 20\% \times (100 - 100) + 30\% \times (150 - 100) + 50\% \times (50 - 100) 
+& 20\\% \times 100 + 30\\% \times 150 + 50\\% \times 50  \\
+= & 20\\% \times (100 - 100 +  100) + 30\\% \times (150 - 100 + 100) + 50\\% \times (50 - 100 + 100) \\
+= & (20\\% + 30\\% + 50\\%) \times 100 + 20\\% \times (100 - 100) + 30\\% \times (150 - 100) + 50\\% \times (50 - 100) \\
+= & 100 + 20\\% \times (100 - 100) + 30\\% \times (150 - 100) + 50\\% \times (50 - 100) 
 \end{align}
 $$
 
