@@ -55,9 +55,13 @@ We can divide the total weight by the total count.
 
 The total weight is:
 
-$$ \begin{align} & 20\% \times N \times 100 + 30\% \times N \times 150 + 50\% \times N \times 50 \\
+$$ 
+\begin{align} 
+& 20\% \times N \times 100 + 30\% \times N \times 150 + 50\% \times N \times 50 \\
 = & 20 N + 45 N + 25 N \\
-= & 90 N \end{align} $$ 
+= & 90 N 
+\end{align}
+$$ 
 
 Divide the total weight by count $N$.
 
