@@ -57,7 +57,7 @@ The total weight is:
 
 $$ 
 \begin{align} 
-& 20\% \times N \times 100 + 30\% \times N \times 150 + 50\% \times N \times 50 \\
+& 20\\% \times N \times 100 + 30\\% \times N \times 150 + 50\\% \times N \times 50 \\
 = & 20 N + 45 N + 25 N \\
 = & 90 N 
 \end{align}
@@ -72,7 +72,7 @@ Therefore, the average weight is 90g.
 Notice that $N$ is cancelled out eventually. We do not need to include it at
 the beginning. This is actually a common way to compute weighted average. 
 
-$$ 20\% \times 100 + 30\% \times 150 + 50\% \times 50 = 90$$
+$$ 20\\% \times 100 + 30\\% \times 150 + 50\\% \times 50 = 90$$
 
 ### Method 2
 
@@ -88,11 +88,14 @@ $$ \begin{align} & 100 + 20\% \times (100 - 100) + 30\% \times (150 - 100) + 50\
 The methods are essentially the same. We can consider the reference in Method 1 is 0. 
 The expression can also be obtained from Method 1 expression.
 
-$$ \begin{align}
+$$
+\begin{align}
 & 20\% \times 100 + 30\% \times 150 + 50\% \times 50  \\
 = & 20\% \times (100 - 100 +  100) + 30\% \times (150 - 100 + 100) + 50\% \times (50 - 100 + 100) \\
 = & (20\% + 30\% + 50\%) \times 100 + 20\% \times (100 - 100) + 30\% \times (150 - 100) + 50\% \times (50 - 100) \\
-= & 100 + 20\% \times (100 - 100) + 30\% \times (150 - 100) + 50\% \times (50 - 100) \end{align} $$
+= & 100 + 20\% \times (100 - 100) + 30\% \times (150 - 100) + 50\% \times (50 - 100) 
+\end{align}
+$$
 
 <!-- 
 * Apply ratio
