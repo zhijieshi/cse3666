@@ -6,67 +6,55 @@ with Python. Also, MyHDL is very similar to Verilog. It would be easier for
 students to pick up Verilog in the future. 
 
 MyHDL works with Python 3.4 or above. Python on this page means a version that
-works with MyHDL.
+works with MyHDL. The Python version on lab computers is 3.10.
 
 We have many ways to start Python and a Python script. The command could be
 `py`, `python`, or `python3`. It depends on the system and on the environment.
-We will assume a system that is similar to UConn AnyWare Desktop. It is a
-Windows 10 system with Python 3.7 installed.
+We will use the lab computer as example. It is a Windows 11 system with Python
+3.10 installed.
 
 ## Computers
 
 Students can use their own computers to set up Python and MyHDL, and many do.
 However, if they run into problems, it may take a long time to troubleshoot.
-So if one has problems with their own computer, please use UConn AnyWare
-Desktop.
-
-### UConn AnyWare Desktop 
-
-All UConn students have access to AnyWare Desktop. It is a virtual computer we
-can access anywhere in a web browser.  The login page is
-[here](https://software.uconn.edu/uconn-software-online/).  The system is
-Windows 10 and has Python 3.7.x installed, as of spring 2022.
-
-On the virtual PC, `cmd.exe` is disabled. As of Feb 2022, we can still
-start Powershell. To start Powershell, search 'powershell' in the search box on
-the left end of the task bar and then click the Powershell application.
-
-It is recommended to install packages for each kind of projects in a separate
-Python virtual envrionment. We will set up a virtual environment for this
-course. We can install packages in the virtual environment without admin
-privilege.
-
-On the computers in the Learning Center, we also set up Python virtual
-environment. If you use both computers in the Learning Center and AnyWare
-Desktop, create two Python virtual environments in different folders. The
-Python versions are different in these two systems. 
+So if one has problems with their own computer, please use the lab computer. 
 
 ## Setting up
 
 You can set up the lab environment on your own PC. If you have trouble, please
-use AnyWare Desktop. 
+use lab computers.
 
 ### Python virtual environment 
+
+It is recommended to install packages for each kind of projects in a separate
+Python virtual envrionment. We will set up a Python virtual environment for
+this course. We can creae a Python virtual environment and install packages in
+the environment without admin privilege.
 
 The instructions for creating virtual environment in Python are provided on
 [the help page of Python 3](https://docs.python.org/3/library/venv.html).
 
-The commands below work in Powershell on AnyWare Desktop. 
+The commands below work in Powershell on the lab computer. When you start
+PowerShell, you should be in your home directory. If not, use `cd $home` to go
+to your home directory. Typically, the path to your home directory looks like
+`c:\Users\YourNetID`. 
 
-*   Create a directory for the vitual environment, for example, `p:\venv`.
+**The following commands assume you are in your home directory.**
+
+*   Create a directory for the vitual environment, for example, `venv` .
   
-        mkdir p:\venv
+        mkdir venv
 
 *   Use Python venv module to create a virtual environment. 
 
-        py -m venv p:\venv
+        py -m venv venv
 
 *   Activate the virtual environment. The command depends on the OS and the shell
     you use. Check the scripts in the `Scripts` directory and find the correct script.
-    The following are the commands for PowerShell. When you see security warning, choose
+    The following are the commands for PowerShell. If you see security warning, choose
     "Run" the script.
 
-        P:\venv\Scripts\Activate.ps1
+        .\venv\Scripts\Activate.ps1
 
     If you see error messages asking you to set execution policy, use the
     following command to allow unsigned script to run, for the current user.
@@ -78,7 +66,7 @@ If everything works, you are in the virtual environment. Notice that the
 current virtual environment is shown inside the parentheses before the 
 command line prompt.
 
-        (venv) PS P:\>
+        (venv) PS C:\Users\YourNetID>
 
 Continue to install MyHDL package with `pip` in this environment. Remember to
 activate the virtual environment before you run any Python scripts that use
@@ -113,7 +101,7 @@ Python script.  There should be no error messages when we run the scripts.
 For example, the following is the output of `gate2.py`.
 
 ```
-(venv) PS P:\myhdl\examples> python gate2.py
+# In your virtual envrionment, run "python gate2.py"
 a b | and or  not_a
 0 0 | 0   0   1
 0 1 | 0   1   1
@@ -125,7 +113,7 @@ The following is the output of `mux.py`. This file has two implementations of
 2-input multiplexor.
 
 ```
-(venv) PS P:\myhdl\examples> python mux.py
+# In your virtual envrionment, run "python mux.py"
 a b s | z zg
 0 0 0 | 0 0
 0 1 0 | 0 0
@@ -176,3 +164,20 @@ Semiconductor Engineering, Aug 27, 2020.
 
 * [GTKWave Repo](https://github.com/gtkwave/gtkwave). 
   [An older version on SourceForge](http://gtkwave.sourceforge.net/).
+
+# UConn AnyWare Desktop 
+
+All UConn students have access to AnyWare Desktop. It is a virtual computer we
+can access anywhere in a web browser.  The login page is
+[here](https://software.uconn.edu/uconn-software-online/).  The system is
+Windows Server 219 and has Python 3.7.x installed, as of fall 2022.  After P
+drive is removed, it is not as convenient to use AnyWare Desktop. You may
+need to download/upload files through web interface.
+
+On the virtual PC, `cmd.exe` is disabled. As of Sep 2022, we can still
+start Powershell. To start Powershell, search 'powershell' in the search box on
+the left end of the task bar and then click the Powershell application.
+
+Once in the power shell, follow the instructions provided earlier to install 
+Python virtual environment. Remember to run commands in your home directory.
+
