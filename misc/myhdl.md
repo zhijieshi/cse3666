@@ -165,13 +165,3 @@ Semiconductor Engineering, Aug 27, 2020.
 * [GTKWave Repo](https://github.com/gtkwave/gtkwave). 
   [An older version on SourceForge](http://gtkwave.sourceforge.net/).
 
-# UConn AnyWare Desktop 
-
-All UConn students have access to AnyWare Desktop. It is a virtual computer we
-can access anywhere in a web browser.  The login page is
-[here](https://software.uconn.edu/uconn-software-online/).  The system is
-Windows Server 219 and has Python 3.7.x installed, as of fall 2022.  After P
-drive is removed, it is not as convenient to use AnyWare Desktop. You may
-need to download/upload files through web interface. The mapping of folders
-is not well documented and can be confusing. Therefore, it is not recommended
-to work on AnyWare Desktop for labs that require Python and MyHDL. 
