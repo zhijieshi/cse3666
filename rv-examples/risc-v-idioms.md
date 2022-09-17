@@ -24,6 +24,7 @@ Any of the following instructions works.
 Load -100 into register t0. 
 
 <details><summary>Answer</summary>
+
 Small means the value is in ragne [-2048, 2047].  
 
 ```
@@ -34,6 +35,7 @@ Small means the value is in ragne [-2048, 2047].
 ### Load an arbitrary 32-bit constant into a register
 
 <details><summary>Answer</summary>
+
 It depends on the value of the constant. If the constant can be represented by 
 a 12-bit two's complement number, we need only one ADDI instruction. 
 
@@ -67,6 +69,7 @@ register.
 Copy register t0 to t1.
 
 <details><summary>Answer</summary>
+
 We just do t1 = t0 + 0.
 
         addi    t1, t0, 0 
@@ -285,6 +288,7 @@ var:    .word   0
 ```
 
 <details><summary>Answer</summary>
+
 We can use `la` pseudoinstruction to put an address in a register. 
 The operation is done with two instructions: AUIPC and ADDI.
 
@@ -354,9 +358,11 @@ Assume `s1` is the starting address of string s.
     while  (s[i])
         loop body
         i += 1
+```
 
-    # in for loop
+The loop can also be written as a for loop.
 
+```
     for (i = 0; s[i]; i += 1)
         loop body
 ```
