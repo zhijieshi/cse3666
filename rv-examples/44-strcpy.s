@@ -1,5 +1,19 @@
 # UConn CSE 3666 Example 
 
+        .data   
+dst:    .space  100
+src:    .string "this is an example string"
+
+        .text
+main: 
+
+        la      a0, dst
+        la      a1, src
+        jal     strcpy
+
+        li      a7, 10
+        ecall
+
 # copy string s to d and return d
 # char *strcpy(char *d, char *s) 
 # {
