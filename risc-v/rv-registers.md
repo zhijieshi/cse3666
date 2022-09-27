@@ -86,7 +86,7 @@ The following table lists the registers and their names.
 
 <tr>
 <td>x28 - x31</td>
-<td>t3 - t6</td>
+<td>t3 - t7</td>
 <td>Temporary registers.</td>
 </tr>
 
@@ -97,6 +97,11 @@ The following table lists the registers and their names.
 
 In general, a callee (a function being called) should preserve values in `sp`
 and saved registers (`s0` to `s11`). 
+
+A caller assumes all argument registers and temporary registers have been
+changed. 
+
+Register `ra` is changed by the JAL or JALR instruction.
 
 `gp` and `tp` are set by the system. We should not change them in application
 code.
