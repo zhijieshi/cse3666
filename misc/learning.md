@@ -11,7 +11,11 @@ Link](https://www.youtube.com/watch?v=ji5_MqicxSo).
 
 ## Tips
 
-* [12 Study Habits to Adopt Now](https://www.youtube.com/watch?v=Ip3ppacgV94).
+* Grant Sanderson (3Blue1Brown). [Tips to be a better problem solver](https://www.youtube.com/watch?v=QvuQH4_05LI).
 
-* [How to Use the Feynman Technique - Study Tips - How to Study](https://www.youtube.com/watch?v=q-16DPh_VWw).
+* Socratica. [12 Study Habits to Adopt Now](https://www.youtube.com/watch?v=Ip3ppacgV94).
+
+* Socratica. [How to Use the Feynman Technique - Study Tips - How to Study](https://www.youtube.com/watch?v=q-16DPh_VWw).
+
+* Derek Muller (Veritasium). [The Science of Thinking](https://www.youtube.com/watch?v=UBVV8pch1dM)
 
