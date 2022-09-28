@@ -31,13 +31,13 @@ Python virtual envrionment. We will set up a Python virtual environment for
 this course. We can creae a Python virtual environment and install packages in
 the environment without admin privilege.
 
-The instructions for creating virtual environment in Python are provided on
-[the help page of Python 3](https://docs.python.org/3/library/venv.html).
+The commands below work in Powershell on lab computers.  The instructions for
+creating virtual environment in Python are provided on [the help page of Python
+3](https://docs.python.org/3/library/venv.html).
 
-The commands below work in Powershell on the lab computer. When you start
-PowerShell, you should be in your home directory. If not, use `cd $home` to go
-to your home directory. Typically, the path to your home directory looks like
-`c:\Users\YourNetID`. 
+When you start PowerShell, you should be in your home directory. If not, use
+`cd $home` to go to your home directory. Typically, the path to your home
+directory looks like `c:\Users\YourNetID`. 
 
 **The following commands assume you are in your home directory.**
 
@@ -69,11 +69,11 @@ command line prompt.
         (venv) PS C:\Users\YourNetID>
 
 Continue to install MyHDL package with `pip` in this environment. Remember to
-activate the virtual environment before you run any Python scripts that use
+activate the virtual environment before you run any Python scripts that require
 MyHDL. 
 
 Once in the virtual environment, we need to use `python` to run Python scripts.
-Do not use `py`. It starts Python in the native system environment.
+Do not use `py`, which starts Python in the native system environment.
 
 ### Pip command
 
