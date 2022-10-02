@@ -22,6 +22,9 @@ Note that you may not be able to save or donwload your design!
 
 ## Diagram drawing
 
+In addition to what are listed below, a lot of drawing software, e.g., Inkscape and
+TikZ, has libraries for drawing electric/digital circuit.
+
 * [Diagrams.net](https://app.diagrams.net/). Used to be "draw.io". Diagram editor in browser. 
   Diagram can be saved in cloud or locally. It has a library of logic gates. The shape of gates
   is good.
@@ -30,6 +33,15 @@ Note that you may not be able to save or donwload your design!
 
 * [Python package for drawing circuit diagrams](https://pypi.org/project/schemdraw/). 
   [Documentation](https://schemdraw.readthedocs.io/en/latest/usage/start.html).
+
+# Viewing VCD file
+
+In addition to the software listed below, some commonly used software, like VS Code and Vim, has plugin for viewing VCD files. Some commerical companies also provide waveform viewer for free. 
+
+* [GTKWave Repo](https://github.com/gtkwave/gtkwave). 
+  [An older version on SourceForge](http://gtkwave.sourceforge.net/).
+
+* [Value Change Dump (.vcd) command line viewer for Windows, Linux and MacOS](https://github.com/yne/vcd). Viewing waves in terminal is a good idea. However, the current version is fragile.
 
 # Verilog
 
