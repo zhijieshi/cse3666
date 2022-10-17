@@ -18,9 +18,30 @@ div.outer {
 }
 
 .time {
-	font-size: 10em;  /* 12 */
+	font-size: 8em;  /* 12 */
 	font-family: monospace; 
 	color: darkblue;
+}
+
+.timer {
+	font-size: 10em;  /* 12 */
+	font-family: monospace; 
+	color: darkgreen;
+}
+
+div.p {
+}
+
+#error_msg {
+    color: red;
+}
+
+#config_button { 
+    /* height: 40px; */
+    position: fixed; 
+    bottom:0%;
+    width:100%; 
+    opacity: 1;
 }
 
 </style>
@@ -28,21 +49,110 @@ div.outer {
 
 <body>
   <div id="div_display" class="outer"> 
-	  <h1>The local time is</h1>
+	  <h1>Local Time</h1>
 	  <p><span id="id_time" class="time">00:00:00 AM</span></p>
 	  <p><span id="id_date" class="median"> </span></p>
   </div>
- 
+  <div id="div_timer" style="display:none" class="outer"> 
+      <h1>Remaining Time</h1>
+      <p><span id="timer_text" class="timer">00:00:00</span></p>
+  </div>
+  <div id="config_button">
+      <div id="id_config" style = "display:none">
+      <p>Please enter the ending time in the format of "HH:MM" or an integer for the number of minutes. 
+      <p>Examples: '3:00' for a timer that expires at 3 o'clock. '60' for a 60-minute timer.
+      <form action="javascript:void(0);" onsubmit="return start_timer();">
+      <input type="text" id="end_time" size="6" value="">
+      <input type="submit" value="start" onclick="start_timer()"> 
+      <input type="button" value="cancel" onclick="hide_config(0)"> 
+      <input type="button" value="stop" onclick="hide_config(1)"> 
+      <span id="error_msg"></span>
+      </form> 
+      </div>
+      <p><span id="timer_toggle" onclick="show_config()">&#x23F2;</span></p>
+  </div>
 </body>
 
 <script type="text/javascript">
+var timer_on = false
+var timer_start = null
+var timer_end = null
+
 function showtime() {
-    const dt = new Date();
-    document.getElementById("id_time").innerHTML = dt.toLocaleTimeString('en-US');
-    document.getElementById("id_date").innerHTML = dt.toDateString();
+    const dt = new Date()
+    document.getElementById("id_time").innerHTML = dt.toLocaleTimeString('en-US')
+    // document.getElementById("id_date").innerHTML = dt.toDateString()
+    if (timer_on) {
+        let left = timer_end - dt + 950
+        if (left < 0) {
+            left = 0
+        }
+        const str = new Date(left).toISOString().slice(11, 19)
+        document.getElementById("timer_text").innerHTML = str
+    }
 }
 
-var timerId= setInterval(()=>{showtime()}, 500);
+var timerId= setInterval(()=>{showtime()}, 200);
+
+function show_config() {
+    show_error_msg("")
+    document.getElementById("id_config").style.display = "block"
+}
+
+function hide_config(stop) {
+    document.getElementById("id_config").style.display = "none"
+    if (stop == 1) {
+        timer_on = false
+        document.getElementById("div_timer").style.display = "none"
+    }
+}
+
+function show_error_msg(msg) {
+    document.getElementById("error_msg").textContent = msg
+}
+
+
+function start_timer() {
+    let t_str = document.getElementById("end_time").value
+
+    timer_start = new Date() 
+    let day_start = new Date(timer_start.getTime())
+    day_start.setHours(0)
+    day_start.setMinutes(0)
+    day_start.setSeconds(0, 0)
+    let cur_msec = timer_start - day_start
+
+    let msec = 0
+
+    const re = /^(\d\d?):(\d{2})$/
+    let fields = t_str.match(re)
+    // console.log(fields)
+    if (fields && fields.length >= 3) {
+        msec = (parseInt(fields[1]) * 60 + parseInt(fields[2])) * 60000
+    } else {
+        const re1 = /^\d+$/
+        console.log("Checking for all digits.")
+        fields = t_str.match(re1)
+        if (fields) {
+            msec = cur_msec + parseInt(fields[0]) * 60000
+        } else {
+            show_error_msg("Not a valid input.") 
+            return false
+        }
+    }
+
+    while (msec < cur_msec) { msec += 12 * 3600 * 1000 }
+
+    timer_end = new Date( day_start.getTime() + msec);
+
+    console.log(timer_end)
+
+    timer_on = true
+    document.getElementById("id_config").style.display = "none"
+    document.getElementById("div_timer").style.display = "block"
+
+    return false
+}
 
 </script>
  
