@@ -107,3 +107,48 @@ See the following pages for more information about the Signal class in MyHDL.
 
 [Signal and other classes](http://docs.myhdl.org/en/stable/manual/reference.html#myhdl.Signal)
 
+## Shadow signals
+
+Sometimes we would like to connect one bit or a subset of bits in a multi-bit
+signal to a module, as shown in the following example.
+
+```python
+@block
+def fancy(x, y, z):
+    # x is a signal of 16 bits
+    # y is a single-bit signal
+
+    # send bit 0 in x to an AND gate
+    # this does not work
+    a1 = and2(and_out, x[0], y)
+        
+```
+
+Connecting `x[0]` to the AND gate does not work. `x[0]` refers to the value of
+bit 0. It is not a signal. When bit 0 in `x` changes, the AND gate is not
+triggered. We could create another signal, say, `x0`, and use a combinational
+logic to copy `x[0]` to `x0`, e.g., `x0.next = x[0]`. However, it requires
+more work.
+
+MyHDL provides a mechanism, called shadow signal, to address the issue. Instead
+of `x[0]`, we could use `x(0)` to refer to bit 0 in `x` and connect `x(0)` to
+the AND gate. `x(0)` works as a signal. If bit 0 of `x` changes, the AND gate
+will be triggered and then update its output.
+
+```python
+@block
+def fancy(x, y, z):
+    # x is a signal of 16 bits
+    # y is a single-bit signal
+
+    # send bit 0 in x to an AND gate
+    a1 = and2(and_out, x(0), y)      # x(0) is a shadow signal
+        
+```
+
+See the [reference
+page](http://docs.myhdl.org/en/stable/manual/reference.html#shadow-signals) for
+more details.
+
+Note that shadow signalis are read only. 
+
