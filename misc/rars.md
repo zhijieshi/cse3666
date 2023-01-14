@@ -23,7 +23,30 @@ the Chocolatey package is [here](https://community.chocolatey.org/packages/jre8)
 ### Linux
 
 There are many tutorials on the Internet, for different editions/versions of Linux.
-For example, [this page on DigitalOcean.com](https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-20-04) has the instructions to install Java on Ubuntu 20.04.
+For example, [this page on
+DigitalOcean.com](https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-20-04)
+has the instructions to install Java on Ubuntu 20.04.
+
+### macOS
+
+Search on the Internet for the instructions to install Java on the version of OS you 
+use. 
+
+If you cannot open/save files properly in RARS, try the following instructions, written
+by Aiden Rebstock in August 2022. 
+
+If you are on a newer version of Mac OS and you cannot properly open/save files
+in RARS that is because you need to provide proper disk access to the Java
+application launcher.
+
+-   Open system preferences
+-   Open Security & Privacy
+-   Select Privacy
+-   Select Full Disk Access
+-   Click the lock in the bottom left and login to allow changes.
+-   Click the plus button to add a new application.
+-   Select the java launcher located at /System/Library/CoreServices/JavaLauncher.app
+-   Reopen RARS and you should be able to view all the files.
 
 ## Download RARS
 
@@ -141,3 +164,5 @@ in your browser.
 
 When viewing the raw file, you can also find out the link to the raw file and use
 the link in other applicatons, e.g., `curl` to download the file.
+
+You can also simply copy the lines and paste into your favorite editor.
