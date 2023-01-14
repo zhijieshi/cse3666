@@ -3,7 +3,8 @@
 
         # .data starts data segments
         .data
-        # msg is a label to a string, an ASCII string ends with a NUL character
+        # msg is a label in data segment 
+        # .asciz specifies an ASCII string ends with a NUL character
         # we can also use ".string", instead of ".asciz"
 msg:    .asciz  "Hello, welcome to CSE 3666.\n"
 
@@ -14,9 +15,9 @@ msg:    .asciz  "Hello, welcome to CSE 3666.\n"
         # define a label, in code segment
 main:   
         la      a0, msg         # load the address of the string
-        li      a7, 4           # set the system call number. 4 for printing a string
+        addi    a7, zero, 4     # set the system call number. 4 for printing a string
         ecall                   # system call
 
         # system call 10: exit with code 0
-exit:   li      a7, 10          # set the system call number
+        addi    a7, zero, 10    # set the system call number
         ecall                   # system call
