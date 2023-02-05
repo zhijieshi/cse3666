@@ -43,5 +43,5 @@ loop:
         bne     t0, x0, loop
 exit:  
         addi    a0, t2, 0       # return d
-        ret 
+        jalr    x0, ra, 0
 

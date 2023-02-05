@@ -34,5 +34,5 @@ ELSE:
 EXIT:   
         lw      ra, 4(sp)      # restore return address
         addi    sp, sp, 8      # pop 2 words from stack
-        jalr    x0, 0(ra)      # and return
+        jalr    x0, ra, 0      # and return
 

@@ -15,7 +15,7 @@ main:
 	flw	fa0, 0(s0)
 	jal	f2c
 	
-	li	a7, 2		# print float
+	addi	a7, x0, 2       # print float
         ecall
 
 exit:   addi    a7, x0, 10      
@@ -32,4 +32,4 @@ f2c:
 	fcvt.s.w ft1, t1
 	fsub.s  fa0, fa0, ft1	# compute fahr - 32
 	fmul.s  fa0, ft0, fa0	# multiply with 5/9
-	jr	ra
+        jalr    x0, ra, 0

@@ -32,5 +32,4 @@ f2c:
 	flw     f1, 8(t0)# load 32     
 	fsub.s  f10, f10, f1	# compute fahr - 32
 	fmul.s  f10, f0, f10	# multiply with 5/9
-	jalr    x0, 0(ra)
-	jr	ra
+	jalr    x0, ra, 0

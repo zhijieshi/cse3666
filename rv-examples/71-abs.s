@@ -22,4 +22,4 @@ abs:	# when the function is called, a0 is n
 	bge	a0, x0, abs_exit	# n < 0?
 	sub	a0, x0, a0		# rv = -n
 abs_exit:
-	jalr	x0, 0(ra)		
+	jalr	x0, ra, 0		
