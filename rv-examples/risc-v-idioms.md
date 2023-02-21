@@ -95,7 +95,7 @@ Note that there is a BEQ instruction so the condition can be tested for the
 first iteration.
 
 ```
-    li      s1, 0
+    addi    s1, x0, 0
 
     # jump to loop_test because condition may fail on the first test
     beq     x0, x0, loop_test
@@ -129,8 +129,8 @@ the previous question.
 The code below tests the condition at the beginning of the loop.
 
 ```
-    li      s1, 0
-    li      s2, 1000    # note 1000 is a small constant
+    addi    s1, x0, 0
+    addi    s2, x0, 1000    # note 1000 is a small constant
 
 loop:
     bge     s1, s2, loop_exit
@@ -167,13 +167,13 @@ In the following code, both loops test the condition at the end/bottom
 of the loop.
 
 ```
-    li      s1, 0
+    addi    s1, x0, 0
     beq     x0, x0, test_i
 loop_i:
 
     #####
     # inner loop
-    li      s2, 0
+    addi    s2, x0, 0
     beq     x0, x0, test_j
 loop_j:
 
@@ -557,6 +557,6 @@ exit:
     lw      s2, 0(sp)
     addi    sp, sp, 12
 
-    jr      ra
+    jalr    x0, ra, 0
 ```
 </details>
