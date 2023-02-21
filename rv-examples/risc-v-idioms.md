@@ -220,7 +220,7 @@ Since the mask is small, we can use the immediate in ANDI to specify it.  Once
 bits are isolated, we can test them for specific values.
 
 ```
-    andi    t0, s0, 0x28      #0b0100_1000 
+    andi    t0, s0, 0x48      #0b0100_1000 
     beq     t0, x0, L
 ```
 
