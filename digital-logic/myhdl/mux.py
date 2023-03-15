@@ -98,7 +98,9 @@ def Mux2_gates(c, a, b, s):
 
 ## Main
 if __name__ == "__main__":
+    import argparse
     from myhdl import intbv, delay, instance
+
     @block
     def test_mux():
 
@@ -123,7 +125,12 @@ if __name__ == "__main__":
 
         return mux_1, mux_2, mux_3, stimulus
 
+    parser = argparse.ArgumentParser(description='MyHDL Mux2 Example')
+    parser.add_argument('--trace', action='store_true', help='generate trace file')
+
+    args = parser.parse_args()
+
     tb = test_mux()
     # change trace to True will generate waveforms
-    tb.config_sim(trace=False)
+    tb.config_sim(trace=args.trace)
     tb.run_sim()
