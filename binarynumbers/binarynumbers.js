@@ -26,7 +26,7 @@ const testView = Vue.createApp ({
             config_mode: 0,
 
             nbits: '8',
-            is_signed: true,
+            is_signed: false,
             q_radix: 2,	// Default: from 2's complement numbers to decimal numbers 
             a_radix: 10,
 
