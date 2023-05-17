@@ -83,7 +83,7 @@ int loops(int A[], int n) {
     
     // define local variables, which will be stored on stack.
     // How many bytes does each of them need? 
-    int     arr[128];   // integer array. 128 (32-bit) integers
+    int     arr[1280];   // integer array. 1280 (32-bit) integers
     int     i;          // integer 
     int     max, sum;  // define multiple variables of the same type
 
