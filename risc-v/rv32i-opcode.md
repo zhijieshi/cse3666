@@ -79,6 +79,5 @@ jal     imm[20|10:1|11|19:12]       rd          1101111(0x6F)
 
 ## Links
 
-* [RISC-V RV32I opcode](https://github.com/riscv/riscv-opcodes/blob/master/opcodes-rv32i)
-* [RISC-V RV64I opcode](https://github.com/riscv/riscv-opcodes/blob/master/opcodes-rv64i).
+* [RISC-V opcode project](https://github.com/riscv/riscv-opcodes)
 
