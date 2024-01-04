@@ -10,18 +10,16 @@ MIPS was taught in the course.
 We will need Java to run RARS. Java is already installed in lab computers. If
 you would like to install it on your own computer, please find the installation
 instructions on the Internet for the operating system you use. RARS can run 
-with recent versions of OpenJDK (like OpenJDK 17).
+with recent versions of OpenJDK (like OpenJDK 21).
 
 ### Windows
 
-You can download and install Java manually. Here is 
-[the Java download link at Java.com](https://java.com/en/download/windows_manual.jsp).
-As of August 2021, the version is Version 8 update 301.
+You can install a recent version of OpenJDK. Download links and instructions
+are on [the official site of OpenJDK](https://openjdk.org/).
 
-You can also use package management software to install. For example, 
-the Chocolatey package is [here](https://community.chocolatey.org/packages/jre8). 
-
-You can also choose to install a recent version of OpenJDK.
+You can also use package management software to install. For example, the
+Chocolatey package is
+[here](https://community.chocolatey.org/packages/openjdk). 
 
 ### Linux
 
