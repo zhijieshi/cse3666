@@ -1,6 +1,3 @@
-#include    <stdio.h>
-
-
 /* Use the following command line to generate assembly code 
  
     gcc -S -c -masm=intel add.c
@@ -14,4 +11,3 @@ int main()
     b =  20;
     return a + b;
 }
-
