@@ -17,6 +17,10 @@ with recent versions of OpenJDK (like OpenJDK 21).
 You can install a recent version of OpenJDK. Download links and instructions
 are on [the official site of OpenJDK](https://openjdk.org/).
 
+Microsoft has built OpenJDK binary for Windows, macOS, and Linux, for both x64
+and AArch64. [Here is the download
+page](https://learn.microsoft.com/en-us/java/openjdk/download).
+
 You can also use package management software to install. For example, the
 Chocolatey package is
 [here](https://community.chocolatey.org/packages/openjdk). 
