@@ -44,7 +44,7 @@ does not require sudo privilege.
 
 After Homebrew is installed, you can use it to install OpenJDK. See
 [instrctions on this page](https://formulae.brew.sh/formula/openjdk).
-IMPORTANT: Pay attention to the additional command you have to run in the
+***IMPORTANT:*** Pay attention to the additional command you have to run in the
 "Requires" section.  The command requires sudo privilege. It starts with `sudo
 ln`.
 
@@ -101,11 +101,12 @@ RARS can also be started from the command line if PATH is set correctly.
 *Do not unpack the jar file.*
 
 ```
-java -jar .\rars.jar
+java -jar ./rars.jar
 ```
 
-Replace `.\rars.jar` with the full path to the jar file you downloaded before.
-Note that the path separator is `/` on some systems, e.g., Linux. 
+You may need to replace the path with the full path to the jar file you
+downloaded before. We will use `/` as the directory separator, which 
+should work on Windows. We may see `\` if we use auto completion. 
 
 ## Run an RISC-V Program
 
@@ -140,7 +141,7 @@ You can also run the program on the command line. Replace `rars.jar` with
 the path to the RARS jar file on your computer. 
 
 ```
-java -jar rars.jar .\01-hello.s
+java -jar rars.jar ./01-hello.s
 ```
 
 ## Get familiar with RARS
