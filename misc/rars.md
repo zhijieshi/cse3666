@@ -37,8 +37,26 @@ has the instructions to install Java on Ubuntu 20.04.
 Search on the Internet for the instructions to install Java on the version of OS you 
 use. 
 
-If you cannot open/save files properly in RARS, try the following instructions, written
-by Aiden Rebstock in August 2022. 
+A popular tool for package management on macOS is [Homebrew](https://brew.sh/).
+If you are not using any other package manager, please consider to give it a
+try. There is one line command on the webpage to install homebrew and it 
+does not require sudo privilege.
+
+After Homebrew is installed, you can use it to install OpenJDK. See
+[instrctions on this page](https://formulae.brew.sh/formula/openjdk).
+IMPORTANT: Pay attention to the additional command you have to run in the
+"Requires" section.  The command requires sudo privilege. It starts with `sudo
+ln`.
+
+You should be able to run java in Terminal. However, you are not able to start
+RARS by double clicking the jar file yet. The OS blocks it for security. To
+allow `rars.jar`, go to "Security and Privacy" and select the "General" tab. In
+the "Allow apps downloaded from" section, you can find recently blocked apps.
+Click "Open Anyway" to override the block. Continue to read if you have trouble
+open/save files in RARS. 
+
+If you cannot open/save files properly in RARS, try the following instructions,
+written by Aiden Rebstock in August 2022. 
 
 If you are on a newer version of Mac OS and you cannot properly open/save files
 in RARS that is because you need to provide proper disk access to the Java
@@ -69,7 +87,7 @@ You will see a page that explains what is new in the version. Scroll down to
 the bottom of the page and find the download link for a jar file, for example,
 `rars1_5.jar`.
 
-On lab computers, you can save the jar file on P drive so the file is available
+On lab computers, you can save the jar file on OneDrive so the file is available
 even if you log in on a different computer. 
 
 ## Start RARS
@@ -168,6 +186,6 @@ select `Save as` in the context menu. Menu and keyboard shortcuts may be differe
 in your browser.
 
 When viewing the raw file, you can also find out the link to the raw file and use
-the link in other applicatons, e.g., `curl` to download the file.
+the link in other applications, e.g., `curl` to download the file.
 
 You can also simply copy the lines and paste into your favorite editor.
