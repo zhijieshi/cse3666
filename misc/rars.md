@@ -71,6 +71,29 @@ application launcher.
 -   Select the java launcher located at /System/Library/CoreServices/JavaLauncher.app
 -   Reopen RARS and you should be able to view all the files.
 
+### UConn AnyWare
+
+If you have trouble running java applications on your computer, you can work on
+labs on lab computers or on a UConn AnyWare desktop.
+
+*   Go to [UConn AnyWare
+    page](https://software.uconn.edu/uconn-software-online/) and click "Launch
+    AnyWare".
+
+*   Log in with your NetID and password.
+
+*   You may see two Desktops, AnyWare Desktop and Engineering Desktop. Select
+    AnyWare Desktop, which is accessible to all UConn students.
+
+*   Wait until the virtual machine boots. It may take one or two minutes for
+    the first time.
+
+*   Now you have access to a Windows machine with Java installed. 
+
+    **Important:** If the jar file cannot be opened automatically on OneDrive,
+    try to place it in a different folder, for example, the Downloads or
+    Documents folder.
+
 ## Download RARS
 
 Download RARS from [RARS Github repo.](https://github.com/TheThirdOne/rars).
