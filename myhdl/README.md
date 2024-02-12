@@ -57,10 +57,19 @@ directory looks like `c:\Users\YourNetID`.
         .\venv\Scripts\Activate.ps1
 
     If you see error messages asking you to set execution policy, use the
-    following command to allow unsigned script to run, for the current user.
-    Then try to activate the virtual environment again.
+    following commands to set ExecutionPolicy in PowerShell then run
+    Activate.ps1 again. The first command below sets the execution policy of
+    the current user to RemoteSigned, which is more secure than Unrestricted.
+    The script generated in recent Python is signed. However, it may not work
+    on your computer. If RemoteSigned does not work, try Unrestricted.  Note
+    that the Unrestricted policy allows any script (signed or unsigned) to run.
+    If you are not comfortable with that, you can change the scope to process,
+    which is only effective to that instance of Powershell. The downside is
+    that you will have to set the policy every time you have a new session.
 
+        Set-ExecutionPolicy RemoteSigned -scope currentuser
         Set-ExecutionPolicy Unrestricted -scope currentuser
+        Set-ExecutionPolicy Unrestricted -scope process
 
 If everything works, you are in the virtual environment. Notice that the
 current virtual environment is shown inside the parentheses before the 
@@ -72,8 +81,8 @@ Continue to install MyHDL package with `pip` in this environment. Remember to
 activate the virtual environment before you run any Python scripts that require
 MyHDL. 
 
-Once in the virtual environment, we need to use `python` to run Python scripts.
-Do not use `py`, which starts Python in the native system environment.
+Once in the virtual environment, we use `python` to run Python scripts. Do not
+use `py`, which starts Python in the native system environment.
 
 ### Pip command
 
