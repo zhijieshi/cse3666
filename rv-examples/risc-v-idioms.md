@@ -210,6 +210,21 @@ We check the LSB in t0. Since the mask is small, we can use ANDI.
 
 ### Test bits. 
 
+Check a register s0 is divisible by 8.
+
+<details><summary>Answer</summary>
+
+We check the right-most three bits in s0. Since the mask is small, we can use ANDI.
+
+```
+    andi    t0, s0, 7           # 7 is 0b0111 
+    beq     t0, x0, DIV8        # if t0 == 0, s0 is divisible by 8
+```
+
+</details>
+
+### Test bits. 
+
 Check the value of selected bits in a register, for example, s0. 
 
     if (both bits 3 and 6 in s0 are 0) goto L 
@@ -289,8 +304,13 @@ var:    .word   0
 
 <details><summary>Answer</summary>
 
-We can use `la` pseudoinstruction to put an address in a register. 
+In CSE 3666, we find out the address of var and use LUI and ADDI to 
+load the 32 bits into a register.
+
+If allowed, we can use `la` pseudoinstruction to put an address in a register.
 The operation is done with two instructions: AUIPC and ADDI.
+
+AUIPC does not appear in exam questions.
 
 ```
     # suppose var is a variable defined in data section 
@@ -355,7 +375,7 @@ Assume `s1` is the starting address of string s.
 
 ```
     i = 0
-    while  (s[i])
+    while  (s[i] != 0)
         loop body
         i += 1
 ```
@@ -363,7 +383,7 @@ Assume `s1` is the starting address of string s.
 The loop can also be written as a for loop.
 
 ```
-    for (i = 0; s[i]; i += 1)
+    for (i = 0; s[i] != 0; i += 1)
         loop body
 ```
 
@@ -490,6 +510,23 @@ The following code calls `puts` to print a string, assuming the address of
     la      a0, str         # la is a pseudoinstruction.
     jal     ra, _puts
 ```
+
+If the address of `str` is already in a register, say, `s2`, we can copy it 
+to register `a0`.
+
+```
+    addi    a0, s2, 0
+    jal     ra, _puts
+```
+
+If the address of `str` is 0x100010000, we use LUI to load it into register
+`a0`.
+
+```
+    lui     a0, 0x10010
+    jal     ra, _puts
+```
+
 </details>
 
 ### Implement non-leaf functions
