@@ -26,3 +26,10 @@ platforms, for example, the following two websites.
 
 *   [copy.sh virtual x86](https://copy.sh/v86/) Select Arch Linux (the first one).
 
+## Links
+
+*   [Guide to x86 for CS 216 at Univ of
+    Virginia](https://www.cs.virginia.edu/~evans/cs216/guides/x86.html)   
+
+*   [x86 Assembly at WikiBooks](https://en.wikibooks.org/wiki/X86_Assembly). Examples
+    are written in AT&T syntax. Different assemblers and syntax types are discussed.
