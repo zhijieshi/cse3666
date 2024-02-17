@@ -3,28 +3,28 @@ from myhdl import block, always_comb, Signal, StopSimulation
 @block
 def And2(c, a, b):
 
-    """ 2-input gate
-    c    -- output c = a & b
-    a, b -- data inputs
+    """ 2-input AND gate
+    c    -- output 
+    a, b -- inputs
     """
 
     @always_comb
     def comb():
-        c.next = a and b
+        c.next = (a & b) & 1
 
     return comb
 
 @block
 def Xor2(c, a, b):
 
-    """ 2-input gate
-    c    -- output c = a ^ b
-    a, b -- data inputs
+    """ 2-input XOR gate
+    c    -- output
+    a, b -- inputs
     """
 
     @always_comb
     def comb():
-        c.next = a ^ b
+        c.next = (a ^ b) & 1
 
     return comb
 
@@ -33,7 +33,7 @@ def Xor2(c, a, b):
 def Or3(z, a, b, c):
 
     """ 3-input OR gate
-    z       -- output z = a | b | c
+    z       -- output 
     a, b, c -- inputs
     """
 
@@ -62,32 +62,33 @@ def Fulladder1(a, b, cin, s, cout):
     # instantiating gates and connect them
 
     # two XOR gates to compute sum
-    x1 = Xor2(x1_out, a, b)
-    x2 = Xor2(s, x1_out, cin)
+    u_x1 = Xor2(x1_out, a, b)
+    u_x2 = Xor2(s, x1_out, cin)
 
     # compute carry
     # cout = a & b + a & cin + b & cin
-    a1 = And2(a1_out, a, b) 
-    a2 = And2(a2_out, a, cin) 
-    a3 = And2(a3_out, b, cin) 
-    o1 = Or3(cout, a1_out, a2_out, a3_out)
+    u_a1 = And2(a1_out, a, b) 
+    u_a2 = And2(a2_out, a, cin) 
+    u_a3 = And2(a3_out, b, cin) 
+    u_o1 = Or3(cout, a1_out, a2_out, a3_out)
 
     # that's it 
 
-    return x1, x2, a1, a2, a3, o1
+    return u_x1, u_x2, u_a1, u_a2, u_a3, u_o1
 
 if __name__ == "__main__":
+    import argparse
     from myhdl import intbv, delay, instance
     @block
     def test_comb():
 
         # create output signals, individually
         # Note we also specify the number of bits in it
-        # we can also use Signal(bool(0))
+        # we can also use Signal(bool(0)) for 1 bit signals
         s = Signal(bool(0)) 
         cout = Signal(intbv(0)[1:]) 
 
-        # all input signals
+        # all 3 input signals
         all_input = Signal(intbv(0)[3:])
 
         # example of shadow signals
@@ -115,6 +116,11 @@ if __name__ == "__main__":
 
         return comb1, stimulus
 
+    parser = argparse.ArgumentParser(description='MyHDL 1-bit full adder example')
+    parser.add_argument('--trace', action='store_true', help='generate trace file')
+
+    args = parser.parse_args()
+
     tb = test_comb()
-    # tb.config_sim(trace=True)
+    tb.config_sim(trace=args.trace)
     tb.run_sim()
