@@ -101,7 +101,7 @@ Once MyHDL is installed, we can use the package by importing it in our Python
 scripts. 
 
 Some MyHDL examples are provided
-[here](https://github.com/zhijieshi/cse3666/tree/master/digital-logic/myhdl). 
+[here](./examples). 
 
 To run the examples, first downlaod them and then run the scripts as a regular
 Python script.  There should be no error messages when we run the scripts.
