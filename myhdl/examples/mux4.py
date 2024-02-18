@@ -1,6 +1,6 @@
 from myhdl import block, always_comb, Signal, StopSimulation
 
-## Implementation using logic operations  
+## Implementation using logical expressions
 @block
 def Mux4(z, a, b, c, d, s):
     """ Multiplexer.
@@ -12,11 +12,14 @@ def Mux4(z, a, b, c, d, s):
 
     @always_comb
     def mux_logic():
-        # use not instead of ~ to remove warnings in recent Python
-        z.next = (((not s[1]) & (not s[0]) & a) | 
-                  ((not s[1]) &      s[0]  & b) | 
-                  (     s[1]  & (not s[0]) & c) | 
-                  (     s[1]  &      s[0]  & d)) & 1
+        s1 = int(s[1])
+        s0 = int(s[0])
+        s1_not = not s1
+        s0_not = not s0
+        z.next = ((s1_not & s0_not & a) 
+                | (s1_not & s0     & b) 
+                | (s1     & s0_not & c) 
+                | (s1     & s0     & d)) 
 
     return mux_logic
 
@@ -31,30 +34,29 @@ if __name__ == "__main__":
         z, a, b, c, d = [Signal(intbv(0)[1:]) for i in range(5)]
         s = Signal(intbv(0)[2:])
 
-        # instantiating different MUXes
-        mux_1 = Mux4(z, a, b, c, d, s)
+        # instantiating a MUX
+        u_mux = Mux4(z, a, b, c, d, s)
 
         @instance
         def stimulus():
+            sel = opt_s & 3
+            print("Select", ["a", "b", "c", "d"][sel])  
             print("a b c d s  | z")
-            s.next = opt_s & 3
+            s.next = sel
             for i in range(16):
                 a.next, b.next, c.next, d.next = intbv(i)[4:]
                 yield delay(10)
-                # convert to bool to int to see 0 or 1, instead of True or False
-                print("{} {} {} {} {} | {} ".format(int(a), int(b), int(c), int(d), 
-                                                    bin(s,2), int(z)))
+                print(f"{a} {b} {c} {d} {bin(s,2)} | {z}")
             raise StopSimulation()
 
-        return mux_1, stimulus
+        return u_mux, stimulus
 
-    parser = argparse.ArgumentParser(description='MyHDL Mux4 Example')
+    parser = argparse.ArgumentParser(description='MyHDL MUX4 Example')
     parser.add_argument('select', type=int, nargs='?', default="0", help='select signal value')
     parser.add_argument('--trace', action='store_true', help='generate trace file')
 
     args = parser.parse_args()
 
     tb = test_mux(args.select)
-    # change trace to True will generate waveforms
     tb.config_sim(trace=args.trace)
     tb.run_sim()
