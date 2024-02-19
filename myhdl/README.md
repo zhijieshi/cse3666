@@ -100,8 +100,7 @@ In Python virtual environment, run the following command to install MyHDL.
 Once MyHDL is installed, we can use the package by importing it in our Python
 scripts. 
 
-Some MyHDL examples are provided
-[here](./examples). 
+Some MyHDL examples are provided [here](./examples). 
 
 To run the examples, first downlaod them and then run the scripts as a regular
 Python script.  There should be no error messages when we run the scripts.
@@ -111,27 +110,27 @@ For example, the following is the output of `gate2.py`.
 
 ```
 # In your virtual envrionment, run "python gate2.py"
-a b | and or  not_a
-0 0 | 0   0   1
-0 1 | 0   1   1
-1 0 | 0   1   0
-1 1 | 1   1   0
+a b | and or
+0 0 | 0   0
+0 1 | 0   1
+1 0 | 0   1
+1 1 | 1   1
 ```
 
-The following is the output of `mux.py`. This file has two implementations of
+The following is the output of `mux.py`. This file has three implementations of
 2-input multiplexor.
 
 ```
 # In your virtual envrionment, run "python mux.py"
-a b s | z zg
-0 0 0 | 0 0
-0 1 0 | 0 0
-1 0 0 | 1 1
-1 1 0 | 1 1
-0 0 1 | 0 0
-0 1 1 | 1 1
-1 0 1 | 0 0
-1 1 1 | 1 1
+a b s | z1 z2 z3
+0 0 0 | 0  0  0
+1 0 0 | 1  1  1
+0 1 0 | 0  0  0
+1 1 0 | 1  1  1
+0 0 1 | 0  0  0
+1 0 1 | 0  0  0
+0 1 1 | 1  1  1
+1 1 1 | 1  1  1
 ```
 
 ## MyHDL Resources
