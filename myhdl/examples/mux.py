@@ -63,11 +63,11 @@ def Or2(c, a, b):
 @block
 def Not(z, a):
     """ 
-    z = ~ a
+    z = NOT a
     """
     @always_comb
     def comb():
-        z.next = a == 0
+        z.next = not a
 
     return comb
 
@@ -116,7 +116,7 @@ if __name__ == "__main__":
         def stimulus():
             print("a b s | z1 z2 z3")
             for i in range(8):
-                b.next, a.next, s.next = intbv(i)[3:0]
+                s.next, b.next, a.next = intbv(i)[3:0]
                 yield delay(10)
                 # convert to bool to int to see 0 or 1, instead of True or False
                 print("{} {} {} | {}  {}  {}".format(int(a), int(b), int(s), 

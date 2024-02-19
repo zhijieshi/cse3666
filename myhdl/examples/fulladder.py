@@ -10,7 +10,7 @@ def And2(c, a, b):
 
     @always_comb
     def comb():
-        c.next = (a & b) & 1
+        c.next = a and b
 
     return comb
 
@@ -24,7 +24,7 @@ def Xor2(c, a, b):
 
     @always_comb
     def comb():
-        c.next = (a ^ b) & 1
+        c.next = a ^ b
 
     return comb
 
