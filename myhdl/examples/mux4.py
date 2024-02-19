@@ -6,20 +6,18 @@ def Mux4(z, a, b, c, d, s):
     """ Multiplexer.
 
     z -- mux output
-    a, b, c, d -- data inputs
+    a, b, c, d -- data inputs. Single bits.
     s -- select signal. Two bits. 0 for a and 3 for d
     """
 
     @always_comb
     def mux_logic():
-        s1 = int(s[1])
-        s0 = int(s[0])
-        s1_not = not s1
-        s0_not = not s0
-        z.next = ((s1_not & s0_not & a) 
-                | (s1_not & s0     & b) 
-                | (s1     & s0_not & c) 
-                | (s1     & s0     & d)) 
+        s1, s0 = int(s[1]), int(s[0])
+        s1_, s0_ = not s1, not s0
+        z.next = ((s1_ & s0_ & a) 
+                | (s1_ & s0  & b) 
+                | (s1  & s0_ & c) 
+                | (s1  & s0  & d)) 
 
     return mux_logic
 
