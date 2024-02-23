@@ -12,12 +12,21 @@ def Mux4(z, a, b, c, d, s):
 
     @always_comb
     def mux_logic():
-        s1, s0 = int(s[1]), int(s[0])
-        s1_, s0_ = not s1, not s0
-        z.next = ((s1_ & s0_ & a) 
-                | (s1_ & s0  & b) 
-                | (s1  & s0_ & c) 
-                | (s1  & s0  & d)) 
+        s1, s0 = s[1], s[0]
+        z.next = ( (not s1 and not s0 and a) 
+                or (not s1 and     s0 and b) 
+                or (    s1 and not s0 and c) 
+                or (    s1 and     s0 and d)) 
+
+# it is recommended to use `and`, `or`, and `not` on single bits.
+# `&` and `|` might be more concise, 
+# but Python (since v12) is deprecating `~` on Bool type.
+#        s1,  s0  = int(s[1]),   int(s[0])
+#        s1_, s0_ = int(not s1), int(not s0)
+#        z.next = ((s1_ & s0_ & a) 
+#                | (s1_ & s0  & b) 
+#                | (s1  & s0_ & c) 
+#                | (s1  & s0  & d)) 
 
     return mux_logic
 
@@ -50,7 +59,7 @@ if __name__ == "__main__":
         return u_mux, stimulus
 
     parser = argparse.ArgumentParser(description='MyHDL MUX4 Example')
-    parser.add_argument('select', type=int, nargs='?', default="0", help='select signal value')
+    parser.add_argument('select', type=int, nargs='?', default="0", choices = [0, 1, 2, 3], help='select signal value')
     parser.add_argument('--trace', action='store_true', help='generate trace file')
 
     args = parser.parse_args()
