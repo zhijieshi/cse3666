@@ -2,56 +2,34 @@
 
 There are several ways. 
 
-* We could move byte to byte
+* We could move byte to byte.
 
 ```
-    # Suppose bytes are ABCDEFGH
+    # Assume we first move the lowest bytes to the highest destination
 
-    # Here are the values to be produced
-    # operations can be placed in a loop
-    # 0000000H  andi
-    # 0000000G  shift andi
-    # 000000H0  shfit
-    # 000000HG  or
-    # 0000000F  shift andi
-    # 00000HG0  shift
-    # 00000HGF  or
-    # and so on, about 4 instructions per byte
-
-    # or
-    # ABCDEFGH  start
-    # H0000000  
-    # 0000000G  shift andi
-    # HG000000  shift or
-    # 0000000F  shift andi
-    # HGF00000  shift or
-    # and so on, about 4 instructions per byte
-
+    # here are the (intermediate) values produced in each step
+    # Suppose bytes are 0xAABBCCDD
+    s0 = AABBCCDD 
+    t1 = 000000DD 
+    t2 = DD000000   lowest byte is set
+    t3 = 000000CC   
+    t4 = 00CC0000   
+    t5 = DDCC0000   the second byte is set
+    t6 = 000000BB   
+    t7 = 0000BB00
+    t8 = DDCCBB00   the third byte
+    t9 = 000000AA
+    s0 = DDCCBBAA   the last byte
 ```
 
-* Save the number into memory and we can access each byte
+* Save the number into memory and we can access each byte.
 
 * Do it recursively in a register.
 
 ```
     # reverse byte order in s0
-    # Suppose bytes are ABCDEFGH
+    # Suppose bytes in s0 are 0xAABBCCDD
 
-    # swap words
-    slli    t0, s0, 32 
-    srli    t1, s0, 32 
-    or      s0, t0, t1
-
-    # now s0 has 
-
-    # swap halfwords in each word
-    # s0 is EFGHABCD
-    # idea:
-    # get EF00AB00, and then 00EF00AB  
-    # get 00GH00CD, and then GH00CD00
-    # set s0 to GHEFCDAB
-
-    # swap bytes in each halfwords
-    # s0 will be HGFEDCBA
-    # 13 instructions if masks are already generated
+    # Step 1: swap halfwords. s0 becomes 0xCCDDAABB
+    # Step 2: swap bytes in each halfword.  s0 becomes 0xDDCCBBAA
 ```
