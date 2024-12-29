@@ -1,4 +1,3 @@
-
 RARS (RISC-V Assembler and Runtime Simulator) is written in Java and built upon
 MARS (MIPS Assembler and Runtime Simulator), which we used in CSE 3666 when
 MIPS was taught in the course. 
@@ -80,7 +79,11 @@ labs on lab computers or on a UConn AnyWare desktop.
     page](https://software.uconn.edu/uconn-software-online/) and click "Launch
     AnyWare".
 
+    There is a link below the "Launch AnyWare" for "Usage Instructions".
+
 *   Log in with your NetID and password.
+
+*   Select `Use Light Version` if Citrix Receiver is not installed.
 
 *   You may see two Desktops, AnyWare Desktop and Engineering Desktop. Select
     AnyWare Desktop, which is accessible to all UConn students.
@@ -88,11 +91,15 @@ labs on lab computers or on a UConn AnyWare desktop.
 *   Wait until the virtual machine boots. It may take one or two minutes for
     the first time.
 
-*   Now you have access to a Windows machine with Java installed. 
+*   Now you have access to a Windows machine and Java. Follow the instructions
+    below to download RARS.
 
     **Important:** If the jar file cannot be opened automatically on OneDrive,
     try to place it in a different folder, for example, the Downloads or
-    Documents folder.
+    Documents folder you see in the file explorer.
+
+    If the system asks you "How do you want to open this .jar file?", select
+    "OpenJDK Platform binary".
 
 ## Download RARS
 
@@ -108,7 +115,7 @@ version you would like to download.
 
 You will see a page that explains what is new in the version. Scroll down to
 the bottom of the page and find the download link for a jar file, for example,
-`rars1_5.jar`.
+`rars1_6.jar`.
 
 On lab computers, you can save the jar file on OneDrive so the file is available
 even if you log in on a different computer. 
