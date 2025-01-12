@@ -4,7 +4,7 @@ Given a decimal number, we are asked to find out the bits (binary digits) that
 represent the same value. Suppose the bits are:
 
 ```
-... b9 b8 b7 b6 b5 b4 b3 b2 b1 b0
+b10 b9 b8 b7 b6 b5 b4 b3 b2 b1 b0
 ```
 
 Each bit `b0`, `b1`, et.c, can be 0 or 1. Each carries a different weight
@@ -16,7 +16,7 @@ A conversion strategy is to figure out the value of the bits one by one,
 starting from `b0`. Let us use decimal number 2021 as an example to explain the
 process. 
 
-### The least significant bit (LSB)
+### Find b0, the least significant bit (LSB)
 
 Can we figure out the value of `b0` in 2021's binary representation? And why? 
 
@@ -26,72 +26,90 @@ Can we figure out the value of `b0` in 2021's binary representation? And why?
 
 We divide 2021 by 2. The quotient is 1010 and the remainder is 1.
 
-```
-2021 = 1010 * 2 + 1 
-```
+$$2021 = 1010 \times 2 + 1$$
 
-The value carried by other bits `b1`, `b2`, etc., is a multiple 2.
-It is divisible by 2.
+Notice that the values carried by other bits `b1`, `b2`, etc., are divisible by 2.
 
 </details>
 
-### Continue to other bits 
+### Find out b1
 
-Now we know `b0` in 2021's binary representation is 1. How can we 
-continue to find the value of `b1`? 
+Now we know `b0` is 1 in 2021's binary representation. We continue to find the
+value of the next bit. 
+
+Can you figure out the value of `b1`? 
+
+Hint: $2021 = 1010 \times 2 + 1$
 
 ```
-... b9 b8 b7 b6 b5 b4 b3 b2 b1 b0
+b10 b9 b8 b7 b6 b5 b4 b3 b2 b1 b0
                             ?  1  
 ```
 
-Since we know that `2021 = 1010 * 2 + 1`. We just need to find out
-1010's binary representation and append 1 to its right end.   
+<details><summary>Answer</summary>
 
-<details><summary>Explanation</summary>
+If we remove the right most digit in a decimal number, we divide the number by
+10.  For example, if we remove the right most digit in decimal number 1234, we
+get 123, whcih is `1234 // 10`, where `//` denotes integer division. 
 
-When we append a 1 to the right end of a binary number `x`, we
-are doing `x * 2 + 1`.
+Similarly, when we remove a bit at the right end of a binary number, we divide
+the number by 2 (using integer division). If we remove `b0` in 2021's binary
+representation, the remaining bits denote value 1010, which is `2021 // 2`. 
 
-When we append a 0 to the right end of a binary number `x`, we
-are doing `x * 2`.
-
-</details>
-
-To find the LSB of 1010's binary representation, we do division by
-2 again. This time the remainder is 0. So the LSB in 1010's binary
-representation is 0. 
+The following bits represent 2021 (although we only know `b0` is 1).
 
 ```
-1010 = 505 * 2 + 0
+b10 b9 b8 b7 b6 b5 b4 b3 b2 b1 b0
+                            ?  1
 ```
 
-Therefore, `b1` in 2021's representation is 0. 
+After removing `b0`, the following bits represent 1010.
+
+```
+b10 b9 b8 b7 b6 b5 b4 b3 b2 b1
+                            ? 
+```
+
+`b1` is the right most bit in 1010's binary representation. To find its 
+value, we divide 1010 by 2. 
+        
+    1010 % 2 = 0
+    1010 // 2 = 505
+    1010 = 505 * 2 + 0
+
+The quotient is 505 and the remainder is 0. So the right-most bit of 1010's
+binary representation is 0. Therefore, `b1` in 2021's representation is 0. 
+
 
 ```
 ... b9 b8 b7 b6 b5 b4 b3 b2 b1 b0
                          ?  0  1  
 ```
 
-The next step is to find `b2`. Following the same strategy, we
-divide 505, the quotient from the last division, by 2. The remainder
-is 1. 
+</details>
 
-```
-505 = 252 * 2 + 1
-```
-The LSB of 505's binary representation is 1 and `b2` in 
-2021's representation is 1  
+### Continue to other bits
+
+Following the same strategy, we can find the value of `b2`, `b3`, and so on. 
+
+To figiure `b2`, we divide 505 by 2, where 505 is the quotient we got from the last division. 
+The quotient is 252 and the remainder is 1. So `b2` is 1. 
+
+    505 = 252 * 2 + 1
 
 ```
 ... b9 b8 b7 b6 b5 b4 b3 b2 b1 b0
                       ?  1  0  1  
 ```
 
-We repeat the process and continue to find out `b3`, `b4`, and so on, until the
-quotient from a division becomes 0.  The process will terminate because the
-quotient becomes smaller in each step. If we continue when the quotient is 0,
-the bits we get will always be 0.
+We repeat the process and continue to find out the remaning bits until the
+quotient becomes 0. The process will terminate because the quotient becomes
+smaller in each step. If we continue when the quotient is 0, the bits we get
+will always be 0.
+
+The following line shows the process of finding remaining bits. On the first
+line, we divide 252 by 2. The quotient is 126 and the remainder is 0.  So `b3`
+is 0.  
 
 ```
 252 = 126 * 2 + 0       b3 = 0 
@@ -113,43 +131,57 @@ So the binary representation of 2021 is:
 
 ## Converting a decimal number to a hexadecimal number
 
-The process is similar. The divisor in division is 16, not 2.
+Converting a decimal number to a hexadecimal number is similar to the process
+of converting it to a binary number. The difference is that we use 16, instead
+of 2, as the divisor in divisions.
 
-For example, we convert 2021 to a hexadecimal number in
-following steps. The hexadecimal number is 0x7E5.
+For example, we take the following steps to convert 2025 to a hexadecimal
+number. 
 
 ```
-2021 = 126 * 16 +  5       d0 = 5
+2025 = 126 * 16 +  9       d0 = 9
  126 =   7 * 16 + 14       d1 = E  
    7 =   0 * 16 +  7       d2 = 7 
 ```
 
-## Binary numbers and hexadecimal numbers
+On the first line, we divide 2021 by 16. The quotient is 126 and the
+remainder is 9. So the right most hex digit is 9. 
 
-Because 16 = 2<sup>4</sup>, the conversion between
-binary and hexadecimal numbers are much eaiser. 
+We divide 126 on the second line. The remainder is 14. So the next hex digit
+(d1) is E. 
 
-To convert a binary number to a hexadecimal number, 
-we put bits in groups, each group 4 bits, starting from
-the right end (LSB). Then, we convert each group of bits to
-a hexadecimal digit.
+In the third division, the remainder is 7. So the third hex digit from the right is 7. 
 
-```
-Binary:            11111100101  
-Bits in group:   111 1110 0101
-Convert to hex:    7    E    5
-```
+We can terminate the process because the quotient became 0. The hexadecimal
+representation of 2021 is `0x7E9`.
 
-Note that the left group has only 3 bits, but we can add more 0's. And that's
-why it is important to start from the LSB.
+## Conversion between binary numbers and hexadecimal numbers
 
-Converting hexadecimal numbers to binary numbers is simply converting
-each hexadecimal digit to 4 bits.  Here is an example.
+Because $16 = 2^4$, the conversion between binary and hexadecimal numbers are
+much eaiser. 
+
+To convert a binary number to a hexadecimal number, we put bits in groups, each
+group 4 bits, starting from the right end. Then, we convert each group of bits
+to a hexadecimal digit.
 
 ```
-Hexadecimal:     2021
+Binary:            11111101001  
+Bits in group:   111 1110 1001
+Convert to hex:    7    E    9
+```
+
+Note that the left-most group has only 3 bits. In this case, we add a 0 to the
+left of the bits. That's why it is important to start from the right end.
+
+Converting hexadecimal numbers to binary numbers is simply converting each
+hexadecimal digit to 4 bits.  Here is an example.
+
+```
+Hexadecimal:     C0FFEE
 Convert each hex digit to 4 bits:    
-     2    0    2    1 
-    0010 0000 0010 0001
+    C    0    F    F    E    E   
+    1010 0000 1111 1111 1110 1110
 ```
 
+In CSE 3666, each register has 32 bits. We normally use 8 hexadecimal digits to
+represent these bits.
