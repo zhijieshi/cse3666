@@ -5,16 +5,16 @@
         .data
         # msg is a label in data segment 
         # .asciz specifies an ASCII string ends with a NUL character
-        # we can also use ".string", instead of ".asciz"
+        # we can also use ".string"
 msg:    .asciz  "Hello, welcome to CSE 3666.\n"
 
         # .text starts code segments
         .text
-        .globl  main    # declare main to be global. Note it is ".globl"
 
         # define a label, in code segment
 main:   
-        la      a0, msg         # load the address of the string
+        #la      a0, msg        # load the address of the string
+        lui     a0, 0x10010     # hard coded address
         addi    a7, zero, 4     # set the system call number. 4 for printing a string
         ecall                   # system call
 
