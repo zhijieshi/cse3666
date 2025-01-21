@@ -1,36 +1,35 @@
-# Test 64-bit operations in RARS
 # For UConn CSE 3666, by Jerry Shi
       
         # .text starts code segments
         .text
-        .globl  main    # declare main to be global. Note it is ".globl"
 
 main:   
-	# try to find out the bits in destination registers and 
-	# compare them with the results in RARS 
-	
-	li	x1, 0x5A5
-
-	slli	x2, x1, 12
-	
-	add	x3, x1, x2
-	
-	slli	x4, x3, 24
-	
-	add	x5, x3, x4
-
-        slli	x6, x5, 44
+        # try to find out the bits in destination registers and 
+        # compare them with the results in RARS 
         
-        add	x7, x5, x6
-        
-        or	x8, x5, x6
+        addi    x1, zero, 0x5A5
 
-        add	x9, x7, x7
-
-        and	x10, x8, x9
+        slli    x2, x1, 12
         
-        xori	x11, x10, -1
+        add     x3, x1, x2
+        
+        slli    x4, x3, 12
+
+        add     x5, x4, x1
+
+        srli    x6, x5, 28
+
+        srai    x7, x5, 28        
+        
+        # pay attention to sign extension
+        ori     x8, x1, 0xFFFFFF00
+
+        andi    x9, x1, 0xF
+      
+        xori    x10, x1, -1
+        
+        add     x11, x10, x10
         
         # system call to exit with code 0
-exit:   li      a7, 10                  # li is a pseudoinstruction
-        ecall                           # system call
+exit:   addi    a7, zero, 10
+        ecall
