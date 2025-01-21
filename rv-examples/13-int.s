@@ -4,9 +4,6 @@
       
         # .text starts code segments
         .text
-        .globl  main    # declare main to be global. Note it is ".globl"
-
-
 main:   
         # system call
         # 5: read an integer
@@ -16,53 +13,50 @@ main:
         ecall
 
         # the retun value is stored in a0
-        mv      s1, a0
+        addi    s1, a0, 0
 
         # print the value in different formats, 
         # by the order of syscall numbers
-        # also, use li pseudoinstruction
 
         # decimal
-        li      a7, 1 
+        addi    a7, x0, 1 
         ecall
 
         # print new line
-        li      a0, '\n'
-        li      a7, 11
+        addi    a0, x0, '\n'
+        addi    a7, x0, 11
         ecall 
 
         # hex
-        mv      a0, s1
-        li      a7, 34 
+        addi    a0, s1, 0
+        addi    a7, x0, 34
         ecall
 
         # print new line
-        li      a0, '\n'
-        li      a7, 11
+        addi    a0, x0, '\n'
+        addi    a7, x0, 11
         ecall 
 
         # bin
-        mv      a0, s1
-        li      a7, 35
+        addi    a0, s1, 0
+        addi    a7, x0, 35
         ecall
 
         # print new line
-        li      a0, '\n'
-        li      a7, 11
+        addi    a0, x0, '\n'
+        addi    a7, x0, 11
         ecall 
 
         # unsigned
-        mv      a0, s1
-        li      a7, 36
+        addi    a0, s1, 0
+        addi    a7, x0, 36
         ecall
 
         # print new line
-        li      a0, '\n'
-        li      a7, 11
+        addi    a0, x0, '\n'
+        addi    a7, x0, 11
         ecall 
-
-        bne     s1, x0, main
          
         # system call to exit with code 0
-exit:   li      a7, 10                  # li is a pseudoinstruction
-        ecall                           # system call
+        addi    a7, x0, 10
+        ecall
