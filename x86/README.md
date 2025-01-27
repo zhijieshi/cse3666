@@ -33,3 +33,6 @@ platforms, for example, the following two websites.
 
 *   [x86 Assembly at WikiBooks](https://en.wikibooks.org/wiki/X86_Assembly). Examples
     are written in AT&T syntax. Different assemblers and syntax types are discussed.
+
+*   [NASM Tutorial](https://cs.lmu.edu/~ray/notes/nasmtutorial/). There are also 
+    [GNU Assembler Examples](https://cs.lmu.edu/~ray/notes/gasexamples/).
