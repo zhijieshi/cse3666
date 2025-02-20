@@ -117,11 +117,11 @@ a b | and or
 1 1 | 1   1
 ```
 
-The following is the output of `mux.py`. This file has three implementations of
-2-input multiplexor.
+The following is the output of `mux2.py`. This file has three implementations of
+the 2-1 multiplexor.
 
 ```
-# In your virtual envrionment, run "python mux.py"
+# In your virtual envrionment, run "python mux2.py"
 a b s | z1 z2 z3
 0 0 0 | 0  0  0
 1 0 0 | 1  1  1
