@@ -5,28 +5,25 @@ from myhdl import block, always_comb, Signal, StopSimulation
 def Mux4(z, a, b, c, d, s):
     """ Multiplexer.
 
-    z -- mux output
-    a, b, c, d -- data inputs. Single bits.
-    s -- select signal. Two bits. 0 for a and 3 for d
+    Inputs:
+
+        a, b, c, d -- data inputs. Single bits.
+
+        s -- 2-bit select signal.
+            0 for a, 1 for b, 2 for c, and 3 for d.
+
+    Output:
+        z -- mux output
     """
 
     @always_comb
     def mux_logic():
+        # it is recommended to use `and`, `or`, and `not` on single bits.
         s1, s0 = s[1], s[0]
         z.next = ( (not s1 and not s0 and a) 
                 or (not s1 and     s0 and b) 
                 or (    s1 and not s0 and c) 
                 or (    s1 and     s0 and d)) 
-
-# it is recommended to use `and`, `or`, and `not` on single bits.
-# `&` and `|` might be more concise, 
-# but Python (since v12) is deprecating `~` on Bool type.
-#        s1,  s0  = int(s[1]),   int(s[0])
-#        s1_, s0_ = int(not s1), int(not s0)
-#        z.next = ((s1_ & s0_ & a) 
-#                | (s1_ & s0  & b) 
-#                | (s1  & s0_ & c) 
-#                | (s1  & s0  & d)) 
 
     return mux_logic
 

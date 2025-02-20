@@ -3,7 +3,7 @@ from myhdl import block, always_comb, Signal, StopSimulation
 ## Implementation 1 
 @block
 def Mux2(c, a, b, s):
-    """ Multiplexer.
+    """ 2-1 Multiplexer.
 
     c -- mux output
     a, b -- data inputs
@@ -22,7 +22,7 @@ def Mux2(c, a, b, s):
 ## Implementation 2 
 @block
 def Mux2_v2(c, a, b, s):
-    """ Multiplexer.
+    """ 2-1 Multiplexer.
 
     c -- mux output
     a, b -- data inputs
@@ -31,7 +31,6 @@ def Mux2_v2(c, a, b, s):
 
     @always_comb
     def mux_logic():
-        # c.next = ((~s) & a | s & b) & 1
         c.next = (not s and a) or (s and b)
 
     return mux_logic
@@ -41,7 +40,7 @@ def Mux2_v2(c, a, b, s):
 @block
 def And2(c, a, b):
     """ 
-    c = a & b
+    c = a and b
     """
     @always_comb
     def comb():
@@ -52,7 +51,7 @@ def And2(c, a, b):
 @block
 def Or2(c, a, b):
     """ 
-    c = a | b
+    c = a or b
     """
     @always_comb
     def comb():
@@ -63,7 +62,7 @@ def Or2(c, a, b):
 @block
 def Not(z, a):
     """ 
-    z = NOT a
+    z = not a
     """
     @always_comb
     def comb():
@@ -73,16 +72,13 @@ def Not(z, a):
 
 @block
 def Mux2_gates(c, a, b, s):
-
-    """ Multiplexer.
+    """ 2-1 Multiplexer.
 
     c -- mux output
     a, b -- data inputs
     s -- control input: select b if asserted, otherwise a
 
     """
-    # c = (~s) & a | s & b
-
     # create instances of the gates and connect them
     # create signals first
     # need signals when we instantiating gates 
