@@ -91,11 +91,11 @@ The following are commonly used RISC-V instructions in CSE 3666.
     # function call/return and jump
 
     jal     x1, funcion     # jump and link
-    jalr    x1, 0(x2)       # jump and link to the address in x2
+    jalr    x1, x2, 0       # jump and link to the address in x2
 
     # the following two are pseudoinstructions
     j       L               # jal  x0, L
-    jr      x2              # jalr x0, 0(x2) 
+    jr      x2              # jalr x0, x2, 0
 ```
 
 ### Encoding
@@ -126,8 +126,4 @@ The a and t registers are not preserved through functino calls:
 `x2` is `sp`.
 `x3` is `gp`.
 `x8` is `fp` (and also `s0`).
-
-### Floating-Point support
-
-To be added.
 
