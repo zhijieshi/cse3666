@@ -16,6 +16,11 @@ Note that you may not be able to save or donwload your design!
 * [Circuitverse](https://circuitverse.org/simulator). Developed by students at
   IIIT-Bangalore (International Institute of Information Technology).
 
+* [CircuitJS1](https://www.falstad.com/circuit/circuitjs.html).  An circuit
+  simulator that runs in a browser. It is written by Paul Falstad and Iain
+  Sharp. You can compile and run it locally on your own computer. Check the
+  instructions on [the Github repo](https://github.com/pfalstad/circuitjs1). 
+
 * [Circuit Lab](https://www.circuitlab.com/). Not Free.
 
 * [Logic.LY](https://logic.ly). Not Free. Wires are curved.
