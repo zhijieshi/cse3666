@@ -1,16 +1,9 @@
----
-layout: post
-title:  "Math background" 
-usemath: true
-tag: math
----
-
-# Math 
+# Math Background
 
 We need some basic math skills in this course.
 
-* Solve (simple) equations 
-* Compute average
+*  Solve (simple) equations 
+*  Compute average
 
 ## Find the unknowns 
 
@@ -57,7 +50,7 @@ The total weight is:
 
 $$
 \begin{align} 
-& 20\% \times N \times 100 + 30\% \times N \times 150 + 50\% \times N \times 50 \\
+& 20\\% \times N \times 100 + 30\\% \times N \times 150 + 50\\% \times N \times 50 \\
 = & 20 N + 45 N + 25 N \\
 = & 90 N 
 \end{align}
@@ -67,16 +60,12 @@ Divide the total weight by count $N$.
 
 $$ \frac{90 N}{N} = 90 $$
 
-Therefore, the average weight is 90g.
+Therefore, the average weight is 90 g.
 
 Notice that $N$ is cancelled out eventually. We do not need to include it at
 the beginning. This is actually a common way to compute weighted average. 
 
-$$ 
-\begin{align}
-20\% \times 100 + 30\% \times 150 + 50\% \times 50 = 90 && \texttt{(Eq. 1.1)}
-\end{align}
-$$
+$$ 20\\% \times 100 + 30\\% \times 150 + 50\\% \times 50 = 90 \qquad \qquad \texttt{(Eq. 1)}$$
 
 ### Method 2
 
@@ -85,24 +74,16 @@ We pick a fruit as the reference and look at the differences of each fruit to th
 Let us use Fruit A's weight as the reference. 
 
 $$
-\begin{align} & 100 + 20\% \times (100 - 100) + 30\% \times (150 - 100) + 50\% \times (50 - 100) \\ 
-  = & 100 + 20\% \times 0 + 30\% \times 50 + 50\% \times (-50) && \texttt{(Eq. 2.1)} \\
+\begin{align} 
+    & 100 + 20\\% \times (100 - 100) + 30\\% \times (150 - 100) + 50\\% \times (50 - 100) \\ 
+  = & 100 + 20\\% \times 0 + 30\\% \times 50 + 50\\% \times (-50) && \texttt{(Eq. 2)} \\
   = & 100 + 15 - 25 \\
   = & 90 
 \end{align} 
 $$
 
-The methods are essentially the same. We can consider the reference in Eq. 1.1 is 0. 
-Eq. 2.1 can also be obtained from Eq. 1.1 as follows.
-
-$$
-\begin{align}
-& 20\% \times 100 + 30\% \times 150 + 50\% \times 50  \\
-= & 20\% \times (100 - 100 +  100) + 30\% \times (150 - 100 + 100) + 50\% \times (50 - 100 + 100) \\
-= & (20\% + 30\% + 50\%) \times 100 + 20\% \times (100 - 100) + 30\% \times (150 - 100) + 50\% \times (50 - 100) \\
-= & 100 + 20\% \times (100 - 100) + 30\% \times (150 - 100) + 50\% \times (50 - 100) 
-\end{align}
-$$
+The methods are essentially the same. The reference weigth in Eq. 1 is 0 while
+the one in Eq. 2 is 100.
 
 <!-- 
 * Apply ratio
@@ -114,3 +95,7 @@ we can find the value of one variable from the value of the other. Actually, spe
 ratio of distance and time. 
 
 -->
+
+# Additonal links
+
+*  [Scientifi notation on Khan Academy](https://www.khanacademy.org/math/cc-eighth-grade-math/cc-8th-numbers-operations/cc-8th-scientific-notation/v/scientific-notation)
