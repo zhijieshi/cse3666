@@ -1,9 +1,10 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Current Local Time</title>
 <style>
-/* body {background-color: powderblue;} */
-/* h1 {color: blue; align: center} */
 
 div.outer {
   /* height: 20em; */
@@ -13,23 +14,31 @@ div.outer {
   text-align: center;
 }
 
-.median {
-	font-size: 3em;
-}
-
 .time {
-	font-size: 8em;  /* 12 */
-	font-family: monospace; 
-	color: darkblue;
+    font-size: 8em;
+    font-family: monospace; 
+    color: darkblue;
 }
 
 .timer {
-	font-size: 10em;  /* 12 */
-	font-family: monospace; 
-	color: darkgreen;
+    font-size: 8em;
+    font-family: monospace; 
+    color: darkgreen;
 }
 
-div.p {
+.hidden {
+    display: none;
+}
+
+.fullwidth {
+    width: 100%;
+}
+
+#column_right {
+  padding-left: 40px;
+  width: 50%;
+  font-size:3em;
+  font-family: monospace; 
 }
 
 #error_msg {
@@ -37,73 +46,137 @@ div.p {
 }
 
 #config_button { 
-    /* height: 40px; */
-    position: fixed; 
-    bottom:0%;
-    width:100%; 
-    opacity: 1;
+  /* height: 40px; */
+  position: fixed; 
+  bottom: 0%;
+  width: 100%; 
+  opacity: 1;
+}
+
+.column {
+  float: left;
+}
+
+/* Clear floats after the columns */
+.row: after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 </style>
 </head>
 
 <body>
+  <div class="row">
+  <div id="column_left" class="column fullwidth">
   <div id="div_display" class="outer"> 
 	  <h1>Local Time</h1>
-	  <p><span id="id_time" class="time">00:00:00 AM</span></p>
-	  <p><span id="id_date" class="median"> </span></p>
+	  <p><span id="id_time" class="time">00:00:00</span></p>
   </div>
-  <div id="div_timer" style="display:none" class="outer"> 
+  <div id="div_timer" class="outer hidden"> 
       <h1>Remaining Time</h1>
       <p><span id="timer_text" class="timer">00:00:00</span></p>
   </div>
+  </div>
+  <div id="column_right" class="column hidden">
+  </div>
+  </div> 
   <div id="config_button">
-      <div id="id_config" style = "display:none">
+      <div id="id_config" class = "hidden">
       <p>Please enter the ending time in the format of "HH:MM" or an integer for the number of minutes. 
       <p>Examples: '3:00' for a timer that expires at 3 o'clock. '60' for a 60-minute timer.
-      <form action="javascript:void(0);" onsubmit="return start_timer();">
-      <input type="text" id="end_time" size="6" value="">
-      <input type="submit" value="start" onclick="start_timer()"> 
-      <input type="button" value="cancel" onclick="hide_config(0)"> 
-      <input type="button" value="stop" onclick="hide_config(1)"> 
-      <span id="error_msg"></span>
+      <form action="javascript:void(0);" onsubmit="return set_timer();">
+      <input type="text" name="end_time" id="end_time" size="6" placeholder="end time..." value="">
+      <input type="submit" value="start timer" onclick="set_timer()"> 
+      <input type="button" value="stop timer" onclick="stop_timer()"> 
+      <input type="button" value="Close Config" onclick="toggle_config()"> 
+      <p><input type="button" value="Show notes" onclick="show_notes(1)">
+         <input type="button" value="Hide notes" onclick="hide_notes()"></p>
+      <p><textarea id="note_editor" placeholder="Enter notes here ..." rows="8" cols="80"></textarea>
+      <p><span id="error_msg"></span></p>
       </form> 
       </div>
-      <p><span id="timer_toggle" onclick="show_config()">&#x23F2;</span></p>
+      <!-- &#x2630; 23F2 -->
+      <p><span id="timer_toggle" onclick="toggle_config()">&#x2630;</span></p>
   </div>
 </body>
 
 <script type="text/javascript">
-var timer_on = false
-var timer_start = null
-var timer_end = null
+var config_on = false
+var old_color = ""
 
 function showtime() {
     const dt = new Date()
-    document.getElementById("id_time").innerHTML = dt.toLocaleTimeString('en-US')
+    document.getElementById("id_time").innerHTML = dt.toLocaleTimeString('en-US').slice(0, 8)
     // document.getElementById("id_date").innerHTML = dt.toDateString()
-    if (timer_on) {
-        let left = timer_end - dt + 950
-        if (left < 0) {
-            left = 0
+    if (localStorage.timer_on == "1") {
+        // left is the remaining time in milli seconds  
+        let left = 0
+
+        if (localStorage.timer_end) {
+            let timer_end = new Date(parseInt(localStorage.timer_end))
+            if (timer_end > dt) {
+                // add 990 so the seconds add up to 60
+                left = timer_end - dt + 990
+            }
         }
-        const str = new Date(left).toISOString().slice(11, 19)
-        document.getElementById("timer_text").innerHTML = str
+
+        let start = 11
+
+        if (left < 10 * 3600000) {
+            start = 12
+        }
+
+        // use javascript toISOString to convert ms to HH:MM:SS
+        const str = new Date(left).toISOString().slice(start, 19)
+        const tt = document.getElementById("timer_text")
+        tt.innerHTML = str
+        let color = 'darkgreen'
+        if (left == 0) {
+            color = 'red'
+        } else if (left < 300000) {
+            color = 'orange'
+        } 
+        if (color != old_color) {
+            tt.style.color = color
+            old_color = color
+        }
     }
 }
 
-var timerId= setInterval(()=>{showtime()}, 200);
+function show_timer() {
+    document.getElementById("div_timer").style.display = "block"
+    // document.getElementById("div_timer").display = "block"
+}
+
+function hide_timer() {
+    document.getElementById("div_timer").style.display = "none"
+}
 
 function show_config() {
     show_error_msg("")
     document.getElementById("id_config").style.display = "block"
+    document.getElementById("div_timer").style.display = "none"
+    config_on = true
 }
 
-function hide_config(stop) {
+function hide_config() {
     document.getElementById("id_config").style.display = "none"
-    if (stop == 1) {
-        timer_on = false
-        document.getElementById("div_timer").style.display = "none"
+    if (localStorage.notes_on == "1") set_notes()
+    if (localStorage.timer_on == "1") {
+        show_timer()
+    } else {
+        hide_timer()
+    }
+    config_on = false
+}
+
+function toggle_config() {
+    if (config_on) {
+        hide_config()
+    } else {
+        show_config()
     }
 }
 
@@ -111,11 +184,44 @@ function show_error_msg(msg) {
     document.getElementById("error_msg").textContent = msg
 }
 
+function set_notes() {
+    // copy notes from editor to column
+    var notes = document.getElementById("note_editor").value
+    var div_right = document.getElementById("column_right")
+    div_right.innerHTML = notes
+    localStorage.notes = notes
+}
 
-function start_timer() {
+function show_notes(call_set) {
+    var div_left = document.getElementById("column_left")
+    var div_right = document.getElementById("column_right")
+
+    if (call_set) {
+        set_notes()
+    }
+    div_left.style.width = "40%"
+    div_right.style.display = "block"
+    localStorage.notes_on = "1"
+}
+
+function hide_notes() {
+    var div_left = document.getElementById("column_left")
+    var div_right = document.getElementById("column_right")
+
+    div_left.style.width = "100%"
+    div_right.style.display = "none"
+    localStorage.notes_on = "0"
+}
+
+function stop_timer() {
+    localStorage.timer_on = "0"
+    hide_config()
+}
+
+function set_timer() {
     let t_str = document.getElementById("end_time").value
 
-    timer_start = new Date() 
+    var timer_start = new Date() 
     let day_start = new Date(timer_start.getTime())
     day_start.setHours(0)
     day_start.setMinutes(0)
@@ -131,7 +237,6 @@ function start_timer() {
         msec = (parseInt(fields[1]) * 60 + parseInt(fields[2])) * 60000
     } else {
         const re1 = /^\d+$/
-        console.log("Checking for all digits.")
         fields = t_str.match(re1)
         if (fields) {
             msec = cur_msec + parseInt(fields[0]) * 60000
@@ -143,16 +248,36 @@ function start_timer() {
 
     while (msec < cur_msec) { msec += 12 * 3600 * 1000 }
 
-    timer_end = new Date( day_start.getTime() + msec);
+    var timer_end = new Date( day_start.getTime() + msec)
+
+    localStorage.timer_end = timer_end.getTime()
 
     console.log(timer_end)
 
-    timer_on = true
-    document.getElementById("id_config").style.display = "none"
-    document.getElementById("div_timer").style.display = "block"
+    localStorage.timer_on = "1"
+    hide_config()
 
     return false
 }
+
+var timerId= setInterval(()=>{showtime()}, 400);
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    // Retrieve data from local storage
+
+    // storedData = localStorage.getItem('yourKey');
+    // const parsedData = JSON.parse(storedData);
+    if (localStorage.timer_on == "1" ) {
+        document.getElementById("div_timer").style.display = "block"
+    }
+    if (localStorage.notes) {
+        document.getElementById('note_editor').value = localStorage.notes
+        document.getElementById("column_right").innerHTML = localStorage.notes
+    }
+    if (localStorage.notes_on == "1") {
+        show_notes(0)
+    }
+});
 
 </script>
  
