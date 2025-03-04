@@ -7,5 +7,5 @@ The directory names are self descriptive.
 ## Links
 
 * [The public page](https://zhijieshi.github.io/cse3666/)
-* [Local time](https://zhijieshi.github.io/cse3666/pages/localtime.html)
+* [Local time](https://zhijieshi.github.io/cse3666/localtime.html)
 
