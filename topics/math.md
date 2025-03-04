@@ -7,14 +7,14 @@ We need some basic math skills in this course.
 
 ## Find the unknowns 
 
-Suppose we know the relation of $n$ varaibles. If we know the value of
+Suppose we know the relation of $n$ variables. If we know the value of
 $n-1$ variables, we can find the value of the remaining one.
 
 For example, we know the relation among distance, time, and speed.
 
 $$ d = t \times s $$
 
-where $d$ is distance, $t$ is time, and $s$ is spped. If 
+where $d$ is distance, $t$ is time, and $s$ is speed. If 
 we know the value of two of the three variables, we can calculate the third.
 
 If a car travels 60 miles/hour for two hours, the distance it has travelled
@@ -82,7 +82,7 @@ $$
 \end{align} 
 $$
 
-The methods are essentially the same. The reference weigth in Eq. 1 is 0 while
+The methods are essentially the same. The reference weight in Eq. 1 is 0 while
 the one in Eq. 2 is 100.
 
 <!-- 
@@ -96,6 +96,6 @@ ratio of distance and time.
 
 -->
 
-# Additonal links
+# Additional links
 
-*  [Scientifi notation on Khan Academy](https://www.khanacademy.org/math/cc-eighth-grade-math/cc-8th-numbers-operations/cc-8th-scientific-notation/v/scientific-notation)
+*  [Scientific notation on Khan Academy](https://www.khanacademy.org/math/cc-eighth-grade-math/cc-8th-numbers-operations/cc-8th-scientific-notation/v/scientific-notation)
