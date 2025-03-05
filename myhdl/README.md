@@ -2,98 +2,36 @@
 
 MyHDL is a Python package that enables us to describe hardware in Python. We
 pick MyHDL, out of many options, because students taking CSE 3666 are familiar
-with Python. Also, MyHDL is very similar to Verilog. It would be easier for
-students to pick up Verilog in the future. 
+with Python. Also, MyHDL is very similar to Verilog. It will be easier for
+students to pick up Verilog after learning MyHDL.
 
-MyHDL works with Python 3.4 or above. Python on this page means a version that
-works with MyHDL. The Python version on lab computers is 3.10.
+We assume students can install a recent version of Python on their computer.
+MyHDL works with Python 3.4 or higher. Students who have trouble installing
+Python or MyHDL on their own computer can work on a lab computer while they fix
+issues with their computer. The lab computers run Windows 11 and have Python
+3.10 (or newer) installed.
 
-We have many ways to start Python and a Python script. The command could be
-`py`, `python`, or `python3`. It depends on the system and on the environment.
-We will use the lab computer as example. It is a Windows 11 system with Python
-3.10 installed.
+## Install MyHDL
 
-## Computers
+Once Python is installed, run the following command to install MyHDL.  We have
+many ways to start Python and a Python script. The command is `py` or `python`
+on Windows, or `python3` on Linux. We will use `python` in this tutorial. You
+may need to change it to `python3` on your computer. 
 
-Students can use their own computers to set up Python and MyHDL, and many do.
-However, if they run into problems, it may take a long time to troubleshoot.
-So if one has problems with their own computer, please use the lab computer. 
+    python -m pip install myhdl
 
-## Setting up
+If you do not have the admin privilege or you do not want to install packages
+globally, you can add the `--user` option.
 
-You can set up the lab environment on your own PC. If you have trouble, please
-use lab computers.
+    python -m pip install --user myhdl
 
-### Python virtual environment 
+If you would like to set up a Python virtual environment, see the instructions
+at the end.
 
-It is recommended to install packages for each kind of projects in a separate
-Python virtual envrionment. We will set up a Python virtual environment for
-this course. We can creae a Python virtual environment and install packages in
-the environment without admin privilege.
-
-The commands below work in Powershell on lab computers.  The instructions for
-creating virtual environment in Python are provided on [the help page of Python
-3](https://docs.python.org/3/library/venv.html).
-
-When you start PowerShell, you should be in your home directory. If not, use
-`cd $home` to go to your home directory. Typically, the path to your home
-directory looks like `c:\Users\YourNetID`. 
-
-**The following commands assume you are in your home directory.**
-
-*   Create a directory for the vitual environment, for example, `venv` .
-  
-        mkdir venv
-
-*   Use Python venv module to create a virtual environment. 
-
-        py -m venv venv
-
-*   Activate the virtual environment. The command depends on the OS and the shell
-    you use. Check the scripts in the `Scripts` directory and find the correct script.
-    The following are the commands for PowerShell. If you see security warning, choose
-    "Run" the script.
-
-        .\venv\Scripts\Activate.ps1
-
-    If you see error messages asking you to set execution policy, use the
-    following commands to set ExecutionPolicy in PowerShell then run
-    Activate.ps1 again. The first command below sets the execution policy of
-    the current user to RemoteSigned, which is more secure than Unrestricted.
-    The script generated in recent Python is signed. However, it may not work
-    on your computer. If RemoteSigned does not work, try Unrestricted.  Note
-    that the Unrestricted policy allows any script (signed or unsigned) to run.
-    If you are not comfortable with that, you can change the scope to process,
-    which is only effective to that instance of Powershell. The downside is
-    that you will have to set the policy every time you have a new session.
-
-        Set-ExecutionPolicy RemoteSigned -scope currentuser
-        Set-ExecutionPolicy Unrestricted -scope currentuser
-        Set-ExecutionPolicy Unrestricted -scope process
-
-If everything works, you are in the virtual environment. Notice that the
-current virtual environment is shown inside the parentheses before the 
-command line prompt.
-
-        (venv) PS C:\Users\YourNetID>
-
-Continue to install MyHDL package with `pip` in this environment. Remember to
-activate the virtual environment before you run any Python scripts that require
-MyHDL. 
-
-Once in the virtual environment, we use `python` to run Python scripts. Do not
-use `py`, which starts Python in the native system environment.
-
-### Pip command
-
-Python packages can be installed in many different ways.  [This page on
+[This page on
 Python.org](https://packaging.python.org/tutorials/installing-packages/)
 explains the installation of Python packages in detail.  [The MyHDL Github
 Repo](https://github.com/myhdl/myhdl) has instructions specific to MyHDL.  
-
-In Python virtual environment, run the following command to install MyHDL. 
-
-    python -m pip install myhdl
 
 ## Run the examples
 
@@ -102,14 +40,14 @@ scripts.
 
 Some MyHDL examples are provided [here](./examples). 
 
-To run the examples, first downlaod them and then run the scripts as a regular
-Python script.  There should be no error messages when we run the scripts.
-**Remember to activate the virtual environment first**.
+To run the examples, first download them and then run the scripts as a regular
+Python script. There should be no error messages when we run the scripts.  If
+you use a virtual environment, please remember to activate it first.
 
 For example, the following is the output of `gate2.py`.
 
 ```
-# In your virtual envrionment, run "python gate2.py"
+# command: python gate2.py
 a b | and or
 0 0 | 0   0
 0 1 | 0   1
@@ -117,11 +55,11 @@ a b | and or
 1 1 | 1   1
 ```
 
-The following is the output of `mux2.py`. This file has three implementations of
-the 2-1 multiplexor.
+The following is the output of `mux2.py`. This file has three implementations
+of the 2-1 multiplexor.
 
 ```
-# In your virtual envrionment, run "python mux2.py"
+# command: python mux2.py
 a b s | z1 z2 z3
 0 0 0 | 0  0  0
 1 0 0 | 1  1  1
@@ -132,6 +70,30 @@ a b s | z1 z2 z3
 0 1 1 | 1  1  1
 1 1 1 | 1  1  1
 ```
+
+## Troubleshooting
+
+###  Python complains myhdl is not installed
+
+Sometimes students run the `pip` command directly to install MyHDL. When they
+run the code the requires MyHDL, `py` or `python` complains that MyHDL is not
+installed. The issue could be that the system has mulitple versions of Python.
+Running `pip` directly installs packages for a different version of Python. One
+of the following can fix the issue. 
+
+*   Install the package with the following command, instead of `pip install myhdl`.
+
+        python -m pip install myhdl
+
+*   Uninstall old versions of Python, and install `pip` if needed.
+
+*   Create a virtual environment for MyHDL projects and install MyHDL in the
+    virutal environment. again,  
+
+On Windows, the following command lists the Python versions installed in the
+system. 
+
+    py -0p
 
 ## MyHDL Resources
 
@@ -173,3 +135,71 @@ Semiconductor Engineering, Aug 27, 2020.
 * [GTKWave Repo](https://github.com/gtkwave/gtkwave). 
   [An older version on SourceForge](http://gtkwave.sourceforge.net/).
 
+# Misc 
+
+## Python virtual environment 
+
+We can set up a Python virtual environment for MyHDL projects so MyHDL
+does not interfere with other projects. Another advantage is we do not
+need the admin privilege to install MyHDL in the virtual environment.
+
+The instructions for creating virtual environment in Python can be found on
+[the help page of Python 3](https://docs.python.org/3/library/venv.html).
+
+The commands below work in PowerShell/cmd on lab computers.  
+
+*   Create a directory for the virtual environment, for example, `venv`. You
+    can create it in your home directory or in your OneDrive folder, 
+  
+        mkdir venv
+
+*   Use Python venv module to create a virtual environment. Notice the second
+    `venv` is the directory we just created.
+
+        python -m venv venv
+
+*   Activate the virtual environment. The command depends on the OS and the shell
+    you use. Check the scripts in the `Scripts` directory and find the correct script.
+
+    If you use the Command shell (cmd) on Windows, run the following script: 
+
+        .\venv\Scripts\Activate.bat
+
+    If you use PowerShell, run the following command. If you see security
+    warning, choose "Run" the script.
+
+        .\venv\Scripts\Activate.ps1
+
+If everything works, you are in the virtual environment. Notice that the
+current virtual environment is shown inside the parentheses before the 
+command line prompt.
+
+        (venv) PS C:\Users\YourNetID>
+
+In the virtual environment, use the following command to install MyHDL package.
+
+    python -m pip install myhdl
+
+Remember to activate the virtual environment when you work on MyHDL projects. 
+
+###  Cannot run Activate.ps1
+
+For security reasons, some systems do not allow Activate.ps1 to run.  If you
+see error messages asking you to set the execution policy, use one of the
+following commands to set it in PowerShell, or you can just switch to  the
+Command shell (cmd).
+
+        Set-ExecutionPolicy RemoteSigned -scope currentuser
+        Set-ExecutionPolicy Unrestricted -scope currentuser
+        Set-ExecutionPolicy Unrestricted -scope process
+
+The first command sets the execution policy of the current user to
+RemoteSigned, which is more secure than Unrestricted. The script generated in
+recent Python is signed. 
+
+If the first command does not work, try the second/third command.  Note that
+the Unrestricted policy allows any script (signed or unsigned) to run.  If you
+are not comfortable with that, you can limit the scope to the current process
+(the third command), which is only effective to that instance of Powershell.
+The downside is that you will have to set the execution policy every time you
+have a new PowerShell session.
