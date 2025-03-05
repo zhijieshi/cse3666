@@ -18,12 +18,10 @@ many ways to start Python and a Python script. The command is `py` or `python`
 on Windows, or `python3` on Linux. We will use `python` in this tutorial. You
 may need to change it to `python3` on your computer. 
 
-    python -m pip install myhdl
-
-If you do not have the admin privilege or you do not want to install packages
-globally, you can add the `--user` option.
-
     python -m pip install --user myhdl
+
+If you have the admin privilege and you want to install packages globally, you
+can remove the `--user` option.
 
 If you would like to set up a Python virtual environment, see the instructions
 at the end.
@@ -77,7 +75,7 @@ a b s | z1 z2 z3
 
 Sometimes students run the `pip` command directly to install MyHDL. When they
 run the code the requires MyHDL, `py` or `python` complains that MyHDL is not
-installed. The issue could be that the system has mulitple versions of Python.
+installed. The issue could be that the system has multiple versions of Python.
 Running `pip` directly installs packages for a different version of Python. One
 of the following can fix the issue. 
 
@@ -88,7 +86,7 @@ of the following can fix the issue.
 *   Uninstall old versions of Python, and install `pip` if needed.
 
 *   Create a virtual environment for MyHDL projects and install MyHDL in the
-    virutal environment. again,  
+    virtual environment.
 
 On Windows, the following command lists the Python versions installed in the
 system. 
@@ -113,7 +111,7 @@ repo for installatino instructions.
 
 When simulating circuit, we can save signal values in a trace file and view the
 waveforms in other software.  MyHDL saves the waveforms in `.vcd` files.  A
-good free option to view .vcd files is GTKWave. The download links are in the
+good free option to view ".vcd" files is GTKWave. The download links are in the
 Links section.
 
 # Python features in MyHDL
@@ -146,7 +144,7 @@ need the admin privilege to install MyHDL in the virtual environment.
 The instructions for creating virtual environment in Python can be found on
 [the help page of Python 3](https://docs.python.org/3/library/venv.html).
 
-The commands below work in PowerShell/cmd on lab computers.  
+Here are the steps you can take to create a Python virtual environment.
 
 *   Create a directory for the virtual environment, for example, `venv`. You
     can create it in your home directory or in your OneDrive folder, 
@@ -154,7 +152,7 @@ The commands below work in PowerShell/cmd on lab computers.
         mkdir venv
 
 *   Use Python venv module to create a virtual environment. Notice the second
-    `venv` is the directory we just created.
+    `venv` is the directory we just created. 
 
         python -m venv venv
 
@@ -165,16 +163,23 @@ The commands below work in PowerShell/cmd on lab computers.
 
         .\venv\Scripts\Activate.bat
 
-    If you use PowerShell, run the following command. If you see security
+    If you use PowerShell on Windows, run the following command. If you see security
     warning, choose "Run" the script.
 
         .\venv\Scripts\Activate.ps1
+
+    If you use bash on Linux, run the following command.  
+
+        source venv/bin/activate
 
 If everything works, you are in the virtual environment. Notice that the
 current virtual environment is shown inside the parentheses before the 
 command line prompt.
 
         (venv) PS C:\Users\YourNetID>
+
+        # On Linux
+        (venv) yourusername@host:~$
 
 In the virtual environment, use the following command to install MyHDL package.
 
