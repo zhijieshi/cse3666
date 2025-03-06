@@ -5,11 +5,15 @@ from myhdl import block, always_comb, Signal, StopSimulation
 def Mux2(c, a, b, s):
     """ 2-1 Multiplexer.
 
-    c -- mux output
-    a, b -- data inputs
-    s -- control input: select b if s is asserted, otherwise a
+    inputs: 
+        a, b:   data
+        s:      select
+
+    output:
+        c:      if s == 1 then c = b else c = a
     """
 
+    # create instances of the gates and connect them
     @always_comb
     def mux_logic():
         if s:
@@ -24,11 +28,15 @@ def Mux2(c, a, b, s):
 def Mux2_v2(c, a, b, s):
     """ 2-1 Multiplexer.
 
-    c -- mux output
-    a, b -- data inputs
-    s -- control input: select b if s is asserted, otherwise a
+    inputs: 
+        a, b:   data
+        s:      select
+
+    output:
+        c:      if s == 1 then c = b else c = a
     """
 
+    # create instances of the gates and connect them
     @always_comb
     def mux_logic():
         c.next = (not s and a) or (s and b)
@@ -74,15 +82,20 @@ def Not(z, a):
 def Mux2_gates(c, a, b, s):
     """ 2-1 Multiplexer.
 
-    c -- mux output
-    a, b -- data inputs
-    s -- control input: select b if asserted, otherwise a
+    inputs: 
+        a, b:   data
+        s:      select
 
+    output:
+        c:      if s == 1 then c = b else c = a
     """
     # create instances of the gates and connect them
     # create signals first
     # need signals when we instantiating gates 
+
     n1_out, a1_out, a2_out = [Signal(bool(0)) for _ in range(3)]
+
+    # c = not s and a or s and b
 
     n1 = Not(n1_out, s)
     a1 = And2(a1_out, n1_out, a) 
