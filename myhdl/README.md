@@ -141,53 +141,64 @@ We can set up a Python virtual environment for MyHDL projects so MyHDL
 does not interfere with other projects. Another advantage is we do not
 need the admin privilege to install MyHDL in the virtual environment.
 
+We include some basic commands 
 The instructions for creating virtual environment in Python can be found on
 [the help page of Python 3](https://docs.python.org/3/library/venv.html).
+Here is [a page on Python.land](https://python.land/virtual-environments/virtualenv)
+that discusses Python virtual environment.
 
-Here are the steps you can take to create a Python virtual environment.
+### Windows 10/11 
 
-*   Create a directory for the virtual environment, for example, `venv`. You
-    can create it in your home directory or in your OneDrive folder, 
-  
-        mkdir venv
+You can use the commands in this section to create a Python virtual environment
+on Windows and install MyHDL. We assume you are under your home directory, for
+example, `C:\Users\UserName`, and would like to create the new virtual
+environment in `C:\Users\UserName\myhdlvenv`. 
 
-*   Use Python venv module to create a virtual environment. Notice the second
-    `venv` is the directory we just created. 
+Here are the commands for the Command shell (cmd).
 
-        python -m venv venv
+    python -m venv myhdlvenv
+    .\myhdlvenv\Scripts\Activate.bat
+    python -m pip install myhdl
 
-*   Activate the virtual environment. The command depends on the OS and the shell
-    you use. Check the scripts in the `Scripts` directory and find the correct script.
+Here are the commands for PowerShell.
+    
+    # create the virtual environment
+    python -m venv myhdlvenv
 
-    If you use the Command shell (cmd) on Windows, run the following script: 
+    # activate the virtual environment
+    .\myhdlvenv\Scripts\Activate.ps1
 
-        .\venv\Scripts\Activate.bat
-
-    If you use PowerShell on Windows, run the following command. If you see security
-    warning, choose "Run" the script.
-
-        .\venv\Scripts\Activate.ps1
-
-    If you use bash on Linux, run the following command.  
-
-        source venv/bin/activate
-
-If everything works, you are in the virtual environment. Notice that the
-current virtual environment is shown inside the parentheses before the 
-command line prompt.
-
-        (venv) PS C:\Users\YourNetID>
-
-        # On Linux
-        (venv) yourusername@host:~$
-
-In the virtual environment, use the following command to install MyHDL package.
-
+    # install myhdl
     python -m pip install myhdl
 
 Remember to activate the virtual environment when you work on MyHDL projects. 
+You can see the current virtual environment inside the parentheses before the
+command line prompt. For example,  
 
-###  Cannot run Activate.ps1
+    (myhdlvenv) PS C:\Users\UserName>
+
+If you have trouble in running "Activate.ps1" in PowerShell, you can either use
+the Command shell or set the execution policy in PowerShell. See the
+"PowerShell Execution Policy" section at the bottom of this page.
+
+### Linux 
+
+Here are the commands for Linux.
+
+    # install Python venv 
+    sudo apt install python3-venv
+
+    # create the virtual environment
+    python -m venv ~/myhdlvenv
+
+    # activate 
+    source ~/myhdlvenv/bin/activate
+
+    # You will see "(myhdlvenv)" before the command line prompt
+    # install myhdl
+    python -m pip install myhdl
+
+###  PowerShell Execution policy  
 
 For security reasons, some systems do not allow Activate.ps1 to run.  If you
 see error messages asking you to set the execution policy, use one of the
