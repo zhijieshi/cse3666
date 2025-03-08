@@ -31,7 +31,7 @@ the loop.
         li      a2, 100         
         li      a3, 0           # i = 0
 loop:
-	slli	a4, a3, 2	# a4 = 4 * i
+	    slli	a4, a3, 2	# a4 = 4 * i
         add     a5, a1, a4      # compute addr of A[i]
         lw      a7, 0(a5)
         add     a6, a0, a4      # compute addr of B[i]

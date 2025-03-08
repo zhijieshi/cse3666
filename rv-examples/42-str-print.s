@@ -5,16 +5,14 @@
         .data
 str:    .string         "This is an ASCII string. Each charater is 1 byte. It ends with a null byte."
 
-        .globl  main
         .text
 
 main:   
         # Step through the instructions to see 
         # what each instruciton does
 
-        # use pseudoinstruction to load an address
-        # la is converted to AUIPC and ADDI
-        la      s1, str
+        # la      s1, str
+	lui     s1, 0x10010
 
         # pseudocode
         # p = str     # char *p
@@ -23,7 +21,6 @@ main:
         #       p += 1
 
         addi      t0, s1, 0             # p = str
-
 loop:
         # check s[i] == 0?
         lb      a0, 0(t0)              # a0 = *p
@@ -42,6 +39,5 @@ loop:
 
 after_loop:
 
-        # system call to exit with code 0
-exit:   li      a7, 10                  # li is a pseudoinstruction
+exit:   addi    a7, x0, 10
         ecall                           # system call
