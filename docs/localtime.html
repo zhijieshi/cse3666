@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Current Local Time</title>
+  <title>Local Time</title>
 <style>
 
 div.outer {
@@ -15,13 +15,13 @@ div.outer {
 }
 
 .time {
-    font-size: 8em;
+    font-size: 6em;
     font-family: monospace; 
     color: darkblue;
 }
 
 .timer {
-    font-size: 8em;
+    font-size: 6em;
     font-family: monospace; 
     color: darkgreen;
 }
@@ -39,6 +39,18 @@ div.outer {
   width: 50%;
   font-size:3em;
   font-family: monospace; 
+}
+
+#column_right ins {
+    color: darkgreen;
+}
+
+#column_right del {
+    color: red;
+}
+
+#column_right b {
+    color: fuchsia;
 }
 
 #error_msg {
@@ -84,199 +96,231 @@ div.outer {
   </div> 
   <div id="config_button">
       <div id="id_config" class = "hidden">
-      <p>Please enter the ending time in the format of "HH:MM" or an integer for the number of minutes. 
-      <p>Examples: '3:00' for a timer that expires at 3 o'clock. '60' for a 60-minute timer.
-      <form action="javascript:void(0);" onsubmit="return set_timer();">
-      <input type="text" name="end_time" id="end_time" size="6" placeholder="end time..." value="">
-      <input type="submit" value="start timer" onclick="set_timer()"> 
-      <input type="button" value="stop timer" onclick="stop_timer()"> 
-      <input type="button" value="Close Config" onclick="toggle_config()"> 
-      <p><input type="button" value="Show notes" onclick="show_notes(1)">
-         <input type="button" value="Hide notes" onclick="hide_notes()"></p>
-      <p><textarea id="note_editor" placeholder="Enter notes here ..." rows="8" cols="80"></textarea>
-      <p><span id="error_msg"></span></p>
+      <form action="javascript:void(0);" onsubmit="return hide_config(false);">
+      Ending time: <input type="text" name="end_time_str" id="end_time_str" size="8" 
+            placeholder="ending time..." value="0:00">
+      Example: "3:00"
+      <p>Notes: (useful tags: b, del, ins)<br>
+      <textarea id="note_editor" placeholder="Enter notes here ..." rows="8" cols="80"></textarea>
+      <p>
+      <label> <input type="checkbox" name="show_timer" id="id_show_timer" value="1"> Show timer</label>
+      <label> <input type="checkbox" name="show_notes" id="id_show_notes" value="1"> Show notes</label>
+      <input type="submit" value="Set and close" onclick="hide_config(false)">
       </form> 
       </div>
       <!-- &#x2630; 23F2 -->
-      <p><span id="timer_toggle" onclick="toggle_config()">&#x2630;</span></p>
+      <div>
+      <span id="timer_toggle" onclick="toggle_config()">&#x2630;</span>
+      <span id="error_msg"></span>
+      </div>
   </div>
 </body>
 
 <script type="text/javascript">
-var config_on = false
-var old_color = ""
+var config_on = false;
+var old_color = "";
+var end_time_ms = 0;     // end time in ms since epoch
+var is_loaded = false;
+var last_time_str = "";
 
 function showtime() {
-    const dt = new Date()
-    document.getElementById("id_time").innerHTML = dt.toLocaleTimeString('en-US').slice(0, 8)
-    // document.getElementById("id_date").innerHTML = dt.toDateString()
+    const now = new Date();
+    const new_time_str = now.toLocaleTimeString('en-US').slice(0, 8);
+    if (last_time_str == new_time_str) return;
+    document.getElementById("id_time").innerHTML = new_time_str; 
+    last_time_str = new_time_str;
+    if (! is_loaded) return;
+    // document.getElementById("id_date").innerHTML = now.toDateString()
     if (localStorage.timer_on == "1") {
         // left is the remaining time in milli seconds  
-        let left = 0
-
-        if (localStorage.timer_end) {
-            let timer_end = new Date(parseInt(localStorage.timer_end))
-            if (timer_end > dt) {
-                // add 990 so the seconds add up to 60
-                left = timer_end - dt + 990
-            }
+        let left = 0;
+        let now_ms = now.getTime();
+        if (end_time_ms > now_ms) {
+            // add 990 so the seconds add up to 60
+            left = end_time_ms - now.getTime() + 990;
         }
 
-        let start = 11
+        let start_index = 11;
 
         if (left < 10 * 3600000) {
-            start = 12
+            start_index = 12;
         }
 
-        // use javascript toISOString to convert ms to HH:MM:SS
-        const str = new Date(left).toISOString().slice(start, 19)
-        const tt = document.getElementById("timer_text")
-        tt.innerHTML = str
-        let color = 'darkgreen'
+        // use javascript toISOString to convert the remaning time 
+        // to HH:MM:SS or H:MM:SS 
+        const left_str = new Date(left).toISOString().slice(start_index, 19);
+        const tt = document.getElementById("timer_text");
+        tt.innerHTML = left_str;
+        let color = 'darkgreen';
         if (left == 0) {
-            color = 'red'
+            color = 'red';
         } else if (left < 300000) {
-            color = 'orange'
+            color = 'orange';
         } 
         if (color != old_color) {
-            tt.style.color = color
-            old_color = color
+            tt.style.color = color;
+            old_color = color;
         }
     }
 }
 
+var timerId= setInterval(()=>{showtime()}, 100);
+
 function show_timer() {
-    document.getElementById("div_timer").style.display = "block"
+    document.getElementById("div_timer").style.display = "block";
     // document.getElementById("div_timer").display = "block"
 }
 
 function hide_timer() {
-    document.getElementById("div_timer").style.display = "none"
+    document.getElementById("div_timer").style.display = "none";
 }
 
 function show_config() {
-    show_error_msg("")
-    document.getElementById("id_config").style.display = "block"
-    document.getElementById("div_timer").style.display = "none"
-    config_on = true
+    set_error_msg("");
+    document.getElementById("id_config").style.display = "block";
+    document.getElementById("div_timer").style.display = "none";
+    config_on = true;
 }
 
-function hide_config() {
-    document.getElementById("id_config").style.display = "none"
-    if (localStorage.notes_on == "1") set_notes()
-    if (localStorage.timer_on == "1") {
-        show_timer()
-    } else {
-        hide_timer()
+function hide_config(is_cancel) {
+    document.getElementById("id_config").style.display = "none";
+    config_on = false;
+
+    if (is_cancel) {
+        if (localStorage.timer_on == "1") {
+            show_timer();
+        }
+        return;
     }
-    config_on = false
+    localStorage.timer_on = document.getElementById('id_show_timer').checked ? "1" : "0";
+    localStorage.notes_on = document.getElementById('id_show_notes').checked ? "1" : "0";
+
+    if (localStorage.notes_on == "1") {
+        set_notes();
+        show_notes();
+    }
+    else {
+        hide_notes();
+    }
+
+    if (localStorage.timer_on == "1") {
+        end_time_str2ms();
+        show_timer();
+    } else {
+        hide_timer();
+    }
 }
 
 function toggle_config() {
     if (config_on) {
-        hide_config()
+        hide_config(true);
     } else {
-        show_config()
+        show_config();
     }
 }
 
-function show_error_msg(msg) {
-    document.getElementById("error_msg").textContent = msg
+function set_error_msg(msg) {
+    document.getElementById("error_msg").textContent = msg;
 }
 
 function set_notes() {
     // copy notes from editor to column
-    var notes = document.getElementById("note_editor").value
-    var div_right = document.getElementById("column_right")
-    div_right.innerHTML = notes
-    localStorage.notes = notes
+    var notes = document.getElementById("note_editor").value;
+    var div_right = document.getElementById("column_right");
+    div_right.innerHTML = notes;
+    localStorage.notes = notes;
 }
 
-function show_notes(call_set) {
-    var div_left = document.getElementById("column_left")
-    var div_right = document.getElementById("column_right")
+function show_notes() {
+    var div_left = document.getElementById("column_left");
+    var div_right = document.getElementById("column_right");
 
-    if (call_set) {
-        set_notes()
-    }
-    div_left.style.width = "40%"
-    div_right.style.display = "block"
-    localStorage.notes_on = "1"
+    div_left.style.width = "40%";
+    div_right.style.display = "block";
 }
 
 function hide_notes() {
-    var div_left = document.getElementById("column_left")
-    var div_right = document.getElementById("column_right")
+    var div_left = document.getElementById("column_left");
+    var div_right = document.getElementById("column_right");
 
-    div_left.style.width = "100%"
-    div_right.style.display = "none"
-    localStorage.notes_on = "0"
+    div_left.style.width = "100%";
+    div_right.style.display = "none";
 }
 
-function stop_timer() {
-    localStorage.timer_on = "0"
-    hide_config()
-}
+function end_time_str2ms() {
+    let t_str = document.getElementById("end_time_str").value;
 
-function set_timer() {
-    let t_str = document.getElementById("end_time").value
-
-    var timer_start = new Date() 
-    let day_start = new Date(timer_start.getTime())
-    day_start.setHours(0)
-    day_start.setMinutes(0)
-    day_start.setSeconds(0, 0)
-    let cur_msec = timer_start - day_start
-
-    let msec = 0
+    const now = new Date() 
+    const now_ms = now.getTime();
 
     const re = /^(\d\d?):(\d{2})$/
     let fields = t_str.match(re)
     // console.log(fields)
     if (fields && fields.length >= 3) {
-        msec = (parseInt(fields[1]) * 60 + parseInt(fields[2])) * 60000
-    } else {
-        const re1 = /^\d+$/
-        fields = t_str.match(re1)
-        if (fields) {
-            msec = cur_msec + parseInt(fields[0]) * 60000
-        } else {
-            show_error_msg("Not a valid input.") 
-            return false
+        // should not fail
+        const h = parseInt(fields[1], 10);
+        const m = parseInt(fields[2], 10);
+
+        if (h >= 24 || m >= 60) {
+            set_error_msg("Invalid hour or minute.");
+            return;
         }
+
+        // beginning of today
+        let startOfDay = new Date(now_ms);
+        startOfDay.setHours(h, m, 0, 0);
+        end_time_ms = startOfDay.getTime(); // + (h * 60 + m) * 60000;
+        // may need to adjust twice
+        while (end_time_ms < now_ms) { end_time_ms += 12 * 3600 * 1000 }
+    } else {
+        const regex = /^\d{1,3}$/;
+        if (! regex.test(t_str)) {
+            set_error_msg("Invalid end time or a number of minutes.");
+            return;
+        }
+        const n_minutes = parseInt(t_str, 10);
+        if (n_minutes > 720) {
+            set_error_msg("The number of minutes must be less than 720.");
+            return;
+        }
+        end_time_ms = now_ms + n_minutes * 60000;
     }
 
-    while (msec < cur_msec) { msec += 12 * 3600 * 1000 }
-
-    var timer_end = new Date( day_start.getTime() + msec)
-
-    localStorage.timer_end = timer_end.getTime()
-
-    console.log(timer_end)
-
-    localStorage.timer_on = "1"
-    hide_config()
-
-    return false
+    localStorage.end_time_str = t_str;
+    localStorage.end_time_ms = end_time_ms;
+    console.log(end_time_ms);
+    console.log(t_str);
 }
-
-var timerId= setInterval(()=>{showtime()}, 400);
 
 document.addEventListener('DOMContentLoaded', (event) => {
     // Retrieve data from local storage
 
     // storedData = localStorage.getItem('yourKey');
     // const parsedData = JSON.parse(storedData);
-    if (localStorage.timer_on == "1" ) {
-        document.getElementById("div_timer").style.display = "block"
+    if (localStorage.getItem('end_time_str') === null) {
+        localStorage.end_time_str = "0:00";
     }
+    document.getElementById("end_time_str").value = localStorage.end_time_str;
+
+    if (localStorage.timer_on == "1" ) {
+        end_time_ms = parseInt(localStorage.end_time_ms);
+        show_timer();
+    } else {
+        localStorage.timer_on = "0";
+        hide_timer();
+    }
+
     if (localStorage.notes) {
         document.getElementById('note_editor').value = localStorage.notes
-        document.getElementById("column_right").innerHTML = localStorage.notes
+        set_notes();
     }
     if (localStorage.notes_on == "1") {
-        show_notes(0)
+        show_notes();
     }
+
+    document.getElementById('id_show_timer').checked = localStorage.timer_on == "1";
+    document.getElementById('id_show_notes').checked = localStorage.notes_on == "1";
+    is_loaded = true;
 });
 
 </script>
