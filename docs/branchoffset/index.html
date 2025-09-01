@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RISC-V: Encoding branch offset</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <style>
+
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #mainDiv {
+            width: 700px;
+            height: auto;
+            margin: 20px auto;
+            padding: 0;
+            background-color: #aed6f1;
+        }
+
+/* Create two unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+}
+
+.left {
+  font-size: 20px;
+  width: 40%;
+}
+
+.right {
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+        .section {
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            vertical-align: middle;
+            font-size: 22px;
+            padding: 10px;
+        }
+        .boxed-letter {
+            display: inline-block;
+            border: 2px solid black;
+            margin: 2px;
+            width: 18px;
+            height: 18px;
+            padding: 5px;
+            font-family: monospace;
+            font-size: 20px;
+            font-weight:bold;
+        }
+        .mono {
+            height: auto;
+            font-size: 20px;
+            font-family:monospace;
+        }
+
+        .button {
+            background-color: #809fff; /* Green */
+            margin: 5px;
+            border: 1px;
+            border-radius: 10px 10px 10px 10px;
+            color: darkgreen;
+            padding: 5px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+            min-width: 100px;
+            hocus--background-color:blue-400;
+        }
+    </style>
+</head>
+<body>
+
+<div id="mainDiv">
+    <div class="title">
+        <h1 style="text-align: center; background-color: #f5b7b1;">
+        RISC-V Branch Offset Practice </h1>
+    </div> 
+
+        <div class="row">
+            <div class="column left"> The branch offset: </div>
+            <div class="column right">
+            <input class="mono" type="text" 
+                v-on:change="checkBranchOffset"
+                v-model="branchOffsetInput">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column left">Bits in the branch offset:</div>
+            <div class="column right mono">{{ branchOffsetStr }}</div>
+        </div>
+
+        <div class="row">
+            <div class="column left"> Enter bits in funct7 (without 0b): </div>
+            <div class="column right">
+                <input class="mono" type="text" v-model="funct7Input">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column left"> Enter bits in rd (without 0b): </div>
+            <div class="column right"> <input class="mono" type="text" v-model="rdInput"> </div>
+        </div>
+
+	<div v-show="0" class="section">
+            <div>funct7:</div>
+            <div id="funct7-field">
+            <span class="boxed-letter">0</span> 
+            <span class="boxed-letter">1</span> 
+            <span class="boxed-letter">0</span> 
+            <span class="boxed-letter">1</span> 
+            <span class="boxed-letter">0</span> 
+            <span class="boxed-letter">1</span> 
+            <span class="boxed-letter">1</span> 
+            </div>
+            <div>rd:</div>
+            <div id="rd-field">
+            <span class="boxed-letter">0</span> 
+            <span class="boxed-letter">1</span> 
+            <span class="boxed-letter">0</span> 
+            <span class="boxed-letter">1</span> 
+            <span class="boxed-letter">0</span> 
+            </div>
+	</div>
+	<div class="section">
+	    <input type="button" value="Check" class="button" v-on:click="checkAnswer">
+	    <input type="button" value="Show/Hide Help" class="button" v-on:click="toggleHelp">
+	</div>
+	<div class="section" style="font-size:16px">
+            <pre>{{ message }}</pre>
+        </div>
+	<div v-show="showHelp" class="section" style="font-size:16px">
+            <p>Enter all fileds and click the Check button to check if funct7 and rd matches the branch offset. 
+
+            <p>Branch offset can be in dec or in hex, for example, "-4" or "0x1FFFC". 
+        </div>
+</div>
+<script src="branch-offset.js"></script>
+</body>
+</html>
