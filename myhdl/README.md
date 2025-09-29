@@ -1,51 +1,56 @@
 #  MyHDL 
 
-MyHDL is a Python package that enables us to describe hardware in Python. We
-pick MyHDL, out of many options, because students taking CSE 3666 are familiar
-with Python. Also, MyHDL is very similar to Verilog. It will be easier for
-students to pick up Verilog after learning MyHDL.
+MyHDL is a Python package that enables us to describe hardware in Python.  We
+have chosen MyHDL among several options because students in CSE 3666 are
+already familiar with Python. Additionally, MyHDL closely resembles Verilog,
+making it easier for students to transition to Verilog after learning MyHDL.
 
-We assume students can install a recent version of Python on their computer.
-MyHDL works with Python 3.4 or higher. Students who have trouble installing
-Python or MyHDL on their own computer can work on a lab computer while they fix
-issues with their computer. The lab computers run Windows 11 and have Python
-3.10 (or newer) installed.
+MyHDL is compatible with Python version 3.4 and above.  Students who experience
+difficulties installing Python or MyHDL on their personal computers may use a
+lab computer or UConn Anyware while resolving the issue. The lab machines run
+Windows 11 and have Python 3.10 (or newer).
+
+Depending on your operating system, there are several ways to start Python or
+run a Python script.  On Windows, the command is typically `py` or `python`,
+while on Linux, it is usually `python3`.  In this tutorial, we will use
+`python`.  If that does not work on your system, you may need to use `python3`
+instead.
 
 ## Install MyHDL
 
-Once Python is installed, run the following command to install MyHDL.  We have
-many ways to start Python and a Python script. The command is `py` or `python`
-on Windows, or `python3` on Linux. We will use `python` in this tutorial. You
-may need to change it to `python3` on your computer. 
+Once Python is installed, run the following command to install MyHDL. Again,
+you may need to change `python` to `py` or `python3`.
 
     python -m pip install --user myhdl
 
-If you have the admin privilege and you want to install packages globally, you
-can remove the `--user` option.
+If you have administrative privileges and wish to install packages system-wide,
+you can omit the `--user` option.
 
 If you would like to set up a Python virtual environment, see the instructions
 at the end.
 
-[This page on
-Python.org](https://packaging.python.org/tutorials/installing-packages/)
-explains the installation of Python packages in detail.  [The MyHDL Github
-Repo](https://github.com/myhdl/myhdl) has instructions specific to MyHDL.  
+You may find the detailed instructions for installing Python packages on [this
+page ](https://packaging.python.org/tutorials/installing-packages/). MyHDL
+project also provides instructions [here](https://github.com/myhdl/myhdl).
 
 ## Run the examples
 
-Once MyHDL is installed, we can use the package by importing it in our Python
-scripts. 
+Once MyHDL is installed, we can begin using it by importing the package in our
+Python scripts. A collection of example MyHDL programs is available
+[here](./examples).
 
-Some MyHDL examples are provided [here](./examples). 
+To run the examples, first download the files and execute the scripts as
+standard Python programs.  There should be no error messages during execution.
+If you're using a virtual environment, make sure to activate it before running
+the scripts. 
 
-To run the examples, first download them and then run the scripts as a regular
-Python script. There should be no error messages when we run the scripts.  If
-you use a virtual environment, please remember to activate it first.
+For example, we use the following command to run `gate2.py`.
 
-For example, the following is the output of `gate2.py`.
+    python gate2.py
+
+And we see the following output.
 
 ```
-# command: python gate2.py
 a b | and or
 0 0 | 0   0
 0 1 | 0   1
