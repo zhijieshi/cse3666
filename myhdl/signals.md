@@ -146,6 +146,25 @@ def fancy(x, y, z):
         
 ```
 
+If there is no shadow signal, we would need to create a signal and copy the
+value explicitly.
+
+```python
+@block
+def fancy(x, y, z):
+    # x is a signal of 16 bits
+    # y is a single-bit signal
+
+    x0 = Signal(bool(0))
+
+    @always_comb
+    def comb_logic():
+        x0.next = x[0]
+
+    # send bit 0 in x to an AND gate
+    a1 = and2(and_out, x0, y)
+```
+
 See the [reference
 page](http://docs.myhdl.org/en/stable/manual/reference.html#shadow-signals) for
 more details.
