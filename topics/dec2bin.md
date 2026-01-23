@@ -144,16 +144,17 @@ number.
    7 =   0 * 16 +  7       d2 = 7 
 ```
 
-On the first line, we divide 2021 by 16. The quotient is 126 and the
-remainder is 9. So the right most hex digit is 9. 
+On the first line, we divide 2025 by 16. The quotient is 126 and the
+remainder is 9. So the right most hex digit d0 is 9. 
 
-We divide 126 on the second line. The remainder is 14. So the next hex digit
-(d1) is E. 
+We then divide 126 by 16 on the second line, where 126 is the quotient we got
+from the first division. The remainder is 14. So the next hex digit (d1) is E. 
 
-In the third division, the remainder is 7. So the third hex digit from the right is 7. 
+The quotient from the second division is 7. So we divide 7 by 16 on the third
+line. The remainder is 7. So the third hex digit is 7. 
 
 We can terminate the process because the quotient became 0. The hexadecimal
-representation of 2021 is `0x7E9`.
+representation of 2025 is `0x7E9`.
 
 ## Conversion between binary numbers and hexadecimal numbers
 
