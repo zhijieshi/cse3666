@@ -142,12 +142,15 @@
 	    <input type="button" value="Show/Hide Help" class="button" v-on:click="toggleHelp">
 	</div>
 	<div class="section" style="font-size:16px">
+            <pre>{{ offset_message }}</pre>
             <pre>{{ message }}</pre>
         </div>
 	<div v-show="showHelp" class="section" style="font-size:16px">
             <p>Enter all fileds and click the Check button to check if funct7 and rd matches the branch offset. 
 
-            <p>Branch offset can be in dec or in hex, for example, "-4" or "0x1FFFC". 
+            <p>Branch offset can be in dec or in hex, for example, "-4" or "0x1FFC". 
+
+            <p>A negative branch offset in hex starts with "0x1" or "0xF".
         </div>
 </div>
 <script src="branch-offset.js"></script>
