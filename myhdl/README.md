@@ -23,15 +23,15 @@ you may need to change `python` to `py` or `python3`.
 
     python -m pip install --user myhdl
 
-If you have administrative privileges and wish to install packages system-wide,
-you can omit the `--user` option.
+Note that we used the `--user` flag so pip installs Python packages into your
+user-specific directory instead of the system-wide location. This avoids
+permission errors and does not require administrator/root privileges.
 
 If you would like to set up a Python virtual environment, see the instructions
-at the end.
+at the end of this page.
 
-You may find the detailed instructions for installing Python packages on [this
-page ](https://packaging.python.org/tutorials/installing-packages/). MyHDL
-project also provides instructions [here](https://github.com/myhdl/myhdl).
+MyHDL project also provides instructions
+[here](https://github.com/myhdl/myhdl).
 
 ## Run the examples
 
@@ -146,7 +146,6 @@ We can set up a Python virtual environment for MyHDL projects so MyHDL
 does not interfere with other projects. Another advantage is we do not
 need the admin privilege to install MyHDL in the virtual environment.
 
-We include some basic commands 
 The instructions for creating virtual environment in Python can be found on
 [the help page of Python 3](https://docs.python.org/3/library/venv.html).
 Here is [a page on Python.land](https://python.land/virtual-environments/virtualenv)
