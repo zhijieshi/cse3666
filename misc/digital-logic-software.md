@@ -5,13 +5,14 @@ the computers in computer labs.
 
 ## Offline software
 
-* [Logisim Evolution](https://github.com/reds-heig/logisim-evolution). Free. It is
-  used in digital logic design and computer architecture courses in some universities.
-  The software supports large designs, including some processors. 
+* [Logisim Evolution](https://github.com/logisim-evolution/logisim-evolution).
+  Free. A Java applicaton (like RARS). It is used in digital logic design and computer
+  architecture courses in some universities.  The software supports large
+  designs, including some processors. 
 
 ## Online software
 
-Note that you may not be able to save or donwload your design! 
+Note that you may not be able to save or donwload your design on some platforms! 
 
 * [Circuitverse](https://circuitverse.org/simulator). Developed by students at
   IIIT-Bangalore (International Institute of Information Technology).
@@ -57,24 +58,15 @@ FPGA.
 
 * [Veritut](http://www.asic-world.com/verilog/veritut.html)
 
-* [FPGA designs with Verilog](https://verilogguide.readthedocs.io/en/latest/index.html)
-
-* [A FPGA board](https://www.adafruit.com/product/451). It should be good enough for a 32-bit RISC-V core. 
-
-[Icarus Verilog (iverilog)](http://iverilog.icarus.com/) has good support for Verilog 2005 (1364-2005). The
+[Icarus Verilog (iverilog)](https://bleyer.org/icarus/) has good support for Verilog 2005 (1364-2005). The
 compiled code has small foot print and it is fast. 
 
 [EDA playgrond](https://www.edaplayground.com/) provides an online environment
 where one can play with many HDLs. It requires a free account to actually
-simulate the design.  There are many other online Verilog simulators. 
+simulate the design. There are many other online Verilog simulators. 
 
 # Other
 
-We use myHDL in CSE 3666.  nMigen is another Python package. It is based on [The Fragmented Hardware
-  Description Language (FHDL)](https://m-labs.hk/migen/manual/fhdl.html), which
-is quite different from traditional event driven languages like MyHDL.
-
-* [nMigen Github repo](https://github.com/nmigen/nmigen)
-* [nMigen document](https://nmigen.info/nmigen/latest/cover.html)
-* [nMigen examples - kbob](https://github.com/kbob/nmigen-examples)
-
+We use MyHDL in CSE 3666. [Amaranth
+HDL](https://github.com/amaranth-lang/amaranth) provides another toolchain to design
+hardware with Python.
