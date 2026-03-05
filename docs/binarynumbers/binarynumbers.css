@@ -56,10 +56,11 @@ html, body {
     text-align: left;
 }
 
-.question > .bigger {
+.question > .digits {
     margin: 30px;
     text-align: center;
     font-size: 150%;
+    font-family:monospace;
 }
 
 .score {
