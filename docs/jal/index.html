@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RISC-V: JAL</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <style>
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+#mainDiv {
+    width: 700px;
+    height: auto;
+    margin: 20px auto;
+    padding: 0;
+    background-color: #aed6f1;
+}
+
+table {
+    border-collapse: collapse; /* Merge borders into a single line */
+    width: 85%;
+    margin: 10px auto;
+}
+th, td {
+    border: 2px solid #333; /* Border thickness and color */
+    padding: 10px;
+    text-align: center;
+    font-family:monospace;
+}
+/* Create two unequal columns that floats next to each other */
+
+.column {
+  float: left;
+  padding: 10px;
+}
+
+.left {
+  font-size: 20px;
+  width: 30%;
+}
+
+.right {
+  width: 60%;
+}
+
+.warning {
+    color: #ab0000;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.caption {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 0;   
+    margin-bottom: 0; 
+}
+
+.section {
+    height: auto;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    padding: 10px;
+}
+.large-size {
+    font-size: 20px;
+}
+.normal-size {
+    font-size: 14px;
+}
+.mono {
+    height: auto;
+    font-family:monospace;
+}
+.boxed-letter {
+    display: inline-block;
+    border: 2px solid black;
+    margin: 2px;
+    width: 18px;
+    height: 18px;
+    padding: 5px;
+    font-family: monospace;
+    font-size: 20px;
+    font-weight:bold;
+}
+
+.button {
+    background-color: #809fff; /* Green */
+    margin: 5px;
+    border: 1px;
+    border-radius: 10px 10px 10px 10px;
+    color: darkgreen;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    min-width: 100px;
+    hocus--background-color:blue-400;
+}
+    </style>
+</head>
+<body>
+
+<div id="mainDiv">
+    <div class="title">
+        <h1 style="text-align: center; background-color: #f5b7b1;">
+        Encoding immediate in JAL</h1>
+    </div> 
+        <div class="row">
+            <div class="column left"> Enter the offset: </div>
+            <div class="column right">
+            <input class="mono" type="text" 
+                size="26"
+                v-on:change="checkOffset"
+                v-model="offsetInput">
+            <input type="button" value="Set Offset"
+                v-on:click="checkOffset" ></input>
+            <pre class="warning">{{ offset_message }}</pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column left"> Enter Instr[31:20]: </div>
+            <div class="column right">
+                <input class="mono" size="26" type="text" 
+                    v-on:change="checkMCode"
+                    v-model="mcodeInput">
+                <input type="button" value="Set Instr"
+                    v-on:click="checkMCode" ></input>
+                <pre class="warning">{{ mcode_message }}</pre>
+            </div>
+        </div>
+
+	<div class="section">
+            <p class="caption"> Offset/Imm
+            <table class="mono">
+                <tr class="normal-size">
+                <td>imm[31:21]</td>
+                <td>imm[20:1]</td>
+                <td>imm[0]</td>
+                </tr>
+                </tr>
+                <tr class="large-size">
+                    <td class="mono">{{ offsetSignDisplay }}</td>
+                <td>{{ offsetDisplay }}</td>
+                <td>0</td>
+                </tr>
+            </table>
+        </div>
+
+	<div class="section">
+            <p class="caption"> Machine code/Instr (UJ format)
+            <table class="mono">
+                <tr class="normal-size">
+                <td>Instr[31:12]</td>
+                <td>Instr[11:7]</td>
+                <td>Instr[6:0]</td>
+                </tr>
+                <tr class="large-size">
+                <th>imm[20 | 10:1 | 11 | 19:12]</th>
+                <th>rd</th>
+                <th>opcode</th>
+                </tr>
+                <tr class="large-size">
+                    <td>{{ mcodeDisplay }}</td>
+                <td class="mono">00001</td>
+                <td class="mono">1101111</td>
+                </tr>
+            </table>
+        </div>
+
+	<div class="section">
+	    <input type="button" value="Check" class="button" v-on:click="checkAnswer">
+	    <input type="button" value="Show/Hide Help" class="button" v-on:click="toggleHelp">
+	</div>
+	<div class="section" style="font-size:16px">
+            <pre>{{ message }}</pre>
+        </div>
+	<div v-show="showHelp" class="section" style="font-size:16px">
+            <p>Enter the (jump) offset and highest 20 bits in the machine code,
+            and then click the Check button to check if they match.
+
+            <p>The input can be in dec, bin, or hex. Digits/bits can be separated by 
+            '_' or spaces.
+
+        </div>
+</div>
+<script src="jal.js"></script>
+</body>
+</html>
