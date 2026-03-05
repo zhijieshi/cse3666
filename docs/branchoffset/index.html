@@ -42,13 +42,16 @@
 }
 
         .section {
-            width: 100%;
             height: auto;
             margin: 0;
             padding: 0;
             vertical-align: middle;
             font-size: 22px;
             padding: 10px;
+        }
+        .center {
+            display: flex; /* Enable flexbox */
+            justify-content: center; /* Horizontal center */
         }
         .boxed-letter {
             display: inline-block;
@@ -69,7 +72,9 @@
 
         .button {
             background-color: #809fff; /* Green */
-            margin: 5px;
+            margin: 10px;
+            margin-right: 30px;
+            margin-left: 30px;
             border: 1px;
             border-radius: 10px 10px 10px 10px;
             color: darkgreen;
@@ -88,7 +93,7 @@
 <div id="mainDiv">
     <div class="title">
         <h1 style="text-align: center; background-color: #f5b7b1;">
-        RISC-V Branch Offset Practice </h1>
+        RISC-V: Encoding Branch Offset</h1>
     </div> 
 
         <div class="row">
@@ -117,28 +122,9 @@
             <div class="column right"> <input class="mono" type="text" v-model="rdInput"> </div>
         </div>
 
-	<div v-show="0" class="section">
-            <div>funct7:</div>
-            <div id="funct7-field">
-            <span class="boxed-letter">0</span> 
-            <span class="boxed-letter">1</span> 
-            <span class="boxed-letter">0</span> 
-            <span class="boxed-letter">1</span> 
-            <span class="boxed-letter">0</span> 
-            <span class="boxed-letter">1</span> 
-            <span class="boxed-letter">1</span> 
-            </div>
-            <div>rd:</div>
-            <div id="rd-field">
-            <span class="boxed-letter">0</span> 
-            <span class="boxed-letter">1</span> 
-            <span class="boxed-letter">0</span> 
-            <span class="boxed-letter">1</span> 
-            <span class="boxed-letter">0</span> 
-            </div>
-	</div>
-	<div class="section">
+	<div class="section center">
 	    <input type="button" value="Check" class="button" v-on:click="checkAnswer">
+            <span> </span>
 	    <input type="button" value="Show/Hide Help" class="button" v-on:click="toggleHelp">
 	</div>
 	<div class="section" style="font-size:16px">
@@ -146,11 +132,13 @@
             <pre>{{ message }}</pre>
         </div>
 	<div v-show="showHelp" class="section" style="font-size:16px">
-            <p>Enter all fileds and click the Check button to check if funct7 and rd matches the branch offset. 
+            <p>Enter all fields and click the Check button to check if funct7
+            and rd matches the branch offset. 
 
-            <p>Branch offset can be in dec or in hex, for example, "-4" or "0x1FFC". 
+            <p>Branch offset can be in dec/bin/hex, for example, "-4", "0b1
+            1111 1111 1100", or "0x1FFC". Digits can be separated by '-' or
+            spaces.
 
-            <p>A negative branch offset in hex starts with "0x1" or "0xF".
         </div>
 </div>
 <script src="branch-offset.js"></script>
