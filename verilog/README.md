@@ -201,7 +201,7 @@ endmodule
 ## Another Example: a 4 to 1 multiplexer
 
 A more complete and practical example of Verilog modeling styles can be found in
-the implementation of a 4 to 1 multiplexor, which is in [the mux4 folder](./mu4). 
+the implementation of a 4 to 1 multiplexor, which is in [the mux4 folder](./mux4). 
 
 ##  Compiling and Running Verilog Simulations with Icarus Verilog
 
@@ -256,8 +256,10 @@ the terminal.
 
 ## Learning More Verilog Details
 
-This document provides only a brief introduction to Verilog.  Many important
-aspects of the language are intentionally not covered here, including:
+This document provides only a brief introduction to Verilog, and a minimal 
+set of instructions to compile Verilog code and run simulation. There are
+a lot resources aboug Verilog on the Internet. So many important
+aspects of the language are not covered/repeated here, including:
 
 - Verilog data types (`wire`, `reg`, vectors, constants)
 - Procedural statements (`if`, `case`, `always`, `initial`)
@@ -265,12 +267,12 @@ aspects of the language are intentionally not covered here, including:
 - Simulation vs. synthesis considerations
 - Writing larger testbenches
 
-For a clear and practical introduction to these topics, see the following
-reference, which is especially well written for beginners:
+To learn more about the language, see the following references or any
+references you like.
 
 - **Verilog HDL** – Analog Circuit Design  
   https://analogcircuitdesign.com/verilog-syntax-and-data-types/
-- There are a lot of resources/links on **verilog.com**:
+- A lot of resources/links can be found on **verilog.com**:
   https://verilog.com/
 
 ## References
