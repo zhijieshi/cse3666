@@ -108,7 +108,7 @@ physically built.
 
 Example (2-to-1 Mux, Behavioral Modeling):
 
-```verilog
+```
 module mux2_1_behavioral (
     input  a,
     input  b,
@@ -138,12 +138,12 @@ In real designs, these styles are often mixed.
 A testbench is Verilog code that tests your hardware module by applying inputs
 and checking outputs. Testbenches are for simulation, not synthesis.
 It is common that the testbench is in a separate file from the design. 
-For example, to verify/test one of the 2 to 1 multiplexer design above, we can have a following testbench
+To verify/test the 2 to 1 multiplexer, we can have a following testbench
 in a file named `tb_mux2_1.v`:
 
-**Minimal mux2\_1 Testbench (Simulation):**
+Minimal mux2\_1 Testbench (Simulation):
 
-```verilog
+```
 `timescale 1ns/1ps
 
 module tb_mux2_1;
@@ -200,7 +200,8 @@ endmodule
 
 ## Another Example: a 4 to 1 multiplexer
 
-In [the mux4 folder](./mux4), you can find a slightly larger example, a 4 to 1 multiplexer. It is implemented in several Verilog modeling styles. We will use mux4 as an example to show how to compile Verilog code and then run simulation.  
+A more complete and practical example of Verilog modeling styles can be found in
+the implementation of a 4 to 1 multiplexor, which is in [the mux4 folder](./mux4). 
 
 ##  Compiling and Running Verilog Simulations with Icarus Verilog
 
@@ -208,14 +209,14 @@ To simulate Verilog designs in this repository, we use Icarus Verilog, an
 open-source Verilog compiler and simulator.  Icarus Verilog uses a two-step
 flow:
 
-*   Compile Verilog source files using `iverilog`
-*   Run the simulation using `vvp`
+*   Compile Verilog source files using iverilog
+*   Run the simulation using vvp
 
 ### Installing Icarus Verilog
 
 Useful links:
 
-*   **Official site** and documentation:
+*   Official site and documentation:
     https://bleyer.org/icarus/
 
 *   Source code and development repository:
@@ -255,34 +256,33 @@ the terminal.
 
 ## Learning More Verilog Details
 
-This document provides only a brief introduction to Verilog, and a minimal 
-set of instructions to compile Verilog code and run simulation. There are
-a lot resources aboug Verilog on the Internet. So many important
-aspects of the language are not covered/repeated here, including:
+This page only provides a brief introduction to Verilog, along with a minimal
+set of instructions for compiling Verilog code and running simulations.  There
+are many Verilog resources available online. We are not going to repeat here.
+To learn more about the language, see the links in the References Section
+(below). If you find any other good resources, please share with us. Beginners
+often find the following Verilog concepts confusing. You may want to spend more
+time on them.
 
-- Verilog data types (`wire`, `reg`, vectors, constants)
-- Procedural statements (`if`, `case`, `always`, `initial`)
+- Verilog data types: `wire` vs `reg`. `reg` does not mean the signal must be
+  driven by a register/flip flop.
 - Blocking vs. non-blocking assignments
+- Procedural blocks (`always`, `initial`)
 - Simulation vs. synthesis considerations
-- Writing larger testbenches
-
-To learn more about the language, see the following references or any
-references you like.
-
-- **Verilog HDL** at Analog Circuit Design has clean pages:
-  https://analogcircuitdesign.com/verilog-syntax-and-data-types/
-- The Verilog tutorial on asic-world.com looks good. There are a lot of examples, too.
-  [https://www.asic-world.com/verilog/veritut.html](https://www.asic-world.com/verilog/verilog_one_day.html)
-- **verilog.com** has a lot of links:
-  https://verilog.com/
 
 ## References
 
-*   Icarus Verilog documentation and downloads: https://bleyer.org/icarus/
+*   Icarus Verilog Official Site and downloads:
+https://bleyer.org/icarus/
    
-*   Icarus Verilog source code: 
+*   Icarus Verilog Github Repo: 
 https://github.com/steveicarus/iverilog
 
-*   Verilog overview: 
+*   Verilog Tutorial – Analog Circuit Design  
 https://analogcircuitdesign.com/verilog-syntax-and-data-types/
 
+*   Verilog tutorial - Chip Verify:
+https://www.chipverify.com/verilog/verilog-tutorial
+
+*   verilog.com has a lot of resources/links:
+https://verilog.com/
