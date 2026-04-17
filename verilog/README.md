@@ -108,7 +108,7 @@ physically built.
 
 Example (2-to-1 Mux, Behavioral Modeling):
 
-```
+```verilog
 module mux2_1_behavioral (
     input  a,
     input  b,
@@ -138,12 +138,12 @@ In real designs, these styles are often mixed.
 A testbench is Verilog code that tests your hardware module by applying inputs
 and checking outputs. Testbenches are for simulation, not synthesis.
 It is common that the testbench is in a separate file from the design. 
-To verify/test the 2 to 1 multiplexer, we can have a following testbench
+For example, to verify/test one of the 2 to 1 multiplexer design above, we can have a following testbench
 in a file named `tb_mux2_1.v`:
 
-Minimal mux2\_1 Testbench (Simulation):
+**Minimal mux2\_1 Testbench (Simulation):**
 
-```
+```verilog
 `timescale 1ns/1ps
 
 module tb_mux2_1;
@@ -200,8 +200,7 @@ endmodule
 
 ## Another Example: a 4 to 1 multiplexer
 
-A more complete and practical example of Verilog modeling styles can be found in
-the implementation of a 4 to 1 multiplexor, which is in [the mux4 folder](./mux4). 
+In [the mux4 folder](./mux4), you can find a slightly larger example, a 4 to 1 multiplexer. It is implemented in several Verilog modeling styles. We will use mux4 as an example to show how to compile Verilog code and then run simulation.  
 
 ##  Compiling and Running Verilog Simulations with Icarus Verilog
 
@@ -209,14 +208,14 @@ To simulate Verilog designs in this repository, we use Icarus Verilog, an
 open-source Verilog compiler and simulator.  Icarus Verilog uses a two-step
 flow:
 
-*   Compile Verilog source files using iverilog
-*   Run the simulation using vvp
+*   Compile Verilog source files using `iverilog`
+*   Run the simulation using `vvp`
 
 ### Installing Icarus Verilog
 
 Useful links:
 
-*   Official site and documentation:
+*   **Official site** and documentation:
     https://bleyer.org/icarus/
 
 *   Source code and development repository:
@@ -270,9 +269,11 @@ aspects of the language are not covered/repeated here, including:
 To learn more about the language, see the following references or any
 references you like.
 
-- **Verilog HDL** – Analog Circuit Design  
+- **Verilog HDL** at Analog Circuit Design has clean pages:
   https://analogcircuitdesign.com/verilog-syntax-and-data-types/
-- A lot of resources/links can be found on **verilog.com**:
+- The Verilog tutorial on asic-world.com looks good. There are a lot of examples, too.
+  [https://www.asic-world.com/verilog/veritut.html](https://www.asic-world.com/verilog/verilog_one_day.html)
+- **verilog.com** has a lot of links:
   https://verilog.com/
 
 ## References
