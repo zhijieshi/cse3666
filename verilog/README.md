@@ -215,7 +215,7 @@ flow:
 
 Useful links:
 
-*   **Official site** and documentation [Icaurs-Official].
+*   **Official site** and documentation [Icarus-Official].
 *   Source code and development repository [Icarus-Github].
 
 Typical installation methods:
