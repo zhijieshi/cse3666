@@ -266,20 +266,25 @@ time on them.
 
 ## References
 
-*   Icarus Verilog Official Site and downloads:
-https://bleyer.org/icarus/
+*   Icarus Verilog Official Site and downloads [Icarus-Official]
    
-*   Icarus Verilog Github Repo: 
-https://github.com/steveicarus/iverilog
+*   Icarus Verilog Github Repo [Icarus-Github] 
 
-*   Verilog Tutorial – Analog Circuit Design  
-https://analogcircuitdesign.com/verilog-syntax-and-data-types/
+*   Verilog Tutorial – Analog Circuit Design [Verilog-Analog]
 
-*   Verilog tutorial - Chip Verify:
-https://www.chipverify.com/verilog/verilog-tutorial
+*   Verilog tutorial - Chip Verify [Verilog-ChipVerify].
+
+*   Verilog in one day [Verilog-Asic-World]
+
+*   [HDLBIts] has a lot of small exercises in digital design and you can run
+    simulation in the browser.
 
 *   verilog.com has a lot of resources/links:
 https://verilog.com/
 
 [Icarus-Official]: https://bleyer.org/icarus/
 [Icarus-Github]: https://github.com/steveicarus/iverilog
+[HDLBits]: https://hdlbits.01xz.net/wiki/Main_Page
+[Verilog-ChipVerify]: https://www.chipverify.com/verilog/verilog-tutorial
+[Verilog-Asic-World]: https://www.asic-world.com/verilog/verilog_one_day.html
+[Verilog-Analog]: https://analogcircuitdesign.com/verilog-syntax-and-data-types
