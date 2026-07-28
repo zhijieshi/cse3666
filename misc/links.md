@@ -4,3 +4,4 @@
 
 *   Veritasium. [The Universe is Hostile to Computers](https://www.youtube.com/watch?v=AaZ_RSt0KP8). Reliability. Binary numbers.
 
+*   Computerphile. [Characters, Symbols and the Unicode Miracle](https://www.youtube.com/watch?v=MijmeoH9LT4)
