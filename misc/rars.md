@@ -206,17 +206,8 @@ disable/enable all breakpoints. Assembling a program also clears all the breakpo
 
 ## Download files from GitHub
 
-To download an individual file from GitHub, click the raw button at the top right 
-corner of the text box showing the file content.  
+To download an individual file from GitHub, click the "Dowload raw file" button
+at the top right corner of the text box showing the file content. 
 
-![Click 'raw'](./rars-images/raw-button.png?raw=true)
+![Click 'Download raw file'](./rars-images/download-raw.png?raw=true)
 
-When viewing the raw file, press `Ctrl-s` to save the file. Pay attention to the
-filename. The browser may add `.txt` at the end. You can also try right click and 
-select `Save as` in the context menu. Menu and keyboard shortcuts may be different
-in your browser.
-
-When viewing the raw file, you can also find out the link to the raw file and use
-the link in other applications, e.g., `curl` to download the file.
-
-You can also simply copy the lines and paste into your favorite editor.
