@@ -225,7 +225,8 @@ Typical installation methods:
 *   Linux: `sudo apt install iverilog`
 *   macOS: `brew install icarus-verilog`
 *   Windows: Use the Linux command above in WSL(recommended), or download and
-    run the installer from the official site [Icarus-Official].
+    run the installer from the official site [Icarus-Official]. Version 12 works well 
+    for the projects this course. Some systems may report a virus warning for Version 14.
 
 ### Compiling a Verilog Design
 
