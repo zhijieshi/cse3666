@@ -31,23 +31,25 @@ Gate-level modeling describes a circuit using basic logic gates (AND, OR, NOT).
 *   Mostly used for learning and low-level verification 
 *   Gate-level modeling is closely related to structural modeling
 
-Example (2-to-1 Mux at Gate Level):
+An example of a 2-to-1 MUX implemented at the gate level is shown below. Compare the Verilog code with the schematic diagram.
 
 ```verilog
 module mux2_1_gate (
     input  a,
     input  b,
     input  s,
-    output y
+    output c
 );
-    wire ns, w1, w2;
+    wire ns, sa, sb;
 
     not (ns, s);
-    and (w1, a, ns);
-    and (w2, b, s);
-    or  (y, w1, w2);
+    and (sa, a, ns);
+    and (sb, b, s);
+    or  (c, sa, sb);
 endmodule
 ```
+
+<img src="mux2-diagram.svg" alt="2-to-1 MUX schematic" width="600">
 
 ### Structural Modeling
 
@@ -64,14 +66,14 @@ module mux2_1_structural (
     input  a,
     input  b,
     input  s,
-    output y
+    output c
 );
-    wire ns, wa, wb;
+    wire ns, sa, sb;
 
     not n1(ns, s);
-    and a1(wa, a, ns);
-    and a2(wb, b, s);
-    or  o1(y, wa, wb);
+    and a1(sa, a, ns);
+    and a2(sb, b, s);
+    or  o1(c, sa, sb);
 endmodule
 ```
 
@@ -91,9 +93,9 @@ module mux2_1 (
     input  wire a,
     input  wire b,
     input  wire s,
-    output wire y
+    output wire c
 );
-    assign y = (~s & a) | (s & b);
+    assign c = (~s & a) | (s & b);
 endmodule
 ```
 
@@ -113,13 +115,13 @@ module mux2_1_behavioral (
     input  a,
     input  b,
     input  s,
-    output reg y
+    output reg c
 );
     always @(*) begin
         if (s == 1'b0)
-            y = a;
+            c = a;
         else
-            y = b;
+            c = b;
     end
 endmodule
 ```
