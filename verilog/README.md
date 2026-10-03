@@ -133,7 +133,9 @@ endmodule
 *   Dataflow: Clean combinational logic
 *   Behavioral: Flexible and widely used
 
-In real designs, these styles are often mixed.
+In real designs, these styles are often mixed. In this course, you will mainly
+use dataflow and structural in your designs. You may see behavioral style in
+the code we provid to students.
 
 ## Testbench
 
