@@ -217,19 +217,16 @@ flow:
 
 ### Installing Icarus Verilog
 
-Useful links:
-
-*   **Official site** and documentation [Icarus-Official].
-*   Source code and development repository [Icarus-Github].
-
 Typical installation methods:
 
 *   Linux: `sudo apt install iverilog`
 *   macOS: `brew install icarus-verilog`
 *   Windows: Use the Linux command above in WSL(recommended), or download (Version 12) and
-    run the installer from the official site [Icarus-Official]. The installation package for 
+    run the installer from this site [Icarus-Windows]. The installation package for 
     Version 14 may be blocked on some systems. Version 12 works well for the projects in this
     course.
+
+The source code and development repository on Github is [Icarus-Github].
 
 ### Compiling a Verilog Design
 
@@ -272,9 +269,9 @@ time on them.
 
 ## References
 
-*   Icarus Verilog Official Site and downloads [Icarus-Official]
-   
 *   Icarus Verilog Github Repo [Icarus-Github] 
+
+*   Icarus Verilog Downloads for Windows [Icarus-Windows]
 
 *   Verilog Tutorial – Analog Circuit Design [Verilog-Analog]
 
@@ -288,7 +285,7 @@ time on them.
 *   verilog.com has a lot of resources/links:
 https://verilog.com/
 
-[Icarus-Official]: https://bleyer.org/icarus/
+[Icarus-Windows]: https://bleyer.org/icarus/
 [Icarus-Github]: https://github.com/steveicarus/iverilog
 [HDLBits]: https://hdlbits.01xz.net/wiki/Main_Page
 [Verilog-ChipVerify]: https://www.chipverify.com/verilog/verilog-tutorial
