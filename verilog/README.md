@@ -217,25 +217,31 @@ flow:
 
 ### Installing Icarus Verilog
 
-Typical installation methods for **Icarus Verilog** and **GTKWave** are:
+Typical installation methods for **Icarus Verilog** are:
 
-*   Linux (Ubuntu): `sudo apt install iverilog gtkwave`
+*   Linux (Ubuntu): `sudo apt install iverilog`
 
-*   macOS: `brew install icarus-verilog`. For GTKWave, search for installation
-    instructions for your specific macOS version.
+*   macOS: `brew install icarus-verilog`
 
 *   Windows: Use the Linux command above in WSL (recommended), or download
-    Icarus Verilog (Version 12) and run the installer from the this site
+    Icarus Verilog (Version 12) and run the installer from this site
     [Icarus-Windows]. The installation package for Version 14 may be blocked
-    on some systems. Version 12 works well for the projects in this course
-    and also includes GTKWave.
+    on some systems. Version 12 works well for the projects in this course.
 
-If you have difficulty installing GTKWave, you can use the
-[Surfer online waveform viewer](https://app.surfer-project.org/) to view VCD
-files directly in a web browser.
+### Waveform Viewers
 
-The source code and development repository are available on GitHub at
-[Icarus-Github].
+GTKWave is a commonly used waveform viewer for VCD files. On Ubuntu, it can
+be installed with:
+
+```bash
+sudo apt install gtkwave
+```
+
+GTKWave is included in recent versions of the Icarus Verilog Windows
+installation package. If you have difficulty installing GTKWave, you can use
+another VCD viewer, such as the [Surfer online waveform
+viewer](https://app.surfer-project.org/) or a VCD waveform viewer extension
+for Visual Studio Code.
 
 ### Compiling a Verilog Design
 
