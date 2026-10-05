@@ -230,6 +230,10 @@ Typical installation methods for **Icarus Verilog** and **GTKWave** are:
     on some systems. Version 12 works well for the projects in this course
     and also includes GTKWave.
 
+If you have difficulty installing GTKWave, you can use the
+[Surfer online waveform viewer](https://app.surfer-project.org/) to view VCD
+files directly in a web browser.
+
 The source code and development repository are available on GitHub at
 [Icarus-Github].
 
