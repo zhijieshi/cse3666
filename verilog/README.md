@@ -217,16 +217,21 @@ flow:
 
 ### Installing Icarus Verilog
 
-Typical installation methods:
+Typical installation methods for **Icarus Verilog** and **GTKWave** are:
 
-*   Linux: `sudo apt install iverilog`
-*   macOS: `brew install icarus-verilog`
-*   Windows: Use the Linux command above in WSL(recommended), or download (Version 12) and
-    run the installer from this site [Icarus-Windows]. The installation package for 
-    Version 14 may be blocked on some systems. Version 12 works well for the projects in this
-    course.
+*   Linux (Ubuntu): `sudo apt install iverilog gtkwave`
 
-The source code and development repository on Github is [Icarus-Github].
+*   macOS: `brew install icarus-verilog`. For GTKWave, search for installation
+    instructions for your specific macOS version.
+
+*   Windows: Use the Linux command above in WSL (recommended), or download
+    Icarus Verilog (Version 12) and run the installer from the this site
+    [Icarus-Windows]. The installation package for Version 14 may be blocked
+    on some systems. Version 12 works well for the projects in this course
+    and also includes GTKWave.
+
+The source code and development repository are available on GitHub at
+[Icarus-Github].
 
 ### Compiling a Verilog Design
 
