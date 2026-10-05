@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps
+`timescale 1ns / 1ns
 
 // no reset signal. Use load to load the initial value
 module Counter (
@@ -17,11 +17,11 @@ module Counter (
 
     // use mux to select the next state
     // assume the delay on mux is 1ns
-    assign #1 next_count = load ? load_data : adder_out;
+    assign #2 next_count = load ? load_data : adder_out;
 
     // delay of the register is 0.5ns
     always @(posedge clock) begin
-        count <= #0.5 next_count;
+        count <= #1 next_count;
     end
 
 endmodule
