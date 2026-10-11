@@ -1,18 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="570" viewBox="0 0 1100 570">
-<rect width="1100" height="570" fill="white"/>
-<g stroke="#20252b" stroke-width="2.5" fill="none" stroke-linejoin="round" stroke-linecap="round">
-<path d="M205 65 L345 115 L345 175 L205 225 Z" fill="#e2f0ff"/>
-<path d="M205 320 L345 370 L345 430 L205 480 Z" fill="#e2f0ff"/>
-<path d="M755 193 L895 243 L895 303 L755 353 Z" fill="#e2f0ff"/>
-<path d="M125 110 H205 M125 180 H205 M125 365 H205 M125 435 H205"/>
-<path d="M345 145 H575 V240 H755 M345 400 H575 V310 H755"/>
-<path d="M895 273 H973"/>
-<path d="M275 255 V200 M275 510 V455 M825 395 V328"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650">
+<defs><linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c5e0ff"/><stop offset="1" stop-color="#e5f3ff"/></linearGradient><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#111"/></marker></defs>
+<rect width="1200" height="650" fill="white"/>
+<g stroke="#111" stroke-width="2.8" fill="none" stroke-linejoin="round">
+<path d="M260 60 L430 115 L430 205 L260 260 Z" fill="url(#blue)"/>
+<path d="M260 370 L430 425 L430 515 L260 570 Z" fill="url(#blue)"/>
+<path d="M825 215 L995 270 L995 360 L825 415 Z" fill="url(#blue)"/>
+<path d="M175 120 H260 M175 205 H260 M175 430 H260 M175 515 H260" marker-end="url(#arrow)"/>
+<path d="M430 160 H625 V265 H825" marker-end="url(#arrow)"/>
+<path d="M430 470 H625 V365 H825" marker-end="url(#arrow)"/>
+<path d="M995 315 H1080" marker-end="url(#arrow)"/>
+<path d="M345 297 V232" marker-end="url(#arrow)"/>
+<path d="M345 606 V542" marker-end="url(#arrow)"/>
+<path d="M910 470 V387" marker-end="url(#arrow)"/>
 </g>
-<g fill="#20252b" font-family="Arial, Helvetica, sans-serif">
-<g font-size="23"><text x="92" y="117">d0</text><text x="92" y="187">d1</text><text x="92" y="372">d2</text><text x="92" y="442">d3</text><text x="984" y="280">y</text></g>
-<g font-size="20"><text x="282" y="53" text-anchor="middle">u0</text><text x="282" y="309" text-anchor="middle">u1</text><text x="825" y="182" text-anchor="middle">u2</text></g>
-<g font-size="17"><text x="217" y="116">a</text><text x="217" y="186">b</text><text x="318" y="153">y</text><text x="281" y="207">s</text><text x="217" y="371">a</text><text x="217" y="441">b</text><text x="318" y="408">y</text><text x="281" y="462">s</text><text x="768" y="247">a</text><text x="768" y="316">b</text><text x="868" y="282">y</text><text x="831" y="336">s</text></g>
-<g font-size="22" text-anchor="middle"><text x="282" y="139">2:1</text><text x="282" y="164">MUX</text><text x="282" y="394">2:1</text><text x="282" y="419">MUX</text><text x="825" y="267">2:1</text><text x="825" y="292">MUX</text></g>
-<g font-size="20"><text x="448" y="133">y_low</text><text x="448" y="388">y_high</text><text x="287" y="251">s[0]</text><text x="287" y="506">s[0]</text><text x="837" y="392">s[1]</text></g>
+<g fill="#111" font-family="Arial,Helvetica,sans-serif" font-size="30">
+<text x="155" y="130" text-anchor="end">d0</text><text x="155" y="215" text-anchor="end">d1</text><text x="155" y="440" text-anchor="end">d2</text><text x="155" y="525" text-anchor="end">d3</text>
+<text x="275" y="130">a</text><text x="275" y="215">b</text><text x="275" y="440">a</text><text x="275" y="525">b</text>
+<text x="403" y="170">y</text><text x="403" y="480">y</text>
+<text x="840" y="275">a</text><text x="840" y="375">b</text><text x="966" y="325">y</text>
+<text x="345" y="217" text-anchor="middle">s</text><text x="345" y="527" text-anchor="middle">s</text><text x="910" y="380" text-anchor="middle">s</text>
+<text x="345" y="155" text-anchor="middle">2:1</text><text x="345" y="189" text-anchor="middle">MUX</text>
+<text x="345" y="465" text-anchor="middle">2:1</text><text x="345" y="499" text-anchor="middle">MUX</text>
+<text x="910" y="305" text-anchor="middle">2:1</text><text x="910" y="339" text-anchor="middle">MUX</text>
+<text x="290" y="53">u0</text><text x="290" y="363">u1</text><text x="855" y="208">u2</text>
+<text x="515" y="145">y_low</text><text x="515" y="455">y_high</text>
+<text x="1095" y="325">y</text>
+<text x="345" y="330" text-anchor="middle">s[0]</text><text x="345" y="637" text-anchor="middle">s[0]</text><text x="910" y="505" text-anchor="middle">s[1]</text>
 </g></svg>
