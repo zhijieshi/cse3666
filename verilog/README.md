@@ -62,7 +62,9 @@ components are built-in Verilog gate primitives, such as `and`, `or`, and `not`.
 Structural modeling can also use user-defined modules as components, allowing
 larger circuits to be built hierarchically from smaller ones. For example,
 [mux4_structural.v](./mux4/mux4_structural.v) implements a 4-to-1 MUX using
-three instances of a 2-to-1 MUX module.
+three instances of a 2-to-1 MUX module. The diagram below illustrates the module instances and their connections. 
+
+<img src="mux4-structural.svg" alt="4-to-1 MUX implemented with 2-to-1 MUXes" width="800">
 
 ### Module Instantiation and Port Connections
 

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560" role="img" aria-label="Four-to-one multiplexer constructed from three two-to-one multiplexer instances u0, u1 and u2">
+<style>
+  .wire{fill:none;stroke:#202832;stroke-width:2.7;stroke-linejoin:round;stroke-linecap:round}
+  .mux{fill:#edf4fc;stroke:#202832;stroke-width:2.8;stroke-linejoin:round}
+  .name{font:600 22px Arial,sans-serif;fill:#152c44;text-anchor:middle}
+  .type{font:17px Arial,sans-serif;fill:#42556a;text-anchor:middle}
+  .signal{font:21px 'DejaVu Sans',Arial,sans-serif;fill:#202832}
+  .select{font:20px 'DejaVu Sans',Arial,sans-serif;fill:#202832}
+  .dot{fill:#202832}
+</style>
+<!-- first stage -->
+<path class="mux" d="M250 75 L390 115 L390 205 L250 245 Z"/>
+<path class="mux" d="M250 315 L390 355 L390 445 L250 485 Z"/>
+<!-- second stage -->
+<path class="mux" d="M680 195 L820 235 L820 325 L680 365 Z"/>
+<!-- data inputs -->
+<path class="wire" d="M95 125 H250 M95 195 H250 M95 365 H250 M95 435 H250"/>
+<text class="signal" x="57" y="132">d0</text><text class="signal" x="57" y="202">d1</text>
+<text class="signal" x="57" y="372">d2</text><text class="signal" x="57" y="442">d3</text>
+<!-- intermediate outputs -->
+<path class="wire" d="M390 160 H535 V245 H680 M390 400 H535 V315 H680"/>
+<text class="signal" x="414" y="146">y_low</text>
+<text class="signal" x="414" y="390">y_high</text>
+<!-- final output -->
+<path class="wire" d="M820 280 H927"/>
+<text class="signal" x="939" y="287">y</text>
+<!-- select inputs -->
+<path class="wire" d="M320 278 V225 M320 518 V465"/>
+<text class="select" x="331" y="274">s[0]</text>
+<text class="select" x="331" y="514">s[0]</text>
+<!-- second stage select -->
+<path class="wire" d="M750 460 V345"/>
+<text class="select" x="728" y="488">s[1]</text>
+<!-- module instance labels -->
+<text class="name" x="321" y="151">u0</text><text class="type" x="321" y="178">2:1 MUX</text>
+<text class="name" x="321" y="391">u1</text><text class="type" x="321" y="418">2:1 MUX</text>
+<text class="name" x="750" y="271">u2</text><text class="type" x="750" y="298">2:1 MUX</text>
+</svg>
