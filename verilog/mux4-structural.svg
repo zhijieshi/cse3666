@@ -1,38 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560" role="img" aria-label="Four-to-one multiplexer constructed from three two-to-one multiplexer instances u0, u1 and u2">
-<style>
-  .wire{fill:none;stroke:#202832;stroke-width:2.7;stroke-linejoin:round;stroke-linecap:round}
-  .mux{fill:#edf4fc;stroke:#202832;stroke-width:2.8;stroke-linejoin:round}
-  .name{font:600 22px Arial,sans-serif;fill:#152c44;text-anchor:middle}
-  .type{font:17px Arial,sans-serif;fill:#42556a;text-anchor:middle}
-  .signal{font:21px 'DejaVu Sans',Arial,sans-serif;fill:#202832}
-  .select{font:20px 'DejaVu Sans',Arial,sans-serif;fill:#202832}
-  .dot{fill:#202832}
-</style>
-<!-- first stage -->
-<path class="mux" d="M250 75 L390 115 L390 205 L250 245 Z"/>
-<path class="mux" d="M250 315 L390 355 L390 445 L250 485 Z"/>
-<!-- second stage -->
-<path class="mux" d="M680 195 L820 235 L820 325 L680 365 Z"/>
-<!-- data inputs -->
-<path class="wire" d="M95 125 H250 M95 195 H250 M95 365 H250 M95 435 H250"/>
-<text class="signal" x="57" y="132">d0</text><text class="signal" x="57" y="202">d1</text>
-<text class="signal" x="57" y="372">d2</text><text class="signal" x="57" y="442">d3</text>
-<!-- intermediate outputs -->
-<path class="wire" d="M390 160 H535 V245 H680 M390 400 H535 V315 H680"/>
-<text class="signal" x="414" y="146">y_low</text>
-<text class="signal" x="414" y="390">y_high</text>
-<!-- final output -->
-<path class="wire" d="M820 280 H927"/>
-<text class="signal" x="939" y="287">y</text>
-<!-- select inputs -->
-<path class="wire" d="M320 278 V225 M320 518 V465"/>
-<text class="select" x="331" y="274">s[0]</text>
-<text class="select" x="331" y="514">s[0]</text>
-<!-- second stage select -->
-<path class="wire" d="M750 460 V345"/>
-<text class="select" x="728" y="488">s[1]</text>
-<!-- module instance labels -->
-<text class="name" x="321" y="151">u0</text><text class="type" x="321" y="178">2:1 MUX</text>
-<text class="name" x="321" y="391">u1</text><text class="type" x="321" y="418">2:1 MUX</text>
-<text class="name" x="750" y="271">u2</text><text class="type" x="750" y="298">2:1 MUX</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="570" viewBox="0 0 1100 570">
+<rect width="1100" height="570" fill="white"/>
+<g stroke="#20252b" stroke-width="2.5" fill="none" stroke-linejoin="round" stroke-linecap="round">
+<path d="M205 65 L345 115 L345 175 L205 225 Z" fill="#e2f0ff"/>
+<path d="M205 320 L345 370 L345 430 L205 480 Z" fill="#e2f0ff"/>
+<path d="M755 193 L895 243 L895 303 L755 353 Z" fill="#e2f0ff"/>
+<path d="M125 110 H205 M125 180 H205 M125 365 H205 M125 435 H205"/>
+<path d="M345 145 H575 V240 H755 M345 400 H575 V310 H755"/>
+<path d="M895 273 H973"/>
+<path d="M275 255 V200 M275 510 V455 M825 395 V328"/>
+</g>
+<g fill="#20252b" font-family="Arial, Helvetica, sans-serif">
+<g font-size="23"><text x="92" y="117">d0</text><text x="92" y="187">d1</text><text x="92" y="372">d2</text><text x="92" y="442">d3</text><text x="984" y="280">y</text></g>
+<g font-size="20"><text x="282" y="53" text-anchor="middle">u0</text><text x="282" y="309" text-anchor="middle">u1</text><text x="825" y="182" text-anchor="middle">u2</text></g>
+<g font-size="17"><text x="217" y="116">a</text><text x="217" y="186">b</text><text x="318" y="153">y</text><text x="281" y="207">s</text><text x="217" y="371">a</text><text x="217" y="441">b</text><text x="318" y="408">y</text><text x="281" y="462">s</text><text x="768" y="247">a</text><text x="768" y="316">b</text><text x="868" y="282">y</text><text x="831" y="336">s</text></g>
+<g font-size="22" text-anchor="middle"><text x="282" y="139">2:1</text><text x="282" y="164">MUX</text><text x="282" y="394">2:1</text><text x="282" y="419">MUX</text><text x="825" y="267">2:1</text><text x="825" y="292">MUX</text></g>
+<g font-size="20"><text x="448" y="133">y_low</text><text x="448" y="388">y_high</text><text x="287" y="251">s[0]</text><text x="287" y="506">s[0]</text><text x="837" y="392">s[1]</text></g>
+</g></svg>
