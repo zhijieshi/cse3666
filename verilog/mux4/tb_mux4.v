@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+`timescale 1ns/1ns
 
 // ------------------------------------------------------------
 // Testbench for 4:1 MUX teaching examples
@@ -49,6 +49,13 @@ module tb_mux4;
     );
 
     initial begin
+        if ($test$plusargs("trace")) begin
+            $dumpfile("tb_mux4.vcd");
+            $dumpvars(0, tb_mux4);
+        end
+    end
+
+    initial begin
         $display("s  d3 d2 d1 d0 | expd data beha stru");
 
         for (i = 0; i < 64; i = i + 1) begin
@@ -72,7 +79,7 @@ module tb_mux4;
                 $display("MISMATCH: s=%b d3d2d1d0=%b%b%b%b exp=%b data=%b beh=%b str=%b",
                          s, d3, d2, d1, d0,
                          expected, y_dataflow, y_behavioral, y_structural);
-                $finish(1);
+                $finish(0);
             end
         end
 
