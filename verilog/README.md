@@ -38,14 +38,14 @@ module mux2_1_gate (
     input  a,
     input  b,
     input  s,
-    output c
+    output y
 );
     wire ns, sa, sb;
 
     not n1(ns, s);
     and a1(sa, a, ns);
     and a2(sb, b, s);
-    or  o1(c, sa, sb);
+    or  o1(y, sa, sb);
 endmodule
 ```
 
@@ -114,11 +114,33 @@ module mux2_1 (
     input  wire a,
     input  wire b,
     input  wire s,
-    output wire c
+    output wire y
 );
-    assign c = (~s & a) | (s & b);
+    assign y = (~s & a) | (s & b);
 endmodule
 ```
+
+To come up with expression above, we could start from the truth table:
+
+```
+y -- mux output
+a, b -- data inputs
+s -- control input: select b if s is asserted, otherwise a
+
+Truth table:
+    s a b | y
+    -------
+    0 0 0 | 0 
+    0 0 1 | 0
+    0 1 0 | 1     y = ~s & a & ~b
+    0 1 1 | 1     y = ~s & a & b
+    1 0 0 | 0
+    1 0 1 | 1     y = s & ~a & b
+    1 1 0 | 0
+    1 1 1 | 1     y = s & a & b
+```
+We then write a sum of products that has four product terms.
+After simplifying it, we have the expression in the Verilog code. 
 
 ### Behavioral Modeling
 
@@ -136,13 +158,13 @@ module mux2_1_behavioral (
     input  a,
     input  b,
     input  s,
-    output reg c
+    output reg y
 );
     always @(*) begin
         if (s == 1'b0)
-            c = a;
+            y = a;
         else
-            c = b;
+            y = b;
     end
 endmodule
 ```
